@@ -8,7 +8,7 @@
         </section>
     </div>
     <div class="w-3/4">
-        <section class="font-sans p-8 pr-16">
+        <section class="font-sans p-8">
             <router-view/>
         </section>
     </div>

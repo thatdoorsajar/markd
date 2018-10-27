@@ -17,11 +17,15 @@ const router = new VueRouter({
     routes: [
         { 
             path: '/',
-            component: require('./folders/TopFolderView.vue')
+            component: require('./folders/FolderView.vue')
         },
         { 
-            path: '/folder/:slug?',
+            path: '/f/:slug?',
             component: require('./folders/FolderView.vue')
+        },
+        { 
+            path: '/f/:slug/bm/:id',
+            component: require('./bookmarks/BookmarkView.vue')
         }
     ]
 })

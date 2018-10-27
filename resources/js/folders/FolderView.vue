@@ -2,9 +2,7 @@
     <div>
         <h3 class="font-century text-lg text-grey mb-4">BOOKMARKS {{ $route.params.slug }}</h3>
         <div v-if="!loading">
-            <ul>
-                <li v-for="bookmark in folder.bookmarks" :key="bookmark.id">{{ bookmark.title }}</li>
-            </ul>
+            <bookmark-index :folder="folder" :bookmarks="folder.bookmarks"/>
         </div>
         <div v-else>
             <svg class="icon icon-xl icon-outline icon-stroke-3 text-grey spin-slow">
@@ -15,19 +13,19 @@
 </template>
 
 <script>
+    import BookmarkIndex from '../bookmarks/BookmarkIndex.vue';
+
     export default {
+        components: {
+            BookmarkIndex
+        },
+
         data() {
             return {
                 folder: {},
                 loading: true
             }
         },
-
-        // beforeRouteUpdate(to, from, next) {
-        //     this.loading = true;
-
-        //     next();
-        // },
 
         watch: {
             '$route' (to, from) {
@@ -40,10 +38,17 @@
         },
 
         methods: {
-            fetchFolder(route) {
+            fetchFolder($router) {
                 this.loading = true;
+                let route = '';
 
-                axios.get(`/api/folder/${route.params.slug}`).then((response) => {
+                if (typeof $router.params.slug == 'undefined') {
+                    route = '/api/folder';
+                } else {
+                    route = `/api/folder/${$router.params.slug}`;
+                }
+
+                axios.get(route).then((response) => {
                     this.folder = response.data.folder;
                     this.loading = false;
                 });

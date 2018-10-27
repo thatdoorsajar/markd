@@ -39,6 +39,13 @@ class DatabaseSeeder extends Seeder
     {
         $user = factory(App\Accounts\User::class)->create(['email' => $userEmail]);
 
+        $user->bookmarks()->saveMany(
+            factory(App\Markd\Bookmark::class, 3)->create([
+                'folder_id' => null,
+                'user_id'   => null,
+            ])
+        );
+
         $user->folders()->saveMany(
             factory(App\Markd\Folder::class, 3)
                 ->create(['user_id' => $user->id])
@@ -48,7 +55,7 @@ class DatabaseSeeder extends Seeder
                     );
 
                     $folder->bookmarks()->saveMany(
-                        factory(App\Markd\Bookmark::class, 10)->create([
+                        factory(App\Markd\Bookmark::class, 3)->create([
                             'folder_id' => $folder->id,
                             'user_id'   => $user->id,
                         ])

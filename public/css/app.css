@@ -6726,6 +6726,10 @@ Stroke effects - Nucleo outline icons
   width: 83.33333%;
 }
 
+.w-1\/10 {
+  width: 10%;
+}
+
 .w-full {
   width: 100%;
 }
@@ -12506,6 +12510,10 @@ Stroke effects - Nucleo outline icons
     width: 83.33333%;
   }
 
+  .sm\:w-1\/10 {
+    width: 10%;
+  }
+
   .sm\:w-full {
     width: 100%;
   }
@@ -18270,6 +18278,10 @@ Stroke effects - Nucleo outline icons
 
   .md\:w-5\/6 {
     width: 83.33333%;
+  }
+
+  .md\:w-1\/10 {
+    width: 10%;
   }
 
   .md\:w-full {
@@ -24038,6 +24050,10 @@ Stroke effects - Nucleo outline icons
     width: 83.33333%;
   }
 
+  .lg\:w-1\/10 {
+    width: 10%;
+  }
+
   .lg\:w-full {
     width: 100%;
   }
@@ -29802,6 +29818,10 @@ Stroke effects - Nucleo outline icons
 
   .xl\:w-5\/6 {
     width: 83.33333%;
+  }
+
+  .xl\:w-1\/10 {
+    width: 10%;
   }
 
   .xl\:w-full {

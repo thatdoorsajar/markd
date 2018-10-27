@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a :href="`#/folder/${folder.slug}`" class="w-full h-auto flex justify-between border-l-4 border-transparent hover:bg-grey-light rounded-sm text-grey-darker font-semibold no-underline icon-text-aligner p-2 mb-2" 
+        <a :href="`#/f/${folder.slug}`" class="w-full h-auto flex justify-between border-l-4 border-transparent hover:bg-grey-light rounded-sm text-grey-darker font-semibold no-underline icon-text-aligner p-2 pr-3 mb-2" 
             :class="{'bg-grey-light border-teal-lighter': $route.params.slug == folder.slug}"
             @click="setActiveFolder">
             <p>{{ folder.title }}</p>

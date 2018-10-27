@@ -46,6 +46,8 @@ class FolderController extends Controller
         // load all nested children
         // load all bookmarks
         
+        // if no folder then load parent folder for user plus the bookmarks in it?
+        
         return response()->json([
             'success' => true,
             'folder' => $folder->load('bookmarks')
