@@ -20,6 +20,7 @@ class CreateFoldersTable extends Migration
             $table->string('description');
             $table->text('notes')->nullable();
             $table->boolean('is_archived')->default(false);
+            $table->boolean('top_folder')->default(false);
             $table->unsignedInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->nestedSet();

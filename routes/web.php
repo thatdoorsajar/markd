@@ -39,4 +39,7 @@ Route::get('email/verify', 'Auth\VerificationController@show')->name('verificati
 Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
-// Auth::routes();
+// Test routes
+Route::get('test', function () {
+    return \App\Accounts\User::first()->topLevelFolder();
+});

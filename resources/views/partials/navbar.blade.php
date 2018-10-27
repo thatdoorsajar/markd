@@ -15,9 +15,7 @@
         </a>
         @endguest
         @auth
-        <a href="/logout" class="font-semibold font-sans text-lg no-underline text-white bg-teal-light hover:bg-teal rounded-full p-2">
-            {{ $currentUser->initials }}
-        </a>
+        <user-menu :user="{{ $currentUser }}"/>
         @endauth
     </div>
 </nav>

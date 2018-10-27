@@ -9,6 +9,7 @@ require('./bootstrap');
  */
 Vue.component('folder-index', require('./folders/FolderIndex.vue'));
 Vue.component('drag-over', require('./components/DragOver.vue'));
+Vue.component('user-menu', require('./components/UserMenu.vue'));
 
 /**
  * Vue-router setup.

@@ -41,13 +41,15 @@ class FolderController extends Controller
      * @param  \App\Folder  $folder
      * @return \Illuminate\Http\Response
      */
-    public function show(Folder $folder)
+    public function show(Folder $folder = null)
     {
-        // load all nested children
-        // load all bookmarks
+        // @TODO: load all nested children?
         
-        // if no folder then load parent folder for user plus the bookmarks in it?
-        
+        // if no folder then load parent folder
+        if (is_null($folder)) {
+            $folder = Auth::user()->topLevelFolder();
+        }
+
         return response()->json([
             'success' => true,
             'folder' => $folder->load('bookmarks')

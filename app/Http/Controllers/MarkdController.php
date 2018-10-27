@@ -26,7 +26,7 @@ class MarkdController extends Controller
     public function index()
     {
         $currentUser = \Auth::user();
-        $folders = Folder::where('user_id', $currentUser->id)->get()->toTree();
+        $folders = Folder::where('user_id', $currentUser->id)->where('top_folder', false)->get()->toTree();
 
         return view('app.index', compact('currentUser', 'folders'));
     }

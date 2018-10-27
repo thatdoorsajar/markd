@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Markd\Folder;
 use App\Accounts\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -64,11 +65,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'first_name' => $data['first_name'],
             'last_name'  => $data['last_name'],
             'email'      => $data['email'],
             'password'   => Hash::make($data['password']),
+        ]);
+
+        $this->createTopFolder($user);
+
+        return $user;
+    }
+
+    private function createTopFolder(User $user)
+    {
+        return Folder::create([
+            'title'      => $user->first_name.$user->last_name,
+            'top_folder' => true,
+            'user_id'    => $user->id
         ]);
     }
 }

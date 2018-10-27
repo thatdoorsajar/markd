@@ -23,6 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'api_token',
         'email_verified_at',
         'password',
+        'folder_id',
     ];
 
     /**
@@ -48,5 +49,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function bookmarks()
     {
         return $this->hasMany('App\Markd\Bookmark');
+    }
+
+    public function topLevelFolder()
+    {
+        return $this->folders()->where('top_folder', true)->first();
     }
 }

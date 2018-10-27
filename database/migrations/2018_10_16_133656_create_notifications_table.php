@@ -21,6 +21,8 @@ class CreateNotificationsTable extends Migration
             $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 
     /**

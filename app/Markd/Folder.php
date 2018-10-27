@@ -20,6 +20,7 @@ class Folder extends Model
         'description',
         'notes',
         'is_archived',
+        'top_folder',
         'user_id',
     ];
 
