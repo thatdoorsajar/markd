@@ -43,6 +43,9 @@ class FolderController extends Controller
      */
     public function show(Folder $folder)
     {
+        // load all nested children
+        // load all bookmarks
+        
         return response()->json([
             'success' => true,
             'folder' => $folder->load('bookmarks')

@@ -1,28 +1,35 @@
 
 /**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
+ * Bootstrap JS setup.
  */
-
 require('./bootstrap');
 
-window.Vue = require('vue');
-
 /**
- * Create global Vue event bus.
+ * Vue top level component setup.
  */
-window.events = new Vue();
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
 Vue.component('folder-index', require('./folders/FolderIndex.vue'));
 Vue.component('drag-over', require('./components/DragOver.vue'));
 
+/**
+ * Vue-router setup.
+ */
+const router = new VueRouter({
+    routes: [
+        { 
+            path: '/',
+            component: require('./folders/TopFolderView.vue')
+        },
+        { 
+            path: '/folder/:slug?',
+            component: require('./folders/FolderView.vue')
+        }
+    ]
+})
+
+/**
+ * Start the Vue app.
+ */
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router
 });

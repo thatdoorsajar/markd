@@ -720,6 +720,11 @@ table {
           animation: spin .5s infinite linear;
 }
 
+.spin-slow {
+  -webkit-animation: spin 2s infinite linear;
+          animation: spin 2s infinite linear;
+}
+
 /* Generated using nucleoapp.com */
 
 /* --------------------------------

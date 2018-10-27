@@ -23,7 +23,7 @@
                 margin-top: -9px;
                 right: 12px
             ">
-                <svg class="icon spin-normal">
+                <svg class="icon text-grey-light spin-normal">
                     <use href="/svg/icons.svg#icon-circle" xlink:href="/svg/icons.svg#icon-circle"/>
                 </svg>
             </div>
