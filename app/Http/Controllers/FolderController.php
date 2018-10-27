@@ -26,7 +26,7 @@ class FolderController extends Controller
         if (!empty($request->parent_id)) {
             $parent = Folder::find($request->parent_id);
 
-            $parent->appendNode($child);
+            $parent->appendNode($folder);
         }
 
         return response()->json([
@@ -43,9 +43,10 @@ class FolderController extends Controller
      */
     public function show(Folder $folder)
     {
-        $folder->load('bookmarks');
-        
-        return view('markd.folder', compact('folder'));
+        return response()->json([
+            'success' => true,
+            'folder' => $folder->load('bookmarks')
+        ]);
     }
 
     /**

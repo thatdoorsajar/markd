@@ -18,9 +18,7 @@ window.axios.defaults.headers.common = {
 };
 
 window.axios.interceptors.request.use(function (config) {
-    console.log(config.url);
     config.url = config.url+'?api_token='+window.Markd.apiToken;
-    console.log(config.url);
     return config;
 });
 

@@ -1,7 +1,7 @@
 {{-- <div class="w-full h-1 bg-teal"></div> --}}
 <nav class="flex items-center justify-between bg-white border-b-2 border-grey-lighter py-4 px-8">
     <div class="flex items-center flex-no-shrink mr-6">
-        <a href="/" class="no-underline grey-80 hover:grey-0">
+        <a href="/app" class="no-underline grey-80 hover:grey-0">
             <img src="/svg/logo-head.svg" alt="Markd Logo" width="100">
         </a>
     </div>

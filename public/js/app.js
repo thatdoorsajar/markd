@@ -1095,6 +1095,11 @@ __webpack_require__(12);
 window.Vue = __webpack_require__(35);
 
 /**
+ * Create global Vue event bus.
+ */
+window.events = new Vue();
+
+/**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
@@ -1131,9 +1136,7 @@ window.axios.defaults.headers.common = {
 };
 
 window.axios.interceptors.request.use(function (config) {
-  console.log(config.url);
   config.url = config.url + '?api_token=' + window.Markd.apiToken;
-  console.log(config.url);
   return config;
 });
 
@@ -33010,6 +33013,8 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FolderTree_vue__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FolderTree_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FolderTree_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NewFolderForm_vue__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NewFolderForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__NewFolderForm_vue__);
 //
 //
 //
@@ -33018,25 +33023,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
-        FolderTree: __WEBPACK_IMPORTED_MODULE_0__FolderTree_vue___default.a
+        FolderTree: __WEBPACK_IMPORTED_MODULE_0__FolderTree_vue___default.a,
+        NewFolderForm: __WEBPACK_IMPORTED_MODULE_1__NewFolderForm_vue___default.a
     },
 
     props: {
@@ -33045,50 +33039,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            folders: this.initFolders,
-            showForm: false,
-            newFolderTitle: ''
+            folders: this.initFolders
         };
     },
     mounted: function mounted() {
         var _this = this;
 
-        this.$on('update:folders', function (folders) {
+        events.$on('update-folders', function (folders) {
             return _this.folders = folders;
         });
-    },
-
-
-    methods: {
-        openNewFolderForm: function openNewFolderForm(el) {
-            var _this2 = this;
-
-            this.showForm = true;
-
-            this.$nextTick(function () {
-                return _this2.$refs.folderForm.focus();
-            });
-        },
-        closeNewFolderForm: function closeNewFolderForm(el) {
-            this.showForm = false;
-
-            this.newFolderTitle = '';
-        },
-        submitNewFolder: function submitNewFolder() {
-            var _this3 = this;
-
-            // @TODO: sanitise entry?
-
-            var route = '/api/folder';
-            var data = {
-                parent_id: null,
-                folder_title: this.newFolderTitle
-            };
-
-            axios.post(route, data).then(function (response) {
-                _this3.$emit('update:folders', response.data.folders);
-            });
-        }
     }
 });
 
@@ -33145,9 +33104,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__NewFolderForm_vue__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__NewFolderForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__NewFolderForm_vue__);
 //
 //
 //
@@ -33174,8 +33132,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'folder-tree',
+
+    components: {
+        NewFolderForm: __WEBPACK_IMPORTED_MODULE_0__NewFolderForm_vue___default.a
+    },
 
     props: {
         folder: Object
@@ -33233,32 +33197,6 @@ var render = function() {
       [
         _c("p", [_vm._v(_vm._s(_vm.folder.title))]),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.mouseover && !_vm.hasChildren,
-                expression: "mouseover && !hasChildren"
-              }
-            ],
-            staticClass:
-              "text-grey-darker font-semibold no-underline focus:outline-none icon-text-aligner rounded-full bg-grey px-1"
-          },
-          [
-            _c("svg", { staticClass: "icon" }, [
-              _c("use", {
-                attrs: {
-                  href: "/svg/icons.svg#icon-e-add-2",
-                  "xlink:href": "icons/icons.svg#icon-e-add-2"
-                }
-              })
-            ])
-          ]
-        ),
-        _vm._v(" "),
         _vm.hasChildren
           ? _c(
               "svg",
@@ -33283,12 +33221,17 @@ var render = function() {
       ? _c(
           "div",
           { staticClass: "ml-6" },
-          _vm._l(_vm.folder.children, function(folder) {
-            return _c("folder-tree", {
-              key: folder.id,
-              attrs: { folder: folder }
-            })
-          })
+          [
+            _vm._l(_vm.folder.children, function(folder) {
+              return _c("folder-tree", {
+                key: folder.id,
+                attrs: { folder: folder }
+              })
+            }),
+            _vm._v(" "),
+            _c("new-folder-form", { attrs: { parent_id: _vm.folder.id } })
+          ],
+          2
         )
       : _vm._e()
   ])
@@ -33322,84 +33265,7 @@ var render = function() {
         return _c("folder-tree", { key: folder.id, attrs: { folder: folder } })
       }),
       _vm._v(" "),
-      _c(
-        "button",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: !_vm.showForm,
-              expression: "!showForm"
-            }
-          ],
-          staticClass:
-            "flex border-l-4 border-transparent font-semibold text-teal-light hover:text-grey-darker trans:color icon-text-aligner focus:outline-none p-2",
-          on: { click: _vm.openNewFolderForm }
-        },
-        [
-          _c("svg", { staticClass: "icon" }, [
-            _c("use", {
-              attrs: {
-                href: "/svg/icons.svg#icon-c-add",
-                "xlink:href": "/svg/icons.svg#icon-c-add"
-              }
-            })
-          ]),
-          _vm._v("\n         add\n    ")
-        ]
-      ),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newFolderTitle,
-            expression: "newFolderTitle"
-          },
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.showForm,
-            expression: "showForm"
-          }
-        ],
-        ref: "folderForm",
-        staticClass:
-          "w-full h-auto bg-grey-light appearance-none border-2 border-grey-light rounded-sm text-base text-grey-darker font-semibold focus:outline-none focus:bg-grey-lighter focus:border-teal px-3 py-2",
-        attrs: { type: "text" },
-        domProps: { value: _vm.newFolderTitle },
-        on: {
-          blur: _vm.closeNewFolderForm,
-          keydown: [
-            function($event) {
-              if (
-                !("button" in $event) &&
-                _vm._k($event.keyCode, "esc", 27, $event.key, "Escape")
-              ) {
-                return null
-              }
-              return _vm.closeNewFolderForm($event)
-            },
-            function($event) {
-              if (
-                !("button" in $event) &&
-                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-              ) {
-                return null
-              }
-              return _vm.submitNewFolder($event)
-            }
-          ],
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.newFolderTitle = $event.target.value
-          }
-        }
-      })
+      _c("new-folder-form")
     ],
     2
   )
@@ -33533,6 +33399,278 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(53)
+/* template */
+var __vue_template__ = __webpack_require__(54)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/folders/NewFolderForm.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-618e8ccc", Component.options)
+  } else {
+    hotAPI.reload("data-v-618e8ccc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 53 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        parent_id: {
+            type: Number,
+            default: null
+        }
+    },
+
+    data: function data() {
+        return {
+            showForm: false,
+            newFolderTitle: '',
+            loading: false
+        };
+    },
+
+
+    methods: {
+        openNewFolderForm: function openNewFolderForm(el) {
+            var _this = this;
+
+            this.showForm = true;
+
+            this.$nextTick(function () {
+                return _this.$refs.folderForm.focus();
+            });
+        },
+        closeNewFolderForm: function closeNewFolderForm(el) {
+            this.showForm = false;
+
+            this.newFolderTitle = '';
+        },
+        submitNewFolder: function submitNewFolder() {
+            var _this2 = this;
+
+            // @TODO: sanitise entry?
+            var route = '/api/folder';
+            var data = {
+                parent_id: this.parent_id,
+                folder_title: this.newFolderTitle
+            };
+
+            this.loading = true;
+
+            axios.post(route, data).then(function (response) {
+                events.$emit('update-folders', response.data.folders);
+                _this2.closeNewFolderForm();
+                _this2.loading = false;
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "button",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.showForm,
+            expression: "!showForm"
+          }
+        ],
+        staticClass:
+          "flex border-l-4 border-transparent font-semibold text-teal-light hover:text-grey-darker trans:color icon-text-aligner focus:outline-none p-2 mb-4",
+        on: { click: _vm.openNewFolderForm }
+      },
+      [
+        _c("svg", { staticClass: "icon" }, [
+          _c("use", {
+            attrs: {
+              href: "/svg/icons.svg#icon-c-add",
+              "xlink:href": "/svg/icons.svg#icon-c-add"
+            }
+          })
+        ]),
+        _vm._v("\n         add\n    ")
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "relative mb-4" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.newFolderTitle,
+            expression: "newFolderTitle"
+          },
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.showForm,
+            expression: "showForm"
+          }
+        ],
+        ref: "folderForm",
+        staticClass:
+          "w-full h-auto bg-grey-light appearance-none border-2 border-grey-light rounded-sm text-base text-grey-darker font-semibold focus:outline-none focus:bg-grey-lighter focus:border-teal px-3 py-2",
+        class: { "opacity-50 cursor-not-allowed": _vm.loading },
+        attrs: { type: "text" },
+        domProps: { value: _vm.newFolderTitle },
+        on: {
+          blur: _vm.closeNewFolderForm,
+          keydown: [
+            function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "esc", 27, $event.key, "Escape")
+              ) {
+                return null
+              }
+              return _vm.closeNewFolderForm($event)
+            },
+            function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.submitNewFolder($event)
+            }
+          ],
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.newFolderTitle = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.loading,
+              expression: "loading"
+            }
+          ],
+          staticClass: "absolute",
+          staticStyle: { top: "50%", "margin-top": "-9px", right: "12px" }
+        },
+        [
+          _c("svg", { staticClass: "icon spin-normal" }, [
+            _c("use", {
+              attrs: {
+                href: "/svg/icons.svg#icon-circle",
+                "xlink:href": "/svg/icons.svg#icon-circle"
+              }
+            })
+          ])
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-618e8ccc", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
