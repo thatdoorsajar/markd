@@ -1,0 +1,13 @@
+.grey-100 {
+    filter: grayscale(100%);
+    transition: filter 100ms linear
+}
+
+.grey-80 {
+    filter: grayscale(80%);
+    transition: filter 100ms linear
+}
+
+.hover\:grey-0:hover {
+    filter: grayscale(0%);
+}
