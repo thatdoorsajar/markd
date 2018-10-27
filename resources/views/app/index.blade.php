@@ -5,16 +5,7 @@
     <div class="w-1/4">
         <section class="font-sans p-8">
             <h3 class="font-century text-lg text-grey mb-4">FOLDERS</h3>
-            <div class="w-full h-auto bg-grey-lighter border-l-4 border-teal-lighter hover:bg-grey-light rounded-sm px-2 py-1 mb-2">
-                Top Folder
-            </div>
-            {{-- <div class="w-full h-auto border-l-4 border-transparent hover:bg-grey-light rounded-sm px-2 py-1 mb-2">
-                Jest
-            </div> --}}
-
-            {{-- @TODO: the way to get all of the child folders to display is to use recursive partial includes --}}
-            @each('app._folder', $folders, 'folder', 'app._folders-none')
-            {{-- <drag-over></drag-over> --}}
+            <folder-index :folders="{{ $folders }}"></folder-index>
         </section>
     </div>
     <div class="w-3/4">

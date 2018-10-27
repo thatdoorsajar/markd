@@ -691,6 +691,144 @@ table {
  * @import "components/forms";
  */
 
+/* Generated using nucleoapp.com */
+
+/* --------------------------------
+
+Icon colors
+
+-------------------------------- */
+
+.icon {
+  display: inline-block;
+  /* icon primary color */
+  color: #4c4c4c;
+  height: 1em;
+  width: 1em;
+}
+
+.icon use {
+  /* icon secondary color - fill */
+  fill: inherit;
+}
+
+.icon.icon-outline use {
+  /* icon secondary color - stroke */
+  stroke: inherit;
+}
+
+/* --------------------------------
+
+Change icon size
+
+-------------------------------- */
+
+.icon-xs {
+  height: .5em;
+  width: .5em;
+}
+
+.icon-sm {
+  height: .8em;
+  width: .8em;
+}
+
+.icon-lg {
+  height: 1.6em;
+  width: 1.6em;
+}
+
+.icon-xl {
+  height: 2em;
+  width: 2em;
+}
+
+/* -------------------------------- 
+
+Align icon and text 
+
+-------------------------------- */
+
+.icon-text-aligner {
+  /* add this class to parent element that contains icon + text */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.icon-text-aligner .icon {
+  color: inherit;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.icon-text-aligner .icon.icon-align-right {
+  margin-right: 0;
+}
+
+.icon-text-aligner .icon use {
+  color: inherit;
+  fill: currentColor;
+}
+
+.icon-text-aligner .icon.icon-outline use {
+  stroke: currentColor;
+}
+
+/* -------------------------------- 
+
+Icon reset values - used to enable color customizations
+
+-------------------------------- */
+
+.icon {
+  fill: currentColor;
+  stroke: none;
+}
+
+.icon.icon-outline {
+  stroke: currentColor;
+}
+
+.icon use {
+  stroke: none;
+}
+
+/* -------------------------------- 
+
+Stroke effects - Nucleo outline icons
+
+- 16px icons -> up to 1px stroke (16px outline icons do not support stroke changes)
+- 24px, 32px icons -> up to 2px stroke
+- 48px, 64px icons -> up to 4px stroke
+
+-------------------------------- */
+
+.icon-outline.icon-stroke-1 {
+  stroke-width: 1px;
+}
+
+.icon-outline.icon-stroke-2 {
+  stroke-width: 2px;
+}
+
+.icon-outline.icon-stroke-3 {
+  stroke-width: 3px;
+}
+
+.icon-outline.icon-stroke-4 {
+  stroke-width: 4px;
+}
+
+.icon-outline.icon-stroke-1 use,
+.icon-outline.icon-stroke-3 use {
+  -webkit-transform: translateX(.5px) translateY(.5px);
+          transform: translateX(.5px) translateY(.5px);
+}
+
 .grey-100 {
   -webkit-filter: grayscale(100%);
           filter: grayscale(100%);
@@ -772,6 +910,16 @@ table {
 .toggle[aria-checked="true"]:after {
   -webkit-transform: translateX(1.5rem);
           transform: translateX(1.5rem);
+}
+
+.rotate-180 {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.trans\:rotate {
+  -webkit-transition: rotate 100ms linear;
+  transition: rotate 100ms linear;
 }
 
 /**

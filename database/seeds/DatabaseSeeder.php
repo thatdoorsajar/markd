@@ -16,23 +16,44 @@ class DatabaseSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('users')->truncate();
         DB::table('password_resets')->truncate();
+        DB::table('domains')->truncate();
         DB::table('folders')->truncate();
         DB::table('bookmarks')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        factory(App\Accounts\User::class, 5)->create()->each(function ($u) {
-            // $u->folders()->saveMany(
-            //     factory(App\Markd\Folder::class, 10)
-            //         ->create(['user_id' => $u->id])
-            //         ->each(function ($f) use ($u) {
-            //             $f->bookmarks()->saveMany(
-            //                 factory(App\Markd\Bookmark::class, 10)->create([
-            //                     'folder_id' => $f->id,
-            //                     'user_id'   => $u->id,
-            //                 ])
-            //             );
-            //         })
-            // );
-        });
+        $this->seedTopLevelFolder();
+
+        $this->seedUserAccount('jpearson@ec4p.com');
+        $this->seedUserAccount('jgpearson1@gmail.com');
+    }
+
+    private function seedTopLevelFolder()
+    {
+        $folder = new \App\Markd\Folder;
+        $folder->title = 'Top Level Folder';
+        $folder->description = 'This is the markd top level folder. All other folders are nested set children.';
+        $folder->makeRoot()->save();
+    }
+
+    private function seedUserAccount($userEmail)
+    {
+        $user = factory(App\Accounts\User::class)->create(['email' => $userEmail]);
+
+        $user->folders()->saveMany(
+            factory(App\Markd\Folder::class, 3)
+                ->create(['user_id' => $user->id])
+                ->each(function ($folder) use ($user) {
+                    $folder->appendNode(
+                        factory(App\Markd\Folder::class)->create(['user_id' => $user->id])
+                    );
+
+                    $folder->bookmarks()->saveMany(
+                        factory(App\Markd\Bookmark::class, 10)->create([
+                            'folder_id' => $folder->id,
+                            'user_id'   => $user->id,
+                        ])
+                    );
+                })
+        );
     }
 }

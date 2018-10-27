@@ -15,6 +15,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('folder-index', require('./folders/FolderIndex.vue'));
 Vue.component('drag-over', require('./components/DragOver.vue'));
 
 const app = new Vue({

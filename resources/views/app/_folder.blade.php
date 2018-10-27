@@ -1,5 +1,5 @@
-<div class="ml-6 ">
-    <div class="w-auoto h-auto border-l-4 border-transparent hover:bg-grey-light rounded-sm px-2 py-1 mb-2">
+<div class="ml-6">
+    <div class="w-auto h-auto border-l-4 border-transparent hover:bg-grey-light rounded-sm px-2 py-1 mb-2">
         {{ $folder->title }}
     </div>
     @if ($folder->hasChildren())
