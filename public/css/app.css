@@ -922,6 +922,11 @@ Stroke effects - Nucleo outline icons
   transition: rotate 100ms linear;
 }
 
+.trans\:color {
+  -webkit-transition: color 100ms linear;
+  transition: color 100ms linear;
+}
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
@@ -4681,6 +4686,10 @@ Stroke effects - Nucleo outline icons
 }
 
 .focus\:outline-none:focus {
+  outline: 0;
+}
+
+.active\:outline-none:active {
   outline: 0;
 }
 

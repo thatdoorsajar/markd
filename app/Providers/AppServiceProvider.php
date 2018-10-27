@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \App\Markd\Folder::creating(function ($folder) {
-            $folder->slug = str_slug($folder->title);
+            $folder->slug = str_slug($folder->title).str_random(6);
         });
 
         \App\Accounts\User::creating(function ($user) {

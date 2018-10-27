@@ -1,13 +1,15 @@
 <template>
     <div>
-        <a href="#" class="w-full h-auto flex justify-between border-l-4 border-transparent hover:bg-grey-light rounded-sm text-grey-darker font-semibold no-underline icon-text-aligner px-2 py-1 mb-2" 
+        <a href="#" class="w-full h-auto flex justify-between border-l-4 border-transparent hover:bg-grey-light rounded-sm text-grey-darker font-semibold no-underline icon-text-aligner p-2 mb-2" 
             @click="showChildren = !showChildren"
             @mouseenter="mouseover = true"
             @mouseleave="mouseover = false">
             <p>{{ folder.title }}</p>
-            <svg class="icon" v-show="mouseover && !hasChildren">
-                <use href="/svg/icons.svg#icon-e-add-2" xlink:href="icons/icons.svg#icon-e-add-2"/>
-            </svg>
+            <button class="text-grey-darker font-semibold no-underline focus:outline-none icon-text-aligner rounded-full bg-grey px-1" v-show="mouseover && !hasChildren">
+                <svg class="icon">
+                    <use href="/svg/icons.svg#icon-e-add-2" xlink:href="icons/icons.svg#icon-e-add-2"/>
+                </svg>
+            </button>
             <svg class="icon trans:rotate" :class="{'rotate-180': showChildren}" v-if="hasChildren">
                 <use href="/svg/icons.svg#icon-stre-down-2" xlink:href="icons/icons.svg#icon-stre-down-2"/>
             </svg>

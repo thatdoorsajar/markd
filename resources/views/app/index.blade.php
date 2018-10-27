@@ -4,8 +4,7 @@
 <div class="flex leading-normal">
     <div class="w-1/4">
         <section class="font-sans p-8">
-            <h3 class="font-century text-lg text-grey mb-4">FOLDERS</h3>
-            <folder-index :folders="{{ $folders }}"></folder-index>
+            <folder-index :init-folders="{{ $folders }}"></folder-index>
         </section>
     </div>
     <div class="w-3/4">

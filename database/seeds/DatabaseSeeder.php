@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         DB::table('bookmarks')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        $this->seedTopLevelFolder();
+        // $this->seedTopLevelFolder();
 
         $this->seedUserAccount('jpearson@ec4p.com');
         $this->seedUserAccount('jgpearson1@gmail.com');

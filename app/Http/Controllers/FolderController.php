@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Markd\Folder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class FolderController extends Controller
 {
@@ -16,21 +17,22 @@ class FolderController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->parent_id);
+        $folder = new Folder;
+        $folder->title = $request->folder_title;
+        $folder->description = '';
+        $folder->user_id = Auth::id();
+        $folder->save();
 
-        $parent = Folder::find($request->parent_id);
+        if (!empty($request->parent_id)) {
+            $parent = Folder::find($request->parent_id);
 
-        // dd($parent);
+            $parent->appendNode($child);
+        }
 
-        $child = new Folder;
-        $child->title = $request->folder_title;
-        $child->description = '';
-        $child->user_id = \Auth::id();
-        $child->save();
-
-        $parent->appendNode($child);
-
-        return redirect()->route('app.home');
+        return response()->json([
+            'success' => true,
+            'folders' => Folder::where('user_id', Auth::id())->get()->toTree()
+        ]);
     }
 
     /**

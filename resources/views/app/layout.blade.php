@@ -5,8 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name') }}</title>
-        <script src="{{ asset('js/app.js') }}" defer></script>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <script>
+            window.Markd = {!! json_encode([
+                'csrfToken' => csrf_token(),
+                'apiToken'  => $currentUser->api_token
+            ]) !!};
+        </script>
     </head>
     <body class="bg-indigo-grey1 h-screen">
         <div id="app">
@@ -17,5 +22,6 @@
             {{-- footer --}}
             @include('partials.footer')
         </div>
+        <script src="{{ asset('js/app.js') }}" defer></script>
     </body>
 </html>

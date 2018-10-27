@@ -10,17 +10,19 @@ window.Popper = require('popper.js').default;
 
 window.axios = require('axios');
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common = {
+    // 'Authorization': 'Bearer ' + window.Markd.jwtToken,
+    'X-CSRF-TOKEN': window.Markd.csrfToken,
+    'X-Requested-With': 'XMLHttpRequest',
+    'CONTENT_TYPE': 'application/json'
+};
 
-/**
- * Next we will register the CSRF Token as a common header with Axios so that
- * all outgoing HTTP requests automatically have it attached. This is just
- * a simple convenience so we don't have to attach every token manually.
- */
-
-let token = document.head.querySelector('meta[name="csrf-token"]');
-
-window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+window.axios.interceptors.request.use(function (config) {
+    console.log(config.url);
+    config.url = config.url+'?api_token='+window.Markd.apiToken;
+    console.log(config.url);
+    return config;
+});
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

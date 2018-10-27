@@ -896,7 +896,7 @@ module.exports = {
     minWidth: ['responsive'],
     negativeMargin: ['responsive'],
     opacity: ['responsive'],
-    outline: ['focus'],
+    outline: ['focus', 'active'],
     overflow: ['responsive'],
     padding: ['responsive'],
     pointerEvents: ['responsive'],
