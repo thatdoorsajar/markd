@@ -15,12 +15,9 @@
     </head>
     <body class="bg-indigo-grey1 h-screen">
         <div id="app">
-            {{-- navbar --}}
-            @include('partials.navbar')
-            {{-- content --}}
-            @yield('content')
-            {{-- footer --}}
-            @include('partials.footer')
+            <markd-app 
+                :init-user="{{ $currentUser }}"
+                :init-folders="{{ $folders }}"/>
         </div>
         <script src="{{ asset('js/app.js') }}" defer></script>
     </body>

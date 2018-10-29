@@ -2,7 +2,7 @@
     <div>
         <h3 class="font-century text-lg text-grey mb-4">BOOKMARKS {{ $route.params.slug }}</h3>
         <div v-if="!loading">
-            <bookmark-index :folder="folder" :bookmarks="folder.bookmarks"/>
+            <bookmark-index :folder="getFolder(9)" :bookmarks="getFolder(9).bookmarks"/>
         </div>
         <div v-else>
             <svg class="icon icon-xl icon-outline icon-stroke-3 text-grey spin-slow">
@@ -14,6 +14,7 @@
 
 <script>
     import BookmarkIndex from '../bookmarks/BookmarkIndex.vue';
+    import { mapGetters } from 'vuex';
 
     export default {
         components: {
@@ -22,37 +23,23 @@
 
         data() {
             return {
-                folder: {},
                 loading: true
             }
         },
 
+        computed: mapGetters([
+            'getFolder',
+            'getTopFolder'
+        ]),
+
         watch: {
             '$route' (to, from) {
-                this.fetchFolder(to);
+                // this.fetchFolder(to);
             }
         },
 
         mounted() {
-            this.fetchFolder(this.$route);
-        },
-
-        methods: {
-            fetchFolder($router) {
-                this.loading = true;
-                let route = '';
-
-                if (typeof $router.params.slug == 'undefined') {
-                    route = '/api/folder';
-                } else {
-                    route = `/api/folder/${$router.params.slug}`;
-                }
-
-                axios.get(route).then((response) => {
-                    this.folder = response.data.folder;
-                    this.loading = false;
-                });
-            }
+            this.loading = false;
         }
     }
 </script>

@@ -10,6 +10,19 @@ use Illuminate\Support\Facades\Auth;
 class FolderController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return response()->json([
+            'success' => true,
+            'folders' => Folder::where('user_id', Auth::id())->get()->toTree()
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -43,9 +56,6 @@ class FolderController extends Controller
      */
     public function show(Folder $folder = null)
     {
-        // @TODO: load all nested children?
-        
-        // if no folder then load parent folder
         if (is_null($folder)) {
             $folder = Auth::user()->topLevelFolder();
         }

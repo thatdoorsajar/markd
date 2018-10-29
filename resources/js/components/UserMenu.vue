@@ -3,7 +3,7 @@
         <button class="font-semibold font-sans text-lg no-underline focus:outline-none text-white bg-teal-light hover:bg-teal rounded-full p-2"
             type="button"
             @click.prevent="show = !show">
-            {{ user.initials }}
+            {{ user }}
         </button>
         <div v-show="show" class="absolute pin-r border-1 shadow-lg rounded bg-white mt-2">
             <ul class="list-reset font-sans font-semibold text-grey-darker">
@@ -30,7 +30,7 @@
 <script>
     export default {
         props: {
-            user: Object
+            user: String
         },
 
         data() {

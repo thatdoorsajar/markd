@@ -9,19 +9,22 @@
             </a>
         </h3>
         <div v-if="!loading">
-            
-        </div>
-        <div v-else>
             <svg class="icon icon-xl icon-outline icon-stroke-3 text-grey spin-slow">
                 <use href="/svg/icons.svg#icon-refresh-69" xlink:href="/svg/icons.svg#icon-refresh-69"/>
             </svg>
-            <br>
-            // all the info about the bookmark!!!
+        </div>
+        <div v-else class="font-semibold text-grey">
+            <p class="mb-4"><span v-for="number in getNumbers">{{ number }} </span></p>
+            <button type="button" class="bg-teal text-white rounded-sm px-3 py-2" @click="fetchNumber">
+                add
+            </button>
         </div>
     </div>
 </template>
 
 <script>
+    import { mapGetters, mapMutations, mapActions } from 'vuex';
+
     export default {
         props: {
             folder: {
@@ -37,19 +40,30 @@
 
         watch: {
             '$route' (to, from) {
-                this.fetchFolder(to);
+                this.fetchBookmark(to);
             }
         },
 
+        computed: {
+            ...mapGetters([
+                // 'getNumbers',
+                // 'getSum'
+            ]),
+        },
+
         mounted() {
-            this.fetchFolder(this.$route);
+            this.fetchBookmark(this.$route);
         },
 
         methods: {
-            fetchFolder(route) {
+            ...mapActions([
+                // 'fetchNumber'
+            ]),
+
+            fetchBookmark(route) {
                 this.loading = true;
 
-                // 
+                // get bookmark out of Vuex store?
             }
         }
     }

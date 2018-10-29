@@ -18,6 +18,7 @@ Route::middleware('auth:api')->group(function() {
         return $request->user();
     });
 
+    Route::get('/folder', 'FolderController@index');
     Route::post('/folder', 'FolderController@store');
-    Route::get('/folder/{folder?}', 'FolderController@show');
+    // Route::get('/folder/{folder?}', 'FolderController@show');
 });

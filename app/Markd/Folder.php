@@ -25,6 +25,15 @@ class Folder extends Model
     ];
 
     /**
+     * Load these relationships by default.
+     *
+     * @var array
+     */
+    protected $with = [
+        'bookmarks'
+    ];
+
+    /**
      * Specifies the entity for Model route binding.
      * 
      * @return string
