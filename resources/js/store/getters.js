@@ -5,12 +5,10 @@
  */
 export const getUser = (state) => state.user;
 
-export const getAllFolders = (state) =>  state.folders;
+export const getFoldersFlat = (state) =>  state.foldersFlat;
 
-export const getFoldersWithoutTop = ({ folders }) =>  folders.splice(folders.findIndex(f => f.top_folder != true), 1);
+export const getFoldersTree = (state) =>  state.foldersTree;
 
-export const getTopFolder = (state) =>  state.folders.find(f => f.top_folder == true);
+export const getFolderTop = (state) =>  state.folderTop;
 
-export const getFolder = (state) => (id) => {
-    return state.folders.find(f => f.id == id);
-}
+export const getFolder = (state) => (slug) => state.foldersFlat.find(f => f.slug == slug);

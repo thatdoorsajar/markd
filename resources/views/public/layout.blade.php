@@ -14,7 +14,6 @@
     </head>
     <body class="flex flex-col bg-purple h-screen">
         <div id="app">
-            {{-- navbar --}}
             <nav class="flex items-center justify-between py-5 px-8">
                 <div class="flex items-center flex-no-shrink mr-6">
                     <a href="/" class="font-extrabold font-sans text-2xl text-grey-darkest border-b-4 hover:border-purple-light no-underline">Markd</a>
@@ -28,10 +27,7 @@
                     </a>
                 </div>
             </nav>
-            {{-- content --}}
             @yield('content')
-            {{-- footer --}}
-            @include('partials.footer')
         </div>
         <script src="{{ asset('js/app.js') }}" defer></script>
     </body>

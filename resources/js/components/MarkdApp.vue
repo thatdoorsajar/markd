@@ -1,7 +1,7 @@
 <template>
     <div>
         <markd-navbar/>
-        <div class="flex leading-normal" v-if="getAllFolders.length > 0">
+        <div class="flex leading-normal" v-if="getFoldersFlat.length > 0">
             <div class="w-1/4">
                 <section class="font-sans p-8 pr-4">
                     <folder-index/>
@@ -28,29 +28,28 @@
         },
 
         props: {
-            initUser: {
-                type: Object,
-                default: {}
-            },
-
-            initFolders: {
-                type: Array,
-                default: [],
-            }
+            initUser:  Object,
+            initFolderTop:  Object,
+            initFoldersFlat:  Array,
+            initFoldersTree:  Array,
         },
 
         computed: mapGetters([
-            'getAllFolders'
+            'getFoldersFlat'
         ]),
 
         mounted() {
             this.setUser(this.initUser);
-            this.setFolders(this.initFolders);
+            this.setFolderTop(this.initFolderTop);
+            this.setFoldersFlat(this.initFoldersFlat);
+            this.setFoldersTree(this.initFoldersTree);
         },
 
         methods: mapMutations([
             'setUser',
-            'setFolders'
+            'setFolderTop',
+            'setFoldersFlat',
+            'setFoldersTree'
         ])
     }
 </script>

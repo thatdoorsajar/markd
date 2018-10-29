@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3 class="font-century text-lg text-grey mb-4">FOLDERS</h3>
-        <folder-tree v-for="folder in getAllFolders" :key="folder.id" :folder="folder"/>
+        <folder-tree v-for="folder in getFoldersTree" :key="folder.id" :folder="folder"/>
         <new-folder-form/>
     </div>
 </template>
@@ -18,7 +18,7 @@
         },
 
         computed: mapGetters([
-            'getAllFolders'
+            'getFoldersTree'
         ])
     }
 </script>

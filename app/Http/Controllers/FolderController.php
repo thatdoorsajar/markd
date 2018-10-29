@@ -57,7 +57,7 @@ class FolderController extends Controller
     public function show(Folder $folder = null)
     {
         if (is_null($folder)) {
-            $folder = Auth::user()->topLevelFolder();
+            $folder = Auth::user()->topFolder();
         }
 
         return response()->json([

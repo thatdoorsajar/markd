@@ -44,15 +44,18 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Helper method to get top folder.
+     */
+    public function topFolder()
+    {
+        return $this->folders()->where('top_folder', true)->first();
+    }
+
+    /**
      * Relation to bookmarks.
      */
     public function bookmarks()
     {
         return $this->hasMany('App\Markd\Bookmark');
-    }
-
-    public function topLevelFolder()
-    {
-        return $this->folders()->where('top_folder', true)->first();
     }
 }

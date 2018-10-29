@@ -8,12 +8,6 @@
                 </router-link>
             </div>
             <div class="block">
-                <a href="/sign-in" class="font-semibold font-sans text-lg no-underline text-grey-darkest hover:text-purple mr-4">
-                    Sign In
-                </a>
-                <a href="/sign-up" class="font-semibold font-sans text-lg no-underline text-white bg-purple-light hover:bg-purple rounded-full py-2 px-4">
-                    Sign Up
-                </a>
                 <user-menu :user="'user'"/>
             </div>
         </nav>

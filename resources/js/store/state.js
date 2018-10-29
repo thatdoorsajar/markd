@@ -4,5 +4,7 @@
  */
 export default {
     user: {},
-    folders: []
+    folderTop: [],
+    foldersFlat: [],
+    foldersTree: []
 }

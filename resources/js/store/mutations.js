@@ -6,4 +6,8 @@
 
 export const setUser = (state, user) => state.user = user;
 
-export const setFolders = (state, folders) => state.folders = folders;
+export const setFolderTop = (state, folder) => state.folderTop = folder;
+
+export const setFoldersFlat = (state, folders) => state.foldersFlat = folders;
+
+export const setFoldersTree = (state, folders) => state.foldersTree = folders;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Markd\Folder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class MarkdController extends Controller
 {
@@ -25,9 +26,13 @@ class MarkdController extends Controller
      */
     public function index()
     {
+        $currentUser = Auth::user();
+
         return view('app.layout')->with([
-            'currentUser' => \Auth::user(),
-            'folders'     => Folder::where('user_id', \Auth::id())->get()->toTree()
+            'currentUser' => $currentUser,
+            'folderTop'   => $currentUser->topFolder(),
+            'foldersFlat' => $currentUser->folders,
+            'foldersTree' => $currentUser->folders->where('top_folder', false)->toTree()
         ]);
     }
 }

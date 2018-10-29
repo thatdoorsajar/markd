@@ -1,7 +1,12 @@
 <template>
     <div>
-        <div v-if="bookmarks.length > 0">
-            <div v-for="bookmark in bookmarks" :key="bookmark.id"
+        <div v-show="loading">
+            <svg class="icon icon-xl icon-outline icon-stroke-3 text-grey spin-slow">
+                <use href="/svg/icons.svg#icon-refresh-69" xlink:href="/svg/icons.svg#icon-refresh-69"/>
+            </svg>
+        </div>
+        <div v-if="!loading && folder.bookmarks.length > 0">
+            <div v-for="bookmark in folder.bookmarks" :key="bookmark.id"
                 class="flex p-4 rounded hover:bg-teal-lighter"
                 @mouseenter="mouseover = bookmark.id"
                 @mouseleave="mouseover = null">
@@ -46,22 +51,27 @@
 </template>
 
 <script>
-    export default {
-        props: {
-            folder: {
-                type: Object
-            },
+    import { mapGetters } from 'vuex';
 
-            bookmarks: {
-                type: Array,
-                default: []
+    export default {
+        data() {
+            return {
+                folder: {},
+                loading: true,
+                mouseover: null,
             }
         },
 
-        data() {
-            return {
-                mouseover: null
+        computed: mapGetters([
+            'getFolder'
+        ]),
+
+        watch: {
+            '$route' (to, from) {
+                this.loading = true;
+
+                
             }
-        }
+        },
     }
 </script>
