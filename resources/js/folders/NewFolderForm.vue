@@ -32,6 +32,8 @@
 </template>
 
 <script>
+    import { mapMutations } from 'vuex';
+
     export default {
         props: {
             parent_id: {
@@ -49,6 +51,11 @@
         },
 
         methods: {
+            ...mapMutations([
+                'setFoldersFlat',
+                'setFoldersTree'
+            ]),
+
             openNewFolderForm(el) {
                 this.showForm = true;
 
@@ -71,10 +78,12 @@
 
                 this.loading = true;
 
-                axios.post(route, data).then((response) => {
-                    events.$emit('update-folders', response.data.folders);
+                axios.post(route, data).then(({ data }) => {
+                    this.setFoldersFlat(data.foldersFlat);
+                    this.setFoldersTree(data.foldersTree);
                     this.closeNewFolderForm();
                     this.loading = false;
+                    this.$router.push(`/f/${data.newFolderSlug}`);
                 });
             }
         }

@@ -17,7 +17,6 @@
         <div id="app">
             <markd-app 
                 :init-user="{{ $currentUser }}"
-                :init-folder-top="{{ $folderTop }}"
                 :init-folders-flat="{{ $foldersFlat }}"
                 :init-folders-tree="{{ $foldersTree }}"/>
         </div>

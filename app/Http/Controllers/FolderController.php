@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Auth;
 class FolderController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -17,8 +27,9 @@ class FolderController extends Controller
     public function index()
     {
         return response()->json([
-            'success' => true,
-            'folders' => Folder::where('user_id', Auth::id())->get()->toTree()
+            'success'     => true,
+            'foldersFlat' => $request->user()->folders,
+            'foldersTree' => $request->user()->folders->toTree()
         ]);
     }
 
@@ -43,8 +54,10 @@ class FolderController extends Controller
         }
 
         return response()->json([
-            'success' => true,
-            'folders' => Folder::where('user_id', Auth::id())->get()->toTree()
+            'success'       => true,
+            'newFolderSlug' => $folder->slug,
+            'foldersFlat'   => $request->user()->folders,
+            'foldersTree'   => $request->user()->folders->toTree()
         ]);
     }
 
@@ -62,7 +75,8 @@ class FolderController extends Controller
 
         return response()->json([
             'success' => true,
-            'folder' => $folder->load('bookmarks')
+            'foldersFlat' => $request->user()->folders,
+            'foldersTree' => $request->user()->folders->toTree()
         ]);
     }
 

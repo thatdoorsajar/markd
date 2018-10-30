@@ -30,9 +30,8 @@ class MarkdController extends Controller
 
         return view('app.layout')->with([
             'currentUser' => $currentUser,
-            'folderTop'   => $currentUser->topFolder(),
             'foldersFlat' => $currentUser->folders,
-            'foldersTree' => $currentUser->folders->where('top_folder', false)->toTree()
+            'foldersTree' => $currentUser->folders->toTree()
         ]);
     }
 }

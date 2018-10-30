@@ -484,33 +484,6 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1452,6 +1425,33 @@ var index_esm = {
 
 
 /* harmony default export */ __webpack_exports__["a"] = (index_esm);
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
 
 
 /***/ }),
@@ -12418,7 +12418,7 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(20).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(20).setImmediate))
 
 /***/ }),
 /* 5 */
@@ -30254,7 +30254,7 @@ window.axios.interceptors.request.use(function (config) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(18)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(18)(module)))
 
 /***/ }),
 /* 18 */
@@ -32823,7 +32823,7 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3)))
 
 /***/ }),
 /* 20 */
@@ -32893,7 +32893,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
 /* 21 */
@@ -33086,7 +33086,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(6)))
 
 /***/ }),
 /* 22 */
@@ -34027,7 +34027,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_MarkdNavbar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_MarkdNavbar_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__folders_FolderIndex_vue__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__folders_FolderIndex_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__folders_FolderIndex_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(2);
 //
 //
 //
@@ -34059,7 +34059,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     props: {
         initUser: Object,
-        initFolderTop: Object,
         initFoldersFlat: Array,
         initFoldersTree: Array
     },
@@ -34068,13 +34067,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     mounted: function mounted() {
         this.setUser(this.initUser);
-        this.setFolderTop(this.initFolderTop);
         this.setFoldersFlat(this.initFoldersFlat);
         this.setFoldersTree(this.initFoldersTree);
     },
 
 
-    methods: Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["d" /* mapMutations */])(['setUser', 'setFolderTop', 'setFoldersFlat', 'setFoldersTree'])
+    methods: Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["d" /* mapMutations */])(['setUser', 'setFoldersFlat', 'setFoldersTree'])
 });
 
 /***/ }),
@@ -34222,7 +34220,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
 //
 //
 //
@@ -34479,7 +34477,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FolderTree_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FolderTree_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NewFolderForm_vue__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NewFolderForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__NewFolderForm_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(2);
 //
 //
 //
@@ -34557,6 +34555,9 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__NewFolderForm_vue__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__NewFolderForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__NewFolderForm_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(2);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -34573,7 +34574,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
+
 
 
 
@@ -34590,22 +34591,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            showChildren: false,
-            activeFolder: false
+            isActiveFolder: false
         };
     },
 
 
-    computed: {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['getActiveFolder']), {
         hasChildren: function hasChildren() {
             return this.folder.children.length > 0;
         }
-    },
+    }),
 
-    methods: {
-        setActiveFolder: function setActiveFolder() {
-            this.showChildren = !this.showChildren;
-            this.activeFolder = true;
+    watch: {
+        getActiveFolder: function getActiveFolder() {
+            if (this.folder.slug != this.$route.params.slug) {
+                this.isActiveFolder = false;
+            } else {
+                this.isActiveFolder = true;
+            }
         }
     }
 });
@@ -34616,6 +34619,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -34649,6 +34655,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -34667,7 +34675,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
 
-    methods: {
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapMutations */])(['setFoldersFlat', 'setFoldersTree']), {
         openNewFolderForm: function openNewFolderForm(el) {
             var _this = this;
 
@@ -34694,13 +34702,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.loading = true;
 
-            axios.post(route, data).then(function (response) {
-                events.$emit('update-folders', response.data.folders);
+            axios.post(route, data).then(function (_ref) {
+                var data = _ref.data;
+
+                _this2.setFoldersFlat(data.foldersFlat);
+                _this2.setFoldersTree(data.foldersTree);
                 _this2.closeNewFolderForm();
                 _this2.loading = false;
+                _this2.$router.push('/f/' + data.newFolderSlug);
             });
         }
-    }
+    })
 });
 
 /***/ }),
@@ -34839,60 +34851,64 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "a",
-      {
-        staticClass:
-          "w-full h-auto flex justify-between border-l-4 border-transparent hover:bg-grey-light rounded-sm text-grey-darker font-semibold no-underline icon-text-aligner p-2 pr-3 mb-2",
-        class: {
-          "bg-grey-light border-teal-lighter":
-            _vm.$route.params.slug == _vm.folder.slug
-        },
-        attrs: { href: "#/f/" + _vm.folder.slug },
-        on: { click: _vm.setActiveFolder }
-      },
-      [
-        _c("p", [_vm._v(_vm._s(_vm.folder.title))]),
-        _vm._v(" "),
-        _vm.hasChildren
-          ? _c(
-              "svg",
-              {
-                staticClass: "icon trans:rotate",
-                class: { "rotate-180": _vm.showChildren }
+  return !_vm.folder.top_folder
+    ? _c(
+        "div",
+        [
+          _c(
+            "router-link",
+            {
+              staticClass:
+                "w-full h-auto flex justify-between border-l-4 border-transparent hover:bg-grey-light rounded-sm text-grey-darker font-semibold no-underline icon-text-aligner p-2 pr-3 mb-2",
+              class: {
+                "bg-grey-light border-teal-lighter": _vm.isActiveFolder
               },
-              [
-                _c("use", {
-                  attrs: {
-                    href: "/svg/icons.svg#icon-stre-down-2",
-                    "xlink:href": "icons/icons.svg#icon-stre-down-2"
-                  }
-                })
-              ]
-            )
-          : _vm._e()
-      ]
-    ),
-    _vm._v(" "),
-    _vm.hasChildren && _vm.showChildren
-      ? _c(
-          "div",
-          { staticClass: "ml-6" },
-          [
-            _vm._l(_vm.folder.children, function(folder) {
-              return _c("folder-tree", {
-                key: folder.id,
-                attrs: { folder: folder }
-              })
-            }),
-            _vm._v(" "),
-            _c("new-folder-form", { attrs: { parent_id: _vm.folder.id } })
-          ],
-          2
-        )
-      : _vm._e()
-  ])
+              attrs: { to: "/f/" + _vm.folder.slug }
+            },
+            [
+              _c("p", [_vm._v(_vm._s(_vm.folder.title))]),
+              _vm._v(" "),
+              _vm.hasChildren
+                ? _c(
+                    "svg",
+                    {
+                      staticClass: "icon trans:rotate",
+                      class: { "rotate-180": _vm.isActiveFolder }
+                    },
+                    [
+                      _c("use", {
+                        attrs: {
+                          href: "/svg/icons.svg#icon-stre-down-2",
+                          "xlink:href": "icons/icons.svg#icon-stre-down-2"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e()
+            ]
+          ),
+          _vm._v(" "),
+          _vm.hasChildren && _vm.isActiveFolder
+            ? _c(
+                "div",
+                { staticClass: "ml-6" },
+                [
+                  _vm._l(_vm.folder.children, function(folder) {
+                    return _c("folder-tree", {
+                      key: folder.id,
+                      attrs: { folder: folder }
+                    })
+                  }),
+                  _vm._v(" "),
+                  _c("new-folder-form", { attrs: { parent_id: _vm.folder.id } })
+                ],
+                2
+              )
+            : _vm._e()
+        ],
+        1
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -34993,7 +35009,7 @@ if (false) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__state__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__getters__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mutations__ = __webpack_require__(60);
@@ -35030,7 +35046,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
  */
 /* harmony default export */ __webpack_exports__["a"] = ({
     user: {},
-    folderTop: [],
+    activeFolder: [],
     foldersFlat: [],
     foldersTree: []
 });
@@ -35046,6 +35062,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFoldersTree", function() { return getFoldersTree; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFolderTop", function() { return getFolderTop; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFolder", function() { return getFolder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getActiveFolder", function() { return getActiveFolder; });
 
 /**
  * Vuex getters should be used to retrieve items from the store,
@@ -35064,7 +35081,9 @@ var getFoldersTree = function getFoldersTree(state) {
 };
 
 var getFolderTop = function getFolderTop(state) {
-  return state.folderTop;
+  return state.foldersTree.find(function (f) {
+    return f.top_folder == true;
+  });
 };
 
 var getFolder = function getFolder(state) {
@@ -35075,6 +35094,10 @@ var getFolder = function getFolder(state) {
   };
 };
 
+var getActiveFolder = function getActiveFolder(state) {
+  return state.activeFolder;
+};
+
 /***/ }),
 /* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -35082,9 +35105,9 @@ var getFolder = function getFolder(state) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setUser", function() { return setUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setFolderTop", function() { return setFolderTop; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setFoldersFlat", function() { return setFoldersFlat; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setFoldersTree", function() { return setFoldersTree; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setActiveFolder", function() { return setActiveFolder; });
 
 /**
  * Vuex mutations should be used to update items in the store,
@@ -35092,19 +35115,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 var setUser = function setUser(state, user) {
-  return state.user = user;
-};
-
-var setFolderTop = function setFolderTop(state, folder) {
-  return state.folderTop = folder;
+    return state.user = user;
 };
 
 var setFoldersFlat = function setFoldersFlat(state, folders) {
-  return state.foldersFlat = folders;
+    return state.foldersFlat = folders;
 };
 
 var setFoldersTree = function setFoldersTree(state, folders) {
-  return state.foldersTree = folders;
+    return state.foldersTree = folders;
+};
+
+var setActiveFolder = function setActiveFolder(state) {
+    var slug = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+    if (slug) {
+        return state.activeFolder = state.foldersFlat.find(function (f) {
+            return f.slug == slug;
+        });
+    } else {
+        return state.activeFolder = state.foldersFlat.find(function (f) {
+            return f.top_folder == true;
+        });
+    }
 };
 
 /***/ }),
@@ -37857,6 +37890,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bookmarks_BookmarkIndex_vue__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bookmarks_BookmarkIndex_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__bookmarks_BookmarkIndex_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(2);
 //
 //
 //
@@ -37871,6 +37905,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -37883,7 +37918,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             loading: false
         };
-    }
+    },
+
+
+    watch: {
+        '$route': function $route(to, from) {
+            this.setActiveFolder(to.params.slug);
+        }
+    },
+
+    mounted: function mounted() {
+        this.setActiveFolder(this.$route.params.slug);
+    },
+
+
+    methods: Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["d" /* mapMutations */])(['setActiveFolder'])
 });
 
 /***/ }),
@@ -37939,7 +37988,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
 //
 //
 //
@@ -38235,7 +38284,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("h3", { staticClass: "font-century text-lg text-grey mb-4" }, [
-      _vm._v("BOOKMARKS " + _vm._s(_vm.$route.params.slug))
+      _vm._v("Bookmarks " + _vm._s(_vm.$route.params.slug))
     ]),
     _vm._v(" "),
     !_vm.loading
@@ -38322,7 +38371,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //

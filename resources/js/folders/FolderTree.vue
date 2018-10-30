@@ -1,14 +1,13 @@
 <template>
-    <div>
-        <a :href="`#/f/${folder.slug}`" class="w-full h-auto flex justify-between border-l-4 border-transparent hover:bg-grey-light rounded-sm text-grey-darker font-semibold no-underline icon-text-aligner p-2 pr-3 mb-2" 
-            :class="{'bg-grey-light border-teal-lighter': $route.params.slug == folder.slug}"
-            @click="setActiveFolder">
+    <div v-if="!folder.top_folder">
+        <router-link :to="`/f/${folder.slug}`" class="w-full h-auto flex justify-between border-l-4 border-transparent hover:bg-grey-light rounded-sm text-grey-darker font-semibold no-underline icon-text-aligner p-2 pr-3 mb-2" 
+            :class="{'bg-grey-light border-teal-lighter': isActiveFolder}">
             <p>{{ folder.title }}</p>
-            <svg class="icon trans:rotate" :class="{'rotate-180': showChildren}" v-if="hasChildren">
+            <svg class="icon trans:rotate" :class="{'rotate-180': isActiveFolder}" v-if="hasChildren">
                 <use href="/svg/icons.svg#icon-stre-down-2" xlink:href="icons/icons.svg#icon-stre-down-2"/>
             </svg>
-        </a>
-        <div class="ml-6" v-if="hasChildren && showChildren">
+        </router-link>
+        <div class="ml-6" v-if="hasChildren && isActiveFolder">
             <folder-tree v-for="folder in folder.children" :key="folder.id" :folder="folder"/>
             <new-folder-form :parent_id="folder.id"/>
         </div>
@@ -17,6 +16,7 @@
 
 <script>
     import NewFolderForm from './NewFolderForm.vue';
+    import { mapGetters } from 'vuex';
 
     export default {
         name: 'folder-tree',
@@ -31,21 +31,27 @@
 
         data() {
             return {
-                showChildren: false,
-                activeFolder: false
+                isActiveFolder: false
             }
         },
 
         computed: {
+            ...mapGetters([
+                'getActiveFolder'
+            ]),
+
             hasChildren() {
                 return this.folder.children.length > 0;
             }
         },
 
-        methods: {
-            setActiveFolder() {
-                this.showChildren = !this.showChildren;
-                this.activeFolder = true;
+        watch: {
+            getActiveFolder() {
+                if (this.folder.slug != this.$route.params.slug) {
+                    this.isActiveFolder = false;
+                } else {
+                    this.isActiveFolder = true;
+                }
             }
         }
     }

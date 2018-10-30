@@ -29,7 +29,6 @@
 
         props: {
             initUser:  Object,
-            initFolderTop:  Object,
             initFoldersFlat:  Array,
             initFoldersTree:  Array,
         },
@@ -40,14 +39,12 @@
 
         mounted() {
             this.setUser(this.initUser);
-            this.setFolderTop(this.initFolderTop);
             this.setFoldersFlat(this.initFoldersFlat);
             this.setFoldersTree(this.initFoldersTree);
         },
 
         methods: mapMutations([
             'setUser',
-            'setFolderTop',
             'setFoldersFlat',
             'setFoldersTree'
         ])
