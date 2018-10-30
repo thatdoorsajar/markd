@@ -9,6 +9,8 @@ window.Popper = require('popper.js').default;
  * Vue setup
  */
 import Vue from 'vue';
+import PortalVue from 'portal-vue';
+Vue.use(PortalVue);
 window.Vue = Vue;
 
 /**

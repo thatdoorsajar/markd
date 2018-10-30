@@ -55,13 +55,13 @@
         ]),
 
         watch: {
-            '$route' (to, from) {
-                this.setActiveFolder(to.params.slug);
-            }
-        },
+            '$route': {
+                immediate: true,
 
-        mounted() {
-            this.setActiveFolder(this.$route.params.slug);
+                handler(to, from) {
+                    this.setActiveFolder(to.params.slug);
+                }
+            }
         },
 
         methods: mapMutations([

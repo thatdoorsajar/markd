@@ -39,27 +39,16 @@
         },
 
         watch: {
-            '$route' (to, from) {
-                this.fetchBookmark(to);
+            '$route': {
+                immediate: true,
+
+                handler(to, from) {
+                    this.fetchBookmark(to);
+                }
             }
         },
 
-        computed: {
-            ...mapGetters([
-                // 'getNumbers',
-                // 'getSum'
-            ]),
-        },
-
-        mounted() {
-            this.fetchBookmark(this.$route);
-        },
-
         methods: {
-            ...mapActions([
-                // 'fetchNumber'
-            ]),
-
             fetchBookmark(route) {
                 this.loading = true;
 
