@@ -20,7 +20,6 @@
                 <folder-settings/>
             </div>
         </div>
-        
         <div v-if="!loading">
             <bookmark-index/>
         </div>
@@ -33,7 +32,7 @@
 </template>
 
 <script>
-    import FolderSettings from './FolderSettings.vue';
+    import FolderSettings from './settings/FolderSettings.vue';
     import BookmarkIndex from '../bookmarks/BookmarkIndex.vue';
     import { mapGetters, mapMutations } from 'vuex';
 

@@ -4,13 +4,12 @@
             :class="{'bg-grey-light border-teal': isActiveFolder}">
             <router-link :to="`/f/${folder.slug}`" 
                 class="w-full h-auto text-grey-darker font-semibold no-underline icon-text-aligner p-2 pr-3">
-                <svg class="icon" v-if="isActiveFolder">
+                <svg class="icon mr-2" v-if="isActiveFolder">
                     <use href="/svg/icons.svg#icon-folder-18-2" xlink:href="/svg/icons.svg#icon-folder-18-2"/>
                 </svg>
-                <svg class="icon" v-else>
+                <svg class="icon mr-2" v-else>
                     <use href="/svg/icons.svg#icon-folder-15-2" xlink:href="/svg/icons.svg#icon-folder-15-2"/>
                 </svg>
-                &nbsp;
                 <p>{{ folder.title }}</p>
             </router-link>
             <button class="text-grey-darker font-semibold hover:bg-teal trans:bg rounded-r-sm icon-text-aligner p-2 px-3"

@@ -12,7 +12,7 @@ Vue.component('markd-app', require('./components/MarkdApp.vue'));
 /**
  * Vue renderless components import.
  */
-Vue.component('on-click-outside', require('./components/OnClickOutside.vue'));
+Vue.component('on-click-outside', require('./renderless/OnClickOutside.vue'));
 
 /**
  * Vuex state management setup.
