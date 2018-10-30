@@ -1,15 +1,30 @@
 <template>
     <div v-if="!folder.top_folder">
-        <router-link :to="`/f/${folder.slug}`" class="w-full h-auto flex justify-between border-l-4 border-transparent hover:bg-grey-light rounded-sm text-grey-darker font-semibold no-underline icon-text-aligner p-2 pr-3 mb-2" 
-            :class="{'bg-grey-light border-teal-lighter': isActiveFolder}">
-            <p>{{ folder.title }}</p>
-            <svg class="icon trans:rotate" :class="{'rotate-180': isActiveFolder}" v-if="hasChildren">
-                <use href="/svg/icons.svg#icon-stre-down-2" xlink:href="icons/icons.svg#icon-stre-down-2"/>
-            </svg>
-        </router-link>
-        <div class="ml-6" v-if="hasChildren && isActiveFolder">
+        <div class="flex justify-between border-l-4 border-transparent rounded-sm hover:bg-grey-light mb-2"
+            :class="{'bg-grey-light border-teal': isActiveFolder}">
+            <router-link :to="`/f/${folder.slug}`" 
+                class="w-full h-auto text-grey-darker font-semibold no-underline icon-text-aligner p-2 pr-3">
+                <svg class="icon" v-if="isActiveFolder">
+                    <use href="/svg/icons.svg#icon-folder-18-2" xlink:href="/svg/icons.svg#icon-folder-18-2"/>
+                </svg>
+                <svg class="icon" v-else>
+                    <use href="/svg/icons.svg#icon-folder-15-2" xlink:href="/svg/icons.svg#icon-folder-15-2"/>
+                </svg>
+                &nbsp;
+                <p>{{ folder.title }}</p>
+            </router-link>
+            <button class="text-grey-darker font-semibold hover:bg-teal trans:bg rounded-r-sm icon-text-aligner p-2 px-3"
+                type="button"
+                v-if="hasChildren"
+                @click="showChildren = !showChildren">
+                <svg class="icon trans:rotate" :class="{'rotate-180': showChildren}" v-if="hasChildren">
+                    <use href="/svg/icons.svg#icon-stre-down-2" xlink:href="icons/icons.svg#icon-stre-down-2"/>
+                </svg>
+            </button>
+        </div>
+        <div class="ml-6" v-show="hasChildren && showChildren">
             <folder-tree v-for="folder in folder.children" :key="folder.id" :folder="folder"/>
-            <new-folder-form :parent_id="folder.id"/>
+            <!-- <new-folder-form :parent_id="folder.id"/> -->
         </div>
     </div>
 </template>
@@ -31,7 +46,8 @@
 
         data() {
             return {
-                isActiveFolder: false
+                isActiveFolder: false,
+                showChildren: false
             }
         },
 

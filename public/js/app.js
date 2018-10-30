@@ -34250,6 +34250,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -34272,7 +34275,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "relative" }, [
+  return _c("div", { staticClass: "relative z-10" }, [
     _c(
       "button",
       {
@@ -34300,57 +34303,88 @@ var render = function() {
             expression: "show"
           }
         ],
-        staticClass: "absolute pin-r border-1 shadow-lg rounded bg-white mt-2"
+        staticClass: "absolute pin-r border-2 shadow rounded bg-white mt-2"
       },
-      [_vm._m(0)]
+      [
+        _c(
+          "ul",
+          {
+            staticClass:
+              "w-32 list-reset font-sans font-semibold text-grey-darker"
+          },
+          [
+            _c("li", { staticClass: "hover:bg-grey-light rounded-t-sm" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "flex text-grey-darker no-underline px-4 py-3",
+                  attrs: { href: "#" }
+                },
+                [
+                  _c("svg", { staticClass: "icon text-grey-darker mr-2" }, [
+                    _c("use", {
+                      attrs: {
+                        href: "/svg/icons.svg#icon-window-zoom-in-3",
+                        "xlink:href": "/svg/icons.svg#icon-window-zoom-in-3"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("apps")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "hover:bg-grey-light" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "flex text-grey-darker no-underline px-4 py-3",
+                  attrs: { href: "#" }
+                },
+                [
+                  _c("svg", { staticClass: "icon text-grey-darker mr-2" }, [
+                    _c("use", {
+                      attrs: {
+                        href: "/svg/icons.svg#icon-single-02-2",
+                        "xlink:href": "/svg/icons.svg#icon-single-02-2"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("settings")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "hover:bg-grey-light rounded-b-sm" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "flex text-grey-darker no-underline px-4 py-3",
+                  attrs: { href: "/logout" }
+                },
+                [
+                  _c("svg", { staticClass: "icon text-grey-darker mr-2" }, [
+                    _c("use", {
+                      attrs: {
+                        href: "/svg/icons.svg#icon-circle-simple-left",
+                        "xlink:href": "/svg/icons.svg#icon-circle-simple-left"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("logout")])
+                ]
+              )
+            ])
+          ]
+        )
+      ]
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "ul",
-      { staticClass: "list-reset font-sans font-semibold text-grey-darker" },
-      [
-        _c("a", { staticClass: "no-underline", attrs: { href: "#" } }, [
-          _c(
-            "li",
-            {
-              staticClass:
-                "text-grey-darker hover:bg-teal-light hover:text-white rounded-t px-4 py-3"
-            },
-            [_vm._v("\n                    extensions\n                ")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "no-underline", attrs: { href: "#" } }, [
-          _c(
-            "li",
-            {
-              staticClass:
-                "text-grey-darker hover:bg-teal-light hover:text-white px-4 py-3"
-            },
-            [_vm._v("\n                    settings\n                ")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "no-underline", attrs: { href: "/logout" } }, [
-          _c(
-            "li",
-            {
-              staticClass:
-                "text-grey-darker hover:bg-teal-light hover:text-white rounded-b px-4 py-3"
-            },
-            [_vm._v("\n                    logout\n                ")]
-          )
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -34574,6 +34608,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -34591,7 +34640,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     data: function data() {
         return {
-            isActiveFolder: false
+            isActiveFolder: false,
+            showChildren: false
         };
     },
 
@@ -34622,6 +34672,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
 //
 //
 //
@@ -34736,7 +34787,7 @@ var render = function() {
           }
         ],
         staticClass:
-          "flex border-l-4 border-transparent font-semibold text-teal-light hover:text-grey-darker trans:color icon-text-aligner focus:outline-none p-2 mb-4",
+          "flex border-l-4 border-transparent font-semibold text-grey hover:text-teal trans:color icon-text-aligner focus:outline-none p-2 mb-4",
         on: { click: _vm.openNewFolderForm }
       },
       [
@@ -34770,7 +34821,7 @@ var render = function() {
         ],
         ref: "folderForm",
         staticClass:
-          "w-full h-auto bg-grey-light appearance-none border-2 border-grey-light rounded-sm text-base text-grey-darker font-semibold focus:outline-none focus:bg-grey-lighter focus:border-teal px-3 py-2",
+          "w-full h-auto bg-grey-light appearance-none border-2 border-grey-light rounded-sm text-base text-grey-darker font-semibold focus:outline-none focus:bg-grey-lighter focus:border-teal pl-8 pr-3 py-2",
         class: { "opacity-50 cursor-not-allowed": _vm.loading },
         attrs: { type: "text" },
         domProps: { value: _vm.newFolderTitle },
@@ -34804,6 +34855,32 @@ var render = function() {
           }
         }
       }),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.showForm,
+              expression: "showForm"
+            }
+          ],
+          staticClass: "absolute",
+          staticStyle: { top: "50%", "margin-top": "-9px", left: "12px" }
+        },
+        [
+          _c("svg", { staticClass: "icon text-grey-light" }, [
+            _c("use", {
+              attrs: {
+                href: "/svg/icons.svg#icon-folder-15-2",
+                "xlink:href": "/svg/icons.svg#icon-folder-15-2"
+              }
+            })
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c(
         "div",
@@ -34852,62 +34929,104 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return !_vm.folder.top_folder
-    ? _c(
-        "div",
-        [
-          _c(
-            "router-link",
-            {
-              staticClass:
-                "w-full h-auto flex justify-between border-l-4 border-transparent hover:bg-grey-light rounded-sm text-grey-darker font-semibold no-underline icon-text-aligner p-2 pr-3 mb-2",
-              class: {
-                "bg-grey-light border-teal-lighter": _vm.isActiveFolder
+    ? _c("div", [
+        _c(
+          "div",
+          {
+            staticClass:
+              "flex justify-between border-l-4 border-transparent rounded-sm hover:bg-grey-light mb-2",
+            class: { "bg-grey-light border-teal": _vm.isActiveFolder }
+          },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass:
+                  "w-full h-auto text-grey-darker font-semibold no-underline icon-text-aligner p-2 pr-3",
+                attrs: { to: "/f/" + _vm.folder.slug }
               },
-              attrs: { to: "/f/" + _vm.folder.slug }
-            },
-            [
-              _c("p", [_vm._v(_vm._s(_vm.folder.title))]),
-              _vm._v(" "),
-              _vm.hasChildren
-                ? _c(
-                    "svg",
-                    {
-                      staticClass: "icon trans:rotate",
-                      class: { "rotate-180": _vm.isActiveFolder }
-                    },
-                    [
+              [
+                _vm.isActiveFolder
+                  ? _c("svg", { staticClass: "icon" }, [
                       _c("use", {
                         attrs: {
-                          href: "/svg/icons.svg#icon-stre-down-2",
-                          "xlink:href": "icons/icons.svg#icon-stre-down-2"
+                          href: "/svg/icons.svg#icon-folder-18-2",
+                          "xlink:href": "/svg/icons.svg#icon-folder-18-2"
                         }
                       })
-                    ]
-                  )
-                : _vm._e()
-            ]
-          ),
-          _vm._v(" "),
-          _vm.hasChildren && _vm.isActiveFolder
-            ? _c(
-                "div",
-                { staticClass: "ml-6" },
-                [
-                  _vm._l(_vm.folder.children, function(folder) {
-                    return _c("folder-tree", {
-                      key: folder.id,
-                      attrs: { folder: folder }
-                    })
-                  }),
-                  _vm._v(" "),
-                  _c("new-folder-form", { attrs: { parent_id: _vm.folder.id } })
-                ],
-                2
-              )
-            : _vm._e()
-        ],
-        1
-      )
+                    ])
+                  : _c("svg", { staticClass: "icon" }, [
+                      _c("use", {
+                        attrs: {
+                          href: "/svg/icons.svg#icon-folder-15-2",
+                          "xlink:href": "/svg/icons.svg#icon-folder-15-2"
+                        }
+                      })
+                    ]),
+                _vm._v("\n             \n            "),
+                _c("p", [_vm._v(_vm._s(_vm.folder.title))])
+              ]
+            ),
+            _vm._v(" "),
+            _vm.hasChildren
+              ? _c(
+                  "button",
+                  {
+                    staticClass:
+                      "text-grey-darker font-semibold hover:bg-teal trans:bg rounded-r-sm icon-text-aligner p-2 px-3",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.showChildren = !_vm.showChildren
+                      }
+                    }
+                  },
+                  [
+                    _vm.hasChildren
+                      ? _c(
+                          "svg",
+                          {
+                            staticClass: "icon trans:rotate",
+                            class: { "rotate-180": _vm.showChildren }
+                          },
+                          [
+                            _c("use", {
+                              attrs: {
+                                href: "/svg/icons.svg#icon-stre-down-2",
+                                "xlink:href": "icons/icons.svg#icon-stre-down-2"
+                              }
+                            })
+                          ]
+                        )
+                      : _vm._e()
+                  ]
+                )
+              : _vm._e()
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.hasChildren && _vm.showChildren,
+                expression: "hasChildren && showChildren"
+              }
+            ],
+            staticClass: "ml-6"
+          },
+          _vm._l(_vm.folder.children, function(folder) {
+            return _c("folder-tree", {
+              key: folder.id,
+              attrs: { folder: folder }
+            })
+          })
+        )
+      ])
     : _vm._e()
 }
 var staticRenderFns = []
@@ -34968,11 +35087,11 @@ var render = function() {
       _c("markd-navbar"),
       _vm._v(" "),
       _vm.getFoldersFlat.length > 0
-        ? _c("div", { staticClass: "flex leading-normal" }, [
+        ? _c("div", { staticClass: "flex" }, [
             _c("div", { staticClass: "w-1/4" }, [
               _c(
                 "section",
-                { staticClass: "font-sans p-8 pr-4" },
+                { staticClass: "font-sans leading-normal p-8 pr-4" },
                 [_c("folder-index")],
                 1
               )
@@ -37888,9 +38007,11 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bookmarks_BookmarkIndex_vue__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bookmarks_BookmarkIndex_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__bookmarks_BookmarkIndex_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FolderSettings_vue__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FolderSettings_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FolderSettings_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bookmarks_BookmarkIndex_vue__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bookmarks_BookmarkIndex_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__bookmarks_BookmarkIndex_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(2);
 //
 //
 //
@@ -37905,21 +38026,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
-        BookmarkIndex: __WEBPACK_IMPORTED_MODULE_0__bookmarks_BookmarkIndex_vue___default.a
+        FolderSettings: __WEBPACK_IMPORTED_MODULE_0__FolderSettings_vue___default.a,
+        BookmarkIndex: __WEBPACK_IMPORTED_MODULE_1__bookmarks_BookmarkIndex_vue___default.a
     },
 
     data: function data() {
         return {
-            loading: false
+            loading: false,
+            viewFormat: 'list'
         };
     },
 
+
+    computed: Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(['getActiveFolder']),
 
     watch: {
         '$route': function $route(to, from) {
@@ -37932,7 +38078,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
 
-    methods: Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["d" /* mapMutations */])(['setActiveFolder'])
+    methods: Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["d" /* mapMutations */])(['setActiveFolder'])
 });
 
 /***/ }),
@@ -38283,8 +38429,81 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", { staticClass: "font-century text-lg text-grey mb-4" }, [
-      _vm._v("Bookmarks " + _vm._s(_vm.$route.params.slug))
+    _c("div", { staticClass: "flex justify-between mb-4" }, [
+      _c("h3", { staticClass: "font-century text-lg text-grey" }, [
+        _vm._v(_vm._s(_vm.getActiveFolder.title) + " marks")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "flex items-center" },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "flex items-center focus:outline-none mr-3",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  _vm.viewFormat = "card"
+                }
+              }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass: "icon hover:text-teal trans:color",
+                  class:
+                    _vm.viewFormat == "card" ? "text-grey-dark" : "text-grey"
+                },
+                [
+                  _c("use", {
+                    attrs: {
+                      href: "/svg/icons.svg#icon-grid-interface",
+                      "xlink:href": "/svg/icons.svg#icon-grid-interface"
+                    }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "flex items-center focus:outline-none mr-3",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  _vm.viewFormat = "list"
+                }
+              }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass: "icon hover:text-teal trans:color",
+                  class:
+                    _vm.viewFormat == "list" ? "text-grey-dark" : "text-grey"
+                },
+                [
+                  _c("use", {
+                    attrs: {
+                      href: "/svg/icons.svg#icon-bullet-list-70",
+                      "xlink:href": "/svg/icons.svg#icon-bullet-list-70"
+                    }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("folder-settings")
+        ],
+        1
+      )
     ]),
     _vm._v(" "),
     !_vm.loading
@@ -38527,6 +38746,279 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(79)
+/* template */
+var __vue_template__ = __webpack_require__(80)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/folders/FolderSettings.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-756db2d9", Component.options)
+  } else {
+    hotAPI.reload("data-v-756db2d9", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 79 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            show: false
+        };
+    },
+
+
+    computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['getActiveFolder'])
+});
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "relative z-0" }, [
+    _c(
+      "button",
+      {
+        staticClass: "flex items-center focus:outline-none",
+        attrs: { type: "button" },
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            _vm.show = !_vm.show
+          }
+        }
+      },
+      [
+        _c(
+          "svg",
+          { staticClass: "icon hover:text-teal icon-lg text-grey trans:color" },
+          [
+            _c("use", {
+              attrs: {
+                href: "/svg/icons.svg#icon-settings-gear",
+                "xlink:href": "/svg/icons.svg#icon-settings-gear"
+              }
+            })
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.show,
+            expression: "show"
+          }
+        ],
+        staticClass: "absolute pin-r border-2 shadow rounded bg-white mt-2"
+      },
+      [
+        _c(
+          "ul",
+          {
+            staticClass:
+              "w-40 list-reset font-sans font-semibold text-grey-darker"
+          },
+          [
+            _c("li", { staticClass: "hover:bg-grey-light rounded-t-sm" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "flex text-grey-darker no-underline px-4 py-3",
+                  attrs: { href: "#" }
+                },
+                [
+                  _c("svg", { staticClass: "icon text-grey-darker mr-2" }, [
+                    _c("use", {
+                      attrs: {
+                        href: "/svg/icons.svg#icon-folder-edit",
+                        "xlink:href": "/svg/icons.svg#icon-folder-edit"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("edit folder")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "hover:bg-grey-light" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "flex text-grey-darker no-underline px-4 py-3",
+                  attrs: { href: "#" }
+                },
+                [
+                  _c("svg", { staticClass: "icon text-grey-darker mr-2" }, [
+                    _c("use", {
+                      attrs: {
+                        href: "/svg/icons.svg#icon-c-add",
+                        "xlink:href": "/svg/icons.svg#icon-c-add"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("sub folder")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "hover:bg-grey-light" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "flex text-grey-darker no-underline px-4 py-3",
+                  attrs: { href: "#" }
+                },
+                [
+                  _c("svg", { staticClass: "icon text-grey-darker mr-2" }, [
+                    _c("use", {
+                      attrs: {
+                        href: "/svg/icons.svg#icon-box",
+                        "xlink:href": "/svg/icons.svg#icon-box"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("archive")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "hover:bg-grey-light rounded-b-sm" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "flex text-red no-underline px-4 py-3",
+                  attrs: { href: "/logout" }
+                },
+                [
+                  _c("svg", { staticClass: "icon text-red mr-2" }, [
+                    _c("use", {
+                      attrs: {
+                        href: "/svg/icons.svg#icon-trash-can",
+                        "xlink:href": "/svg/icons.svg#icon-trash-can"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("delete")])
+                ]
+              )
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-756db2d9", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

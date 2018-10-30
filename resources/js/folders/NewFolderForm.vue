@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="flex border-l-4 border-transparent font-semibold text-teal-light hover:text-grey-darker trans:color icon-text-aligner focus:outline-none p-2 mb-4"
+        <button class="flex border-l-4 border-transparent font-semibold text-grey hover:text-teal trans:color icon-text-aligner focus:outline-none p-2 mb-4"
             v-show="!showForm"
             @click="openNewFolderForm">
             <svg class="icon">
@@ -9,7 +9,7 @@
             &nbsp;add
         </button>
         <div class="relative mb-4">
-            <input class="w-full h-auto bg-grey-light appearance-none border-2 border-grey-light rounded-sm text-base text-grey-darker font-semibold focus:outline-none focus:bg-grey-lighter focus:border-teal px-3 py-2"
+            <input class="w-full h-auto bg-grey-light appearance-none border-2 border-grey-light rounded-sm text-base text-grey-darker font-semibold focus:outline-none focus:bg-grey-lighter focus:border-teal pl-8 pr-3 py-2"
                 type="text" 
                 v-model="newFolderTitle"
                 v-show="showForm" 
@@ -18,11 +18,12 @@
                 @keydown.esc="closeNewFolderForm"
                 @keydown.enter="submitNewFolder"
                 :class="{'opacity-50 cursor-not-allowed': loading}">
-            <div class="absolute" v-show="loading" style="
-                top: 50%;
-                margin-top: -9px;
-                right: 12px
-            ">
+            <div class="absolute" v-show="showForm" style="top: 50%; margin-top: -9px; left: 12px">
+                <svg class="icon text-grey-light">
+                    <use href="/svg/icons.svg#icon-folder-15-2" xlink:href="/svg/icons.svg#icon-folder-15-2"/>
+                </svg>
+            </div>
+            <div class="absolute" v-show="loading" style="top: 50%; margin-top: -9px; right: 12px">
                 <svg class="icon text-grey-light spin-normal">
                     <use href="/svg/icons.svg#icon-circle" xlink:href="/svg/icons.svg#icon-circle"/>
                 </svg>

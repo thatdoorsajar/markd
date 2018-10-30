@@ -2,10 +2,18 @@
     transform: rotate(180deg);
 }
 
+.trans\:all {
+    transition: all 100ms linear;
+}
+
 .trans\:rotate {
     transition: rotate 100ms linear;
 }
 
 .trans\:color {
     transition: color 100ms linear;
+}
+
+.trans\:bg {
+    transition: background-color 100ms linear;
 }

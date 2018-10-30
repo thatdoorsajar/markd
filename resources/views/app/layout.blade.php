@@ -13,7 +13,8 @@
             ]) !!};
         </script>
     </head>
-    <body class="bg-indigo-grey1 h-screen">
+    {{-- bg-indigo-grey1 --}}
+    <body class="h-screen">
         <div id="app">
             <markd-app 
                 :init-user="{{ $currentUser }}"

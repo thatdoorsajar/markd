@@ -767,6 +767,11 @@ Change icon size
   width: .8em;
 }
 
+.icon-md {
+  height: 1.4em;
+  width: 1.4em;
+}
+
 .icon-lg {
   height: 1.6em;
   width: 1.6em;
@@ -951,6 +956,11 @@ Stroke effects - Nucleo outline icons
           transform: rotate(180deg);
 }
 
+.trans\:all {
+  -webkit-transition: all 100ms linear;
+  transition: all 100ms linear;
+}
+
 .trans\:rotate {
   -webkit-transition: rotate 100ms linear;
   transition: rotate 100ms linear;
@@ -959,6 +969,11 @@ Stroke effects - Nucleo outline icons
 .trans\:color {
   -webkit-transition: color 100ms linear;
   transition: color 100ms linear;
+}
+
+.trans\:bg {
+  -webkit-transition: background-color 100ms linear;
+  transition: background-color 100ms linear;
 }
 
 /**
@@ -6664,6 +6679,10 @@ Stroke effects - Nucleo outline icons
 
 .w-32 {
   width: 8rem;
+}
+
+.w-40 {
+  width: 10rem;
 }
 
 .w-48 {
@@ -12450,6 +12469,10 @@ Stroke effects - Nucleo outline icons
     width: 8rem;
   }
 
+  .sm\:w-40 {
+    width: 10rem;
+  }
+
   .sm\:w-48 {
     width: 12rem;
   }
@@ -18218,6 +18241,10 @@ Stroke effects - Nucleo outline icons
 
   .md\:w-32 {
     width: 8rem;
+  }
+
+  .md\:w-40 {
+    width: 10rem;
   }
 
   .md\:w-48 {
@@ -23990,6 +24017,10 @@ Stroke effects - Nucleo outline icons
     width: 8rem;
   }
 
+  .lg\:w-40 {
+    width: 10rem;
+  }
+
   .lg\:w-48 {
     width: 12rem;
   }
@@ -29758,6 +29789,10 @@ Stroke effects - Nucleo outline icons
 
   .xl\:w-32 {
     width: 8rem;
+  }
+
+  .xl\:w-40 {
+    width: 10rem;
   }
 
   .xl\:w-48 {
