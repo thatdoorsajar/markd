@@ -60,7 +60,7 @@
             openNewFolderForm(el) {
                 this.showForm = true;
 
-                this.$nextTick(() => this.$refs.folderForm.focus())
+                this.$nextTick(() => this.$refs.folderForm.focus());
             },
 
             closeNewFolderForm(el) {

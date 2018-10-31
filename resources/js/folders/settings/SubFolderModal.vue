@@ -1,12 +1,12 @@
 <template>
-    <portal to="folderArchiveModal">
+    <portal to="folderSubFolderModal">
         <div class="fixed pin overflow-auto bg-smoke-light flex items-center" v-show="show">
             <div class="max-w-sm leading-normal bg-white rounded-sm shadow mx-auto p-6">
                 <h1 class="font-century text-2xl text-grey-darkest mb-4">
-                    Archive {{ getActiveFolder.title }}?
+                    Add Sub Folder
                 </h1>
                 <p class="font-sans text-lg text-grey-darkest mb-6">
-                    You can always get it back.
+                    // input
                 </p>
                 <div class="flex justify-between">
                     <button class="font-century text-lg text-grey-dark hover:text-grey-darkest trans:bg focus:shadow-outline focus:outline-none py-2 px-4 mr-2"
@@ -17,7 +17,7 @@
                     <button class="font-century text-lg text-white rounded-sm bg-grey-darker hover:bg-grey-darkest trans:bg focus:shadow-outline focus:outline-none py-2 px-4"
                         type="button"
                         @click="dismiss">
-                        Archive it!
+                        Create
                     </button>
                 </div>
             </div>

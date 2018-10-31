@@ -11,16 +11,26 @@
             <div v-show="showDropDown" class="absolute pin-r border-2 shadow rounded bg-white mt-2">
                 <ul class="w-40 list-reset font-sans font-semibold text-grey-darker">
                     <li class="hover:bg-grey-light rounded-t-sm">
-                        <a href="#" class="flex text-grey-darker no-underline px-4 py-3">
+                        <a href="#" 
+                            class="flex text-grey-darker no-underline px-4 py-3"
+                            @click.prevent="titleModalOpen = true">
                             <svg class="icon text-grey-darker mr-2"><use href="/svg/icons.svg#icon-folder-edit" xlink:href="/svg/icons.svg#icon-folder-edit"/></svg>
-                            <span>edit folder</span>
+                            <span>edit title</span>
                         </a>
+                        <edit-title-modal 
+                            :show="titleModalOpen" 
+                            @close="titleModalOpen = false"/>
                     </li>
                     <li class="hover:bg-grey-light">
-                        <a href="#" class="flex text-grey-darker no-underline px-4 py-3">
+                        <a href="#" 
+                            class="flex text-grey-darker no-underline px-4 py-3"
+                            @click.prevent="addSubModalOpen = true">
                             <svg class="icon text-grey-darker mr-2"><use href="/svg/icons.svg#icon-c-add" xlink:href="/svg/icons.svg#icon-c-add"/></svg>
                             <span>sub folder</span>
                         </a>
+                        <sub-folder-modal 
+                            :show="addSubModalOpen" 
+                            @close="addSubModalOpen = false"/>
                     </li>
                     <li class="hover:bg-grey-light">
                         <a href="#" 
@@ -40,9 +50,9 @@
                             <svg class="icon text-red mr-2"><use href="/svg/icons.svg#icon-trash-can" xlink:href="/svg/icons.svg#icon-trash-can"/></svg>
                             <span>delete</span>
                         </a>
-                        <!-- <delete-folder-modal 
+                        <delete-folder-modal 
                             :show="deleteModalOpen" 
-                            @close="deleteModalOpen = false"/> -->
+                            @close="deleteModalOpen = false"/>
                     </li>
                 </ul>
             </div>
@@ -51,12 +61,16 @@
 </template>
 
 <script>
+    import EditTitleModal from './EditTitleModal.vue';
+    import SubFolderModal from './SubFolderModal.vue';
     import ArchiveFolderModal from './ArchiveFolderModal.vue';
     import DeleteFolderModal from './DeleteFolderModal.vue';
     import { mapGetters } from 'vuex';
 
     export default {
         components: {
+            EditTitleModal,
+            SubFolderModal,
             ArchiveFolderModal,
             DeleteFolderModal
         },
@@ -64,7 +78,7 @@
         data() {
             return {
                 showDropDown: false,
-                editModalOpen: false,
+                titleModalOpen: false,
                 addSubModalOpen: false,
                 archiveModalOpen: false,
                 deleteModalOpen: false

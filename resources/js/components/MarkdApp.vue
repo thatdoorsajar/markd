@@ -13,7 +13,10 @@
                 </section>
             </div>
         </div>
-        <portal-target name="modals"/>
+        <portal-target name="folderTitleModal"/>
+        <portal-target name="folderSubFolderModal"/>
+        <portal-target name="folderArchiveModal"/>
+        <portal-target name="folderDeleteModal"/>
     </div>
 </template>
 

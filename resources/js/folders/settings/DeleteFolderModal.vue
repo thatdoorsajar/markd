@@ -1,5 +1,5 @@
 <template>
-    <portal to="modals">
+    <portal to="folderDeleteModal">
         <div class="fixed pin overflow-auto bg-smoke-light flex items-center" v-show="show">
             <div class="max-w-sm leading-normal bg-white rounded-sm shadow mx-auto p-6">
                 <h1 class="font-century text-2xl text-red mb-4">
@@ -9,7 +9,7 @@
                     This will delete the folder and all its sub folders and bookmarks. Are you sure?
                 </p>
                 <div class="flex justify-between">
-                    <button class="font-century text-lg text-grey-dark hover:text-grey-darkest trans:bg focus:shadow-outline focus:outline-none py-2 px-4"
+                    <button class="font-century text-lg text-grey-dark hover:text-grey-darkest trans:bg focus:shadow-outline focus:outline-none py-2 px-4 mr-2"
                         type="button"
                         @click="dismiss">
                         Cancel
