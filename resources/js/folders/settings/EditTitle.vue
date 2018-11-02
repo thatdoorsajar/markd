@@ -1,10 +1,16 @@
 <template>
-    <portal to="folderTitleModal">
-        <div class="fixed pin overflow-auto bg-smoke-light flex items-center" v-show="show">
-            <div class="sm:w-1/2 lg:w-2/5 xl:w-1/4 leading-normal bg-white rounded-sm shadow mx-auto p-6">
-                <h1 class="font-century text-2xl text-grey-darkest mb-2">
-                    Folder Title
-                </h1>
+    <div>
+        <a href="#"
+            class="flex text-grey-darker no-underline px-4 py-3"
+            @click.prevent="modalOpen = true">
+            <svg class="icon text-grey-darker mr-2"><use href="/svg/icons.svg#icon-folder-edit" xlink:href="/svg/icons.svg#icon-folder-edit"/></svg>
+            <span>edit title</span>
+        </a>
+        <abstract-modal 
+            :show="modalOpen" 
+            @close="modalOpen = false">
+            <template slot="title">Folder Title</template>
+            <template>
                 <div class="relative mb-4">
                     <input class="w-full h-auto font-century font-semibold text-base text-grey-darker bg-grey-light appearance-none border-2 border-grey-light rounded-sm focus:outline-none focus:bg-grey-lighter focus:border-teal pl-8 pr-3 py-2"
                         type="text" 
@@ -26,7 +32,7 @@
                 <div class="flex justify-between">
                     <button class="font-century text-lg text-grey-dark hover:text-grey-darkest trans:bg focus:shadow-outline focus:outline-none py-2 px-4 mr-2"
                         type="button"
-                        @click="dismiss">
+                        @click="modalOpen = false">
                         Cancel
                     </button>
                     <button class="font-century text-lg text-white rounded-sm bg-grey-darker hover:bg-grey-darkest trans:bg focus:shadow-outline focus:outline-none py-2 px-4"
@@ -35,26 +41,21 @@
                         Update
                     </button>
                 </div>
-            </div>
-        </div>
-    </portal>
+            </template>
+        </abstract-modal>
+    </div>
 </template>
 
 <script>
     import { mapGetters } from 'vuex';
 
     export default {
-        props: ["show"],
-
         data() {
             return {
+                modalOpen: false,
                 newFolderTitle: '',
                 loading: false
             }
-        },
-
-        created() {
-            this.registerEscEvent();
         },
 
         computed: mapGetters([
@@ -62,8 +63,8 @@
         ]),
 
         watch: {
-            show(show) {
-                if (show) {
+            modalOpen(modalOpen) {
+                if (modalOpen) {
                     this.$nextTick(() => {
                         setTimeout(() => {this.$refs.titleInput.focus()}, 200);
                     });
@@ -82,24 +83,6 @@
         methods: {
             submitNewTitle() {
                 console.log('submit');
-            },
-
-            registerEscEvent() {
-                const escapeHandler = e => {
-                    if (e.key === "Escape" && this.show) {
-                        this.dismiss();
-                    }
-                }
-
-                document.addEventListener("keydown", escapeHandler);
-
-                this.$once("hook:destroyed", () => {
-                    document.removeEventListener("keydown", escapeHandler);
-                });
-            },
-
-            dismiss() {
-                this.$emit("close");
             }
         }
     }

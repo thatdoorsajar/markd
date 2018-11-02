@@ -10,9 +10,10 @@ require('./bootstrap');
 Vue.component('markd-app', require('./components/MarkdApp.vue'));
 
 /**
- * Vue renderless components import.
+ * Vue helper components import.
  */
-Vue.component('on-click-outside', require('./renderless/OnClickOutside.vue'));
+Vue.component('abstract-modal', require('./components/AbstractModal.vue'));
+Vue.component('on-click-outside', require('./components/OnClickOutside.vue'));
 
 /**
  * Vuex state management setup.

@@ -11,48 +11,16 @@
             <div v-show="showDropDown" class="absolute pin-r border-2 shadow rounded bg-white mt-2">
                 <ul class="w-40 list-reset font-sans font-semibold text-grey-darker">
                     <li class="hover:bg-grey-light rounded-t-sm">
-                        <a href="#" 
-                            class="flex text-grey-darker no-underline px-4 py-3"
-                            @click.prevent="titleModalOpen = true">
-                            <svg class="icon text-grey-darker mr-2"><use href="/svg/icons.svg#icon-folder-edit" xlink:href="/svg/icons.svg#icon-folder-edit"/></svg>
-                            <span>edit title</span>
-                        </a>
-                        <edit-title-modal 
-                            :show="titleModalOpen" 
-                            @close="titleModalOpen = false"/>
+                        <edit-title/>
                     </li>
                     <li class="hover:bg-grey-light">
-                        <a href="#" 
-                            class="flex text-grey-darker no-underline px-4 py-3"
-                            @click.prevent="addSubModalOpen = true">
-                            <svg class="icon text-grey-darker mr-2"><use href="/svg/icons.svg#icon-c-add" xlink:href="/svg/icons.svg#icon-c-add"/></svg>
-                            <span>sub folder</span>
-                        </a>
-                        <sub-folder-modal 
-                            :show="addSubModalOpen" 
-                            @close="addSubModalOpen = false"/>
+                        <add-sub-folder/>
                     </li>
                     <li class="hover:bg-grey-light">
-                        <a href="#" 
-                            class="flex text-grey-darker no-underline px-4 py-3"
-                            @click.prevent="archiveModalOpen = true">
-                            <svg class="icon text-grey-darker mr-2"><use href="/svg/icons.svg#icon-box" xlink:href="/svg/icons.svg#icon-box"/></svg>
-                            <span>archive</span>
-                        </a>
-                        <archive-folder-modal 
-                            :show="archiveModalOpen" 
-                            @close="archiveModalOpen = false"/>
+                        <archive-folder/>
                     </li>
                     <li class="hover:bg-grey-light rounded-b-sm">
-                        <a href="#" 
-                            class="flex text-red no-underline px-4 py-3" 
-                            @click.prevent="deleteModalOpen = true">
-                            <svg class="icon text-red mr-2"><use href="/svg/icons.svg#icon-trash-can" xlink:href="/svg/icons.svg#icon-trash-can"/></svg>
-                            <span>delete</span>
-                        </a>
-                        <delete-folder-modal 
-                            :show="deleteModalOpen" 
-                            @close="deleteModalOpen = false"/>
+                        <delete-folder/>
                     </li>
                 </ul>
             </div>
@@ -61,18 +29,18 @@
 </template>
 
 <script>
-    import EditTitleModal from './EditTitleModal.vue';
-    import SubFolderModal from './SubFolderModal.vue';
-    import ArchiveFolderModal from './ArchiveFolderModal.vue';
-    import DeleteFolderModal from './DeleteFolderModal.vue';
+    import EditTitle from './EditTitle.vue';
+    import AddSubFolder from './AddSubFolder.vue';
+    import ArchiveFolder from './ArchiveFolder.vue';
+    import DeleteFolder from './DeleteFolder.vue';
     import { mapGetters } from 'vuex';
 
     export default {
         components: {
-            EditTitleModal,
-            SubFolderModal,
-            ArchiveFolderModal,
-            DeleteFolderModal
+            EditTitle,
+            AddSubFolder,
+            ArchiveFolder,
+            DeleteFolder
         },
 
         data() {
