@@ -17,6 +17,12 @@ class AppServiceProvider extends ServiceProvider
             $folder->slug = str_slug($folder->title).str_random(6);
         });
 
+        \App\Markd\Folder::updating(function ($folder) {
+            $folder->slug = str_slug($folder->title).str_random(6);
+        });
+        
+        // \App\Markd\Folder::observe(\App\Observers\FolderObserver::class);
+
         \App\Accounts\User::creating(function ($user) {
             $user->initials = strtoupper($user->first_name[0].$user->last_name[0]);
         });

@@ -32,12 +32,14 @@
                 <div class="flex justify-between">
                     <button class="font-century text-lg text-grey-dark hover:text-grey-darkest trans:bg focus:shadow-outline focus:outline-none py-2 px-4 mr-2"
                         type="button"
-                        @click="modalOpen = false">
+                        @click="closeModal">
                         Cancel
                     </button>
-                    <button class="font-century text-lg text-white rounded-sm bg-grey-darker hover:bg-grey-darkest trans:bg focus:shadow-outline focus:outline-none py-2 px-4"
+                    <button class="font-century text-lg text-white rounded-sm  trans:bg focus:shadow-outline focus:outline-none py-2 px-4"
+                        :class="loading ? 'cursor-not-allowed bg-grey-light' : 'bg-grey-darker hover:bg-grey-darkest'"
                         type="button"
-                        @click="submitNewTitle">
+                        @click="submitNewTitle"
+                        :disabled="loading">
                         Update
                     </button>
                 </div>
@@ -47,7 +49,7 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex';
+    import { mapGetters, mapMutations } from 'vuex';
 
     export default {
         data() {
@@ -81,8 +83,33 @@
         },
 
         methods: {
+            ...mapMutations([
+                'setFoldersFlat',
+                'setFoldersTree',
+                'setActiveFolder'
+            ]),
+
+            closeModal(el) {
+                this.loading = this.modalOpen = false;
+
+                this.newFolderTitle = this.getActiveFolder.title;
+            },
+
             submitNewTitle() {
-                console.log('submit');
+                let route = `/api/folder/${this.getActiveFolder.slug}`;
+                let data = {
+                    folder_title: this.newFolderTitle
+                };
+
+                this.loading = true;
+
+                axios.patch(route, data).then(({ data }) => {
+                    this.setFoldersFlat(data.foldersFlat);
+                    this.setFoldersTree(data.foldersTree);
+                    this.setActiveFolder(data.updatedFolderSlug);
+                    this.closeModal();
+                    this.$router.push(`/f/${data.updatedFolderSlug}`);
+                });
             }
         }
     }

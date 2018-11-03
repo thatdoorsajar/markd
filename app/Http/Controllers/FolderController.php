@@ -41,10 +41,12 @@ class FolderController extends Controller
      */
     public function store(Request $request)
     {
+        $user = $request->user();
+
         $folder = new Folder;
         $folder->title = $request->folder_title;
         $folder->description = '';
-        $folder->user_id = Auth::id();
+        $folder->user_id = $user->id;
         $folder->save();
 
         if (!empty($request->parent_id)) {
@@ -56,27 +58,8 @@ class FolderController extends Controller
         return response()->json([
             'success'       => true,
             'newFolderSlug' => $folder->slug,
-            'foldersFlat'   => $request->user()->folders,
-            'foldersTree'   => $request->user()->folders->toTree()
-        ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Folder  $folder
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Folder $folder = null)
-    {
-        if (is_null($folder)) {
-            $folder = Auth::user()->topFolder();
-        }
-
-        return response()->json([
-            'success' => true,
-            'foldersFlat' => $request->user()->folders,
-            'foldersTree' => $request->user()->folders->toTree()
+            'foldersFlat'   => $user->folders,
+            'foldersTree'   => $user->folders->toTree()
         ]);
     }
 
@@ -89,7 +72,14 @@ class FolderController extends Controller
      */
     public function update(Request $request, Folder $folder)
     {
-        //
+        $folder->update(['title' => $request->folder_title]);
+
+        return response()->json([
+            'success'           => true,
+            'updatedFolderSlug' => $folder->fresh()->slug,
+            'foldersFlat'       => $request->user()->folders,
+            'foldersTree'       => $request->user()->folders->toTree()
+        ]);
     }
 
     /**

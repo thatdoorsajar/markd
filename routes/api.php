@@ -20,5 +20,6 @@ Route::middleware('auth:api')->group(function() {
 
     Route::get('/folder', 'FolderController@index');
     Route::post('/folder', 'FolderController@store');
+    Route::patch('/folder/{folder}', 'FolderController@update');
     // Route::get('/folder/{folder?}', 'FolderController@show');
 });

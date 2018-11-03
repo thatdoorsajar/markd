@@ -14,7 +14,8 @@
                     @click="viewFormat = 'list'">
                     <svg class="icon hover:text-teal trans:color" 
                         :class="viewFormat == 'list' ? 'text-grey-dark' : 'text-grey'">
-                        <use href="/svg/icons.svg#icon-bullet-list-70" xlink:href="/svg/icons.svg#icon-bullet-list-70"/>
+                        <use href="/svg/icons.svg#icon-bullet-list-70" 
+                            xlink:href="/svg/icons.svg#icon-bullet-list-70"/>
                     </svg>
                 </button>
                 <folder-settings/>

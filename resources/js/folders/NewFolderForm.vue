@@ -70,7 +70,6 @@
             },
 
             submitNewFolder() {
-                // @TODO: sanitise entry?
                 let route = '/api/folder';
                 let data = {
                     parent_id: this.parent_id,
