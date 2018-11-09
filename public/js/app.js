@@ -35585,7 +35585,7 @@ var render = function() {
           "div",
           {
             staticClass:
-              "flex justify-between border-l-4 border-transparent rounded-sm hover:bg-grey-light mb-2",
+              "flex justify-between border-l-4 border-transparent rounded-sm leading-normal hover:bg-grey-light mb-2",
             class: { "bg-grey-light border-teal": _vm.isActiveFolder }
           },
           [
@@ -35742,7 +35742,7 @@ var render = function() {
             _c("div", { staticClass: "w-1/4" }, [
               _c(
                 "section",
-                { staticClass: "font-sans leading-normal p-8 pr-4" },
+                { staticClass: "font-sans p-8 pr-4" },
                 [_c("folder-index")],
                 1
               )
@@ -40429,6 +40429,19 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -40487,20 +40500,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            folder: {},
-            loading: true,
-            mouseover: null
+            loading: false,
+            mouseover: null,
+            new_bookmark_url: ''
         };
     },
 
 
-    computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['getFolder']),
+    computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['getActiveFolder']),
 
-    watch: {
-        '$route': function $route(to, from) {
-            this.loading = true;
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])(['setFoldersFlat', 'setActiveFolder']), {
+        submitBookmarkUrl: function submitBookmarkUrl() {
+            var _this = this;
+
+            var data = {
+                new_bookmark_url: this.new_bookmark_url,
+                parent_folder_id: this.getActiveFolder.id
+            };
+
+            axios.post('/api/bookmark', data).then(function (_ref) {
+                var data = _ref.data;
+
+                _this.setFoldersFlat(data.foldersFlat);
+                _this.setActiveFolder(_this.getActiveFolder.slug);
+                _this.new_bookmark_url = '';
+                _this.loading = false;
+            });
         }
-    }
+    })
 });
 
 /***/ }),
@@ -40543,10 +40570,10 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    !_vm.loading && _vm.folder.bookmarks.length > 0
+    !_vm.loading && _vm.getActiveFolder.bookmarks.length > 0
       ? _c(
           "div",
-          _vm._l(_vm.folder.bookmarks, function(bookmark) {
+          _vm._l(_vm.getActiveFolder.bookmarks, function(bookmark) {
             return _c(
               "div",
               {
@@ -40568,14 +40595,18 @@ var render = function() {
                     {
                       staticClass: "no-underline",
                       attrs: {
-                        href: "#/f/" + _vm.folder.slug + "/bm/" + bookmark.id
+                        href:
+                          "#/f/" +
+                          _vm.getActiveFolder.slug +
+                          "/bm/" +
+                          bookmark.id
                       }
                     },
                     [
                       _c("img", {
                         staticClass: "rounded",
                         attrs: {
-                          src: bookmark.meta_image_url,
+                          src: bookmark.image_url,
                           alt: "Bookmark Image"
                         }
                       })
@@ -40591,7 +40622,11 @@ var render = function() {
                         staticClass:
                           "font-century font-semibold no-underline text-xl text-grey-darkest",
                         attrs: {
-                          href: "#/f/" + _vm.folder.slug + "/bm/" + bookmark.id
+                          href:
+                            "#/f/" +
+                            _vm.getActiveFolder.slug +
+                            "/bm/" +
+                            bookmark.id
                         }
                       },
                       [
@@ -40701,7 +40736,52 @@ var render = function() {
             )
           })
         )
-      : _c("div", [_vm._v("\n        Drag you bookmarks here...\n    ")])
+      : _c("div", [_vm._v("\n        Drag you bookmarks here...\n    ")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "flex mt-6" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.new_bookmark_url,
+            expression: "new_bookmark_url"
+          }
+        ],
+        staticClass:
+          "w-full h-auto font-century font-semibold text-base text-grey-darker bg-grey-light appearance-none border-2 border-grey-light rounded-l-sm focus:outline-none focus:bg-grey-lighter focus:border-teal focus:border-r-grey-light px-3 py-2",
+        attrs: { type: "text" },
+        domProps: { value: _vm.new_bookmark_url },
+        on: {
+          keydown: function($event) {
+            if (
+              !("button" in $event) &&
+              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+            ) {
+              return null
+            }
+            return _vm.submitBookmarkUrl($event)
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.new_bookmark_url = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass:
+            "font-century text-lg text-white rounded-r-sm bg-grey-darker hover:bg-grey-darkest focus:shadow-outline focus:outline-none py-2 px-4",
+          attrs: { type: "button" },
+          on: { click: _vm.submitBookmarkUrl }
+        },
+        [_vm._v("\n            Submit\n        ")]
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -40723,82 +40803,18 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "flex justify-between mb-4" }, [
-      _c("h3", { staticClass: "font-century text-lg text-grey" }, [
-        _vm._v(_vm._s(_vm.getActiveFolder.title) + " marks")
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "flex items-center" },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "flex items-center focus:outline-none mr-3",
-              attrs: { type: "button" },
-              on: {
-                click: function($event) {
-                  _vm.viewFormat = "card"
-                }
-              }
-            },
-            [
-              _c(
-                "svg",
-                {
-                  staticClass: "icon hover:text-teal trans:color",
-                  class:
-                    _vm.viewFormat == "card" ? "text-grey-dark" : "text-grey"
-                },
-                [
-                  _c("use", {
-                    attrs: {
-                      href: "/svg/icons.svg#icon-grid-interface",
-                      "xlink:href": "/svg/icons.svg#icon-grid-interface"
-                    }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "flex items-center focus:outline-none mr-3",
-              attrs: { type: "button" },
-              on: {
-                click: function($event) {
-                  _vm.viewFormat = "list"
-                }
-              }
-            },
-            [
-              _c(
-                "svg",
-                {
-                  staticClass: "icon hover:text-teal trans:color",
-                  class:
-                    _vm.viewFormat == "list" ? "text-grey-dark" : "text-grey"
-                },
-                [
-                  _c("use", {
-                    attrs: {
-                      href: "/svg/icons.svg#icon-bullet-list-70",
-                      "xlink:href": "/svg/icons.svg#icon-bullet-list-70"
-                    }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c("folder-settings")
-        ],
-        1
-      )
-    ]),
+    _c(
+      "div",
+      { staticClass: "flex justify-between mb-4" },
+      [
+        _c("h3", { staticClass: "font-century text-lg text-grey" }, [
+          _vm._v(_vm._s(_vm.getActiveFolder.title) + " marks")
+        ]),
+        _vm._v(" "),
+        _c("folder-settings")
+      ],
+      1
+    ),
     _vm._v(" "),
     !_vm.loading
       ? _c("div", [_c("bookmark-index")], 1)

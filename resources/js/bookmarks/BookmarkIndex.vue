@@ -5,19 +5,19 @@
                 <use href="/svg/icons.svg#icon-refresh-69" xlink:href="/svg/icons.svg#icon-refresh-69"/>
             </svg>
         </div>
-        <div v-if="!loading && folder.bookmarks.length > 0">
-            <div v-for="bookmark in folder.bookmarks" :key="bookmark.id"
+        <div v-if="!loading && getActiveFolder.bookmarks.length > 0">
+            <div v-for="bookmark in getActiveFolder.bookmarks" :key="bookmark.id"
                 class="flex p-4 rounded hover:bg-teal-lighter"
                 @mouseenter="mouseover = bookmark.id"
                 @mouseleave="mouseover = null">
                 <div class="w-1/10 mr-4 mb-0">
-                    <a :href="`#/f/${folder.slug}/bm/${bookmark.id}`" class="no-underline">
-                        <img :src="bookmark.meta_image_url" alt="Bookmark Image" class="rounded">
+                    <a :href="`#/f/${getActiveFolder.slug}/bm/${bookmark.id}`" class="no-underline">
+                        <img :src="bookmark.image_url" alt="Bookmark Image" class="rounded">
                     </a>
                 </div>
                 <div class="flex-1">
                     <p>
-                        <a :href="`#/f/${folder.slug}/bm/${bookmark.id}`" class="font-century font-semibold no-underline text-xl text-grey-darkest">
+                        <a :href="`#/f/${getActiveFolder.slug}/bm/${bookmark.id}`" class="font-century font-semibold no-underline text-xl text-grey-darkest">
                             {{ bookmark.title }}
                         </a>
                     </p>
@@ -47,31 +47,55 @@
         <div v-else>
             Drag you bookmarks here...
         </div>
+        <div class="flex mt-6">
+            <input class="w-full h-auto font-century font-semibold text-base text-grey-darker bg-grey-light appearance-none border-2 border-grey-light rounded-l-sm focus:outline-none focus:bg-grey-lighter focus:border-teal focus:border-r-grey-light px-3 py-2"
+                type="text"
+                v-model="new_bookmark_url"
+                @keydown.enter="submitBookmarkUrl">
+            <button class="font-century text-lg text-white rounded-r-sm bg-grey-darker hover:bg-grey-darkest focus:shadow-outline focus:outline-none py-2 px-4"
+                type="button"
+                @click="submitBookmarkUrl">
+                Submit
+            </button>
+        </div>
     </div>
 </template>
 
 <script>
-    import { mapGetters } from 'vuex';
+    import { mapGetters, mapMutations } from 'vuex';
 
     export default {
         data() {
             return {
-                folder: {},
-                loading: true,
+                loading: false,
                 mouseover: null,
+                new_bookmark_url: ''
             }
         },
 
         computed: mapGetters([
-            'getFolder'
+            'getActiveFolder'
         ]),
 
-        watch: {
-            '$route' (to, from) {
-                this.loading = true;
+        methods: {
+            ...mapMutations([
+                'setFoldersFlat',
+                'setActiveFolder'
+            ]),
 
-                
+            submitBookmarkUrl() {
+                let data = {
+                    new_bookmark_url: this.new_bookmark_url,
+                    parent_folder_id: this.getActiveFolder.id
+                };
+
+                axios.post('/api/bookmark', data).then(({ data }) => {
+                    this.setFoldersFlat(data.foldersFlat);
+                    this.setActiveFolder(this.getActiveFolder.slug);
+                    this.new_bookmark_url = '';
+                    this.loading = false;
+                });
             }
-        },
+        }
     }
 </script>

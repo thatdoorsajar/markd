@@ -18,8 +18,12 @@ Route::middleware('auth:api')->group(function() {
         return $request->user();
     });
 
+    // Folder API Routes
     Route::get('/folder', 'FolderController@index');
     Route::post('/folder', 'FolderController@store');
     Route::patch('/folder/{folder}', 'FolderController@update');
     // Route::get('/folder/{folder?}', 'FolderController@show');
+    
+    // Bookmark API Routes
+    Route::post('bookmark', 'BookmarkController@create');
 });

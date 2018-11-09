@@ -2,8 +2,8 @@
     <div>
         <div class="flex justify-between mb-4">
             <h3 class="font-century text-lg text-grey">{{ getActiveFolder.title }} marks</h3>
-            <div class="flex items-center">
-                <button type="button" class="flex items-center focus:outline-none mr-3"
+            <!-- <div class="flex items-center"> -->
+                <!-- <button type="button" class="flex items-center focus:outline-none mr-3"
                     @click="viewFormat = 'card'">
                     <svg class="icon hover:text-teal trans:color" 
                         :class="viewFormat == 'card' ? 'text-grey-dark' : 'text-grey'">
@@ -17,9 +17,9 @@
                         <use href="/svg/icons.svg#icon-bullet-list-70" 
                             xlink:href="/svg/icons.svg#icon-bullet-list-70"/>
                     </svg>
-                </button>
+                </button> -->
                 <folder-settings/>
-            </div>
+            <!-- </div> -->
         </div>
         <div v-if="!loading">
             <bookmark-index/>

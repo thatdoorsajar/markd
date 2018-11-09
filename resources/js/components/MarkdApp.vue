@@ -3,7 +3,7 @@
         <markd-navbar/>
         <div class="flex" v-if="getFoldersFlat.length > 0">
             <div class="w-1/4">
-                <section class="font-sans leading-normal p-8 pr-4">
+                <section class="font-sans p-8 pr-4">
                     <folder-index/>
                 </section>
             </div>

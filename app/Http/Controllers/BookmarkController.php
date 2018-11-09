@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Markd\Bookmark;
 use Illuminate\Http\Request;
+use App\Jobs\ProcessBookmarkUrl;
 use App\Http\Controllers\Controller;
 
 class BookmarkController extends Controller
@@ -13,9 +14,18 @@ class BookmarkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        ProcessBookmarkUrl::dispatch(
+            $request->new_bookmark_url,
+            $request->parent_folder_id
+        );
+
+        return response()->json([
+            'success'     => true,
+            'foldersFlat' => $request->user()->folders,
+            'foldersTree' => $request->user()->folders->toTree()
+        ]);
     }
 
     /**
