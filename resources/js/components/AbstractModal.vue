@@ -1,6 +1,6 @@
 <template>
     <portal to="modals" v-if="show">
-        <div class="fixed pin overflow-auto bg-smoke-light flex items-center" v-show="show">
+        <div class="fixed pin overflow-auto bg-smoke-light flex items-center z-50" v-show="show">
             <div class="sm:w-1/2 lg:w-2/5 xl:w-1/4 leading-normal bg-white rounded-sm shadow mx-auto p-6">
                 <h1 class="font-century text-2xl mb-4" 
                     :class="danger ? 'text-red' : 'text-grey-darkest'">

@@ -48,7 +48,7 @@
             Drag you bookmarks here...
         </div>
         <div class="flex mt-6">
-            <div class="relative w-full">
+            <div class="relative w-full z-0">
                 <input class="w-full h-auto font-century font-semibold text-base text-grey-darker bg-grey-light appearance-none border-2 border-grey-light rounded-l-sm focus:outline-none focus:bg-grey-lighter focus:border-teal focus:border-r-grey-light px-3 py-2"
                     type="text"
                     v-model="new_bookmark_url"

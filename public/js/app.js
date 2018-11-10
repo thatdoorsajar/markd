@@ -34918,7 +34918,7 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "relative z-10" }, [
+      _c("div", { staticClass: "relative z-30" }, [
         _c(
           "button",
           {
@@ -35909,7 +35909,7 @@ var render = function() {
               }
             ],
             staticClass:
-              "fixed pin overflow-auto bg-smoke-light flex items-center"
+              "fixed pin overflow-auto bg-smoke-light flex items-center z-50"
           },
           [
             _c(
@@ -40278,7 +40278,7 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "relative z-0" }, [
+      _c("div", { staticClass: "relative z-20" }, [
         _c(
           "button",
           {
@@ -40752,7 +40752,7 @@ var render = function() {
       : _c("div", [_vm._v("\n        Drag you bookmarks here...\n    ")]),
     _vm._v(" "),
     _c("div", { staticClass: "flex mt-6" }, [
-      _c("div", { staticClass: "relative w-full" }, [
+      _c("div", { staticClass: "relative w-full z-0" }, [
         _c("input", {
           directives: [
             {

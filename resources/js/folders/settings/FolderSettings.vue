@@ -1,6 +1,6 @@
 <template>
     <on-click-outside :then="() => showDropDown = false">
-        <div class="relative z-0">
+        <div class="relative z-20">
             <button class="flex items-center focus:outline-none" 
                 type="button"
                 @click="showDropDown = !showDropDown">

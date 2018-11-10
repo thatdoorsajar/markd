@@ -1,6 +1,6 @@
 <template>
     <on-click-outside :then="() => show = false">
-        <div class="relative z-10">
+        <div class="relative z-30">
             <button class="font-semibold font-sans text-lg no-underline focus:outline-none text-white bg-teal-light hover:bg-teal rounded-full p-2"
                 type="button"
                 @click.prevent="show = !show">
