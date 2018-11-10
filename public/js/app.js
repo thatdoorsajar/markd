@@ -35545,10 +35545,10 @@ var render = function() {
             }
           ],
           staticClass: "absolute",
-          staticStyle: { top: "50%", "margin-top": "-9px", right: "12px" }
+          staticStyle: { top: "50%", "margin-top": "-8px", right: "12px" }
         },
         [
-          _c("svg", { staticClass: "icon text-grey-light spin-normal" }, [
+          _c("svg", { staticClass: "icon text-grey spin-normal" }, [
             _c("use", {
               attrs: {
                 href: "/svg/icons.svg#icon-circle",
@@ -40494,6 +40494,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -40501,6 +40511,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     data: function data() {
         return {
             loading: false,
+            processingUrl: false,
             mouseover: null,
             new_bookmark_url: ''
         };
@@ -40518,13 +40529,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 parent_folder_id: this.getActiveFolder.id
             };
 
+            this.processingUrl = true;
+
             axios.post('/api/bookmark', data).then(function (_ref) {
                 var data = _ref.data;
 
                 _this.setFoldersFlat(data.foldersFlat);
                 _this.setActiveFolder(_this.getActiveFolder.slug);
                 _this.new_bookmark_url = '';
-                _this.loading = false;
+                _this.processingUrl = false;
             });
         }
     })
@@ -40739,47 +40752,79 @@ var render = function() {
       : _c("div", [_vm._v("\n        Drag you bookmarks here...\n    ")]),
     _vm._v(" "),
     _c("div", { staticClass: "flex mt-6" }, [
-      _c("input", {
-        directives: [
+      _c("div", { staticClass: "relative w-full" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.new_bookmark_url,
+              expression: "new_bookmark_url"
+            }
+          ],
+          staticClass:
+            "w-full h-auto font-century font-semibold text-base text-grey-darker bg-grey-light appearance-none border-2 border-grey-light rounded-l-sm focus:outline-none focus:bg-grey-lighter focus:border-teal focus:border-r-grey-light px-3 py-2",
+          class: { "opacity-50 cursor-not-allowed": _vm.processingUrl },
+          attrs: { type: "text" },
+          domProps: { value: _vm.new_bookmark_url },
+          on: {
+            keydown: function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.submitBookmarkUrl($event)
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.new_bookmark_url = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "div",
           {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.new_bookmark_url,
-            expression: "new_bookmark_url"
-          }
-        ],
-        staticClass:
-          "w-full h-auto font-century font-semibold text-base text-grey-darker bg-grey-light appearance-none border-2 border-grey-light rounded-l-sm focus:outline-none focus:bg-grey-lighter focus:border-teal focus:border-r-grey-light px-3 py-2",
-        attrs: { type: "text" },
-        domProps: { value: _vm.new_bookmark_url },
-        on: {
-          keydown: function($event) {
-            if (
-              !("button" in $event) &&
-              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-            ) {
-              return null
-            }
-            return _vm.submitBookmarkUrl($event)
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.processingUrl,
+                expression: "processingUrl"
+              }
+            ],
+            staticClass: "absolute",
+            staticStyle: { top: "50%", "margin-top": "-8px", right: "12px" }
           },
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.new_bookmark_url = $event.target.value
-          }
-        }
-      }),
+          [
+            _c("svg", { staticClass: "icon text-grey spin-normal" }, [
+              _c("use", {
+                attrs: {
+                  href: "/svg/icons.svg#icon-circle",
+                  "xlink:href": "/svg/icons.svg#icon-circle"
+                }
+              })
+            ])
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c(
         "button",
         {
           staticClass:
-            "font-century text-lg text-white rounded-r-sm bg-grey-darker hover:bg-grey-darkest focus:shadow-outline focus:outline-none py-2 px-4",
-          attrs: { type: "button" },
+            "font-century text-lg text-white rounded-r-sm focus:shadow-outline focus:outline-none py-2 px-4",
+          class: _vm.processingUrl
+            ? "cursor-not-allowed bg-grey-light"
+            : "bg-grey-darker hover:bg-grey-darkest",
+          attrs: { type: "button", disabled: _vm.processingUrl },
           on: { click: _vm.submitBookmarkUrl }
         },
-        [_vm._v("\n            Submit\n        ")]
+        [_vm._v("\n            add\n        ")]
       )
     ])
   ])

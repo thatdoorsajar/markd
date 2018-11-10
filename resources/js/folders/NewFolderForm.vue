@@ -23,8 +23,8 @@
                     <use href="/svg/icons.svg#icon-folder-15-2" xlink:href="/svg/icons.svg#icon-folder-15-2"/>
                 </svg>
             </div>
-            <div class="absolute" v-show="loading" style="top: 50%; margin-top: -9px; right: 12px">
-                <svg class="icon text-grey-light spin-normal">
+            <div class="absolute" v-show="loading" style="top: 50%; margin-top: -8px; right: 12px">
+                <svg class="icon text-grey spin-normal">
                     <use href="/svg/icons.svg#icon-circle" xlink:href="/svg/icons.svg#icon-circle"/>
                 </svg>
             </div>

@@ -48,14 +48,24 @@
             Drag you bookmarks here...
         </div>
         <div class="flex mt-6">
-            <input class="w-full h-auto font-century font-semibold text-base text-grey-darker bg-grey-light appearance-none border-2 border-grey-light rounded-l-sm focus:outline-none focus:bg-grey-lighter focus:border-teal focus:border-r-grey-light px-3 py-2"
-                type="text"
-                v-model="new_bookmark_url"
-                @keydown.enter="submitBookmarkUrl">
-            <button class="font-century text-lg text-white rounded-r-sm bg-grey-darker hover:bg-grey-darkest focus:shadow-outline focus:outline-none py-2 px-4"
+            <div class="relative w-full">
+                <input class="w-full h-auto font-century font-semibold text-base text-grey-darker bg-grey-light appearance-none border-2 border-grey-light rounded-l-sm focus:outline-none focus:bg-grey-lighter focus:border-teal focus:border-r-grey-light px-3 py-2"
+                    type="text"
+                    v-model="new_bookmark_url"
+                    @keydown.enter="submitBookmarkUrl"
+                    :class="{'opacity-50 cursor-not-allowed': processingUrl}">
+                <div class="absolute" v-show="processingUrl" style="top: 50%; margin-top: -8px; right: 12px">
+                    <svg class="icon text-grey spin-normal">
+                        <use href="/svg/icons.svg#icon-circle" xlink:href="/svg/icons.svg#icon-circle"/>
+                    </svg>
+                </div>
+            </div>
+            <button class="font-century text-lg text-white rounded-r-sm focus:shadow-outline focus:outline-none py-2 px-4"
+                :class="processingUrl ? 'cursor-not-allowed bg-grey-light' : 'bg-grey-darker hover:bg-grey-darkest'"
                 type="button"
-                @click="submitBookmarkUrl">
-                Submit
+                @click="submitBookmarkUrl"
+                :disabled="processingUrl">
+                add
             </button>
         </div>
     </div>
@@ -68,6 +78,7 @@
         data() {
             return {
                 loading: false,
+                processingUrl: false,
                 mouseover: null,
                 new_bookmark_url: ''
             }
@@ -89,11 +100,13 @@
                     parent_folder_id: this.getActiveFolder.id
                 };
 
+                this.processingUrl = true;
+
                 axios.post('/api/bookmark', data).then(({ data }) => {
                     this.setFoldersFlat(data.foldersFlat);
                     this.setActiveFolder(this.getActiveFolder.slug);
                     this.new_bookmark_url = '';
-                    this.loading = false;
+                    this.processingUrl = false;
                 });
             }
         }
