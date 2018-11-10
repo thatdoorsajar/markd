@@ -5,7 +5,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Markd\Folder::class, function (Faker $faker) {
     return [
         'slug'        => $faker->unique()->slug,
-        'title'       => $faker->sentence(3),
+        'title'       => $faker->word,
         'description' => $faker->paragraph(2),
         'notes'       => $faker->paragraph(3),
         'is_archived' => $faker->boolean(10),

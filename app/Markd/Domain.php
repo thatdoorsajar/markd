@@ -13,12 +13,9 @@ class Domain extends Model
      */
     protected $fillable = [
         'url_resolved',
-        'mime_type',
-        'encoding',
         'response_code',
-        'meta_title',
-        'meta_description',
-        'meta_image_url',
-        'lang',
+        'title',
+        'description',
+        'image_url',
     ];
 }

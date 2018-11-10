@@ -976,6 +976,17 @@ Stroke effects - Nucleo outline icons
   transition: background-color 100ms linear;
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  -webkit-transition: opacity 5s;
+  transition: opacity 5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
@@ -1010,6 +1021,34 @@ Stroke effects - Nucleo outline icons
 
 .bg-transparent {
   background-color: transparent;
+}
+
+.bg-opaque-darkest {
+  background-color: rgba(255, 255, 255, .9);
+}
+
+.bg-opaque-darker {
+  background-color: rgba(255, 255, 255, .75);
+}
+
+.bg-opaque-dark {
+  background-color: rgba(255, 255, 255, .6);
+}
+
+.bg-opaque {
+  background-color: rgba(255, 255, 255, .5);
+}
+
+.bg-opaque-light {
+  background-color: rgba(255, 255, 255, .4);
+}
+
+.bg-opaque-lighter {
+  background-color: rgba(255, 255, 255, .25);
+}
+
+.bg-opaque-lightest {
+  background-color: rgba(255, 255, 255, .1);
 }
 
 .bg-smoke-darkest {
@@ -1344,6 +1383,34 @@ Stroke effects - Nucleo outline icons
   background-color: transparent;
 }
 
+.hover\:bg-opaque-darkest:hover {
+  background-color: rgba(255, 255, 255, .9);
+}
+
+.hover\:bg-opaque-darker:hover {
+  background-color: rgba(255, 255, 255, .75);
+}
+
+.hover\:bg-opaque-dark:hover {
+  background-color: rgba(255, 255, 255, .6);
+}
+
+.hover\:bg-opaque:hover {
+  background-color: rgba(255, 255, 255, .5);
+}
+
+.hover\:bg-opaque-light:hover {
+  background-color: rgba(255, 255, 255, .4);
+}
+
+.hover\:bg-opaque-lighter:hover {
+  background-color: rgba(255, 255, 255, .25);
+}
+
+.hover\:bg-opaque-lightest:hover {
+  background-color: rgba(255, 255, 255, .1);
+}
+
 .hover\:bg-smoke-darkest:hover {
   background-color: rgba(0, 0, 0, .9);
 }
@@ -1674,6 +1741,34 @@ Stroke effects - Nucleo outline icons
 
 .focus\:bg-transparent:focus {
   background-color: transparent;
+}
+
+.focus\:bg-opaque-darkest:focus {
+  background-color: rgba(255, 255, 255, .9);
+}
+
+.focus\:bg-opaque-darker:focus {
+  background-color: rgba(255, 255, 255, .75);
+}
+
+.focus\:bg-opaque-dark:focus {
+  background-color: rgba(255, 255, 255, .6);
+}
+
+.focus\:bg-opaque:focus {
+  background-color: rgba(255, 255, 255, .5);
+}
+
+.focus\:bg-opaque-light:focus {
+  background-color: rgba(255, 255, 255, .4);
+}
+
+.focus\:bg-opaque-lighter:focus {
+  background-color: rgba(255, 255, 255, .25);
+}
+
+.focus\:bg-opaque-lightest:focus {
+  background-color: rgba(255, 255, 255, .1);
 }
 
 .focus\:bg-smoke-darkest:focus {
@@ -2080,6 +2175,34 @@ Stroke effects - Nucleo outline icons
   border-color: transparent;
 }
 
+.border-opaque-darkest {
+  border-color: rgba(255, 255, 255, .9);
+}
+
+.border-opaque-darker {
+  border-color: rgba(255, 255, 255, .75);
+}
+
+.border-opaque-dark {
+  border-color: rgba(255, 255, 255, .6);
+}
+
+.border-opaque {
+  border-color: rgba(255, 255, 255, .5);
+}
+
+.border-opaque-light {
+  border-color: rgba(255, 255, 255, .4);
+}
+
+.border-opaque-lighter {
+  border-color: rgba(255, 255, 255, .25);
+}
+
+.border-opaque-lightest {
+  border-color: rgba(255, 255, 255, .1);
+}
+
 .border-smoke-darkest {
   border-color: rgba(0, 0, 0, .9);
 }
@@ -2412,6 +2535,34 @@ Stroke effects - Nucleo outline icons
   border-color: transparent;
 }
 
+.hover\:border-opaque-darkest:hover {
+  border-color: rgba(255, 255, 255, .9);
+}
+
+.hover\:border-opaque-darker:hover {
+  border-color: rgba(255, 255, 255, .75);
+}
+
+.hover\:border-opaque-dark:hover {
+  border-color: rgba(255, 255, 255, .6);
+}
+
+.hover\:border-opaque:hover {
+  border-color: rgba(255, 255, 255, .5);
+}
+
+.hover\:border-opaque-light:hover {
+  border-color: rgba(255, 255, 255, .4);
+}
+
+.hover\:border-opaque-lighter:hover {
+  border-color: rgba(255, 255, 255, .25);
+}
+
+.hover\:border-opaque-lightest:hover {
+  border-color: rgba(255, 255, 255, .1);
+}
+
 .hover\:border-smoke-darkest:hover {
   border-color: rgba(0, 0, 0, .9);
 }
@@ -2742,6 +2893,34 @@ Stroke effects - Nucleo outline icons
 
 .focus\:border-transparent:focus {
   border-color: transparent;
+}
+
+.focus\:border-opaque-darkest:focus {
+  border-color: rgba(255, 255, 255, .9);
+}
+
+.focus\:border-opaque-darker:focus {
+  border-color: rgba(255, 255, 255, .75);
+}
+
+.focus\:border-opaque-dark:focus {
+  border-color: rgba(255, 255, 255, .6);
+}
+
+.focus\:border-opaque:focus {
+  border-color: rgba(255, 255, 255, .5);
+}
+
+.focus\:border-opaque-light:focus {
+  border-color: rgba(255, 255, 255, .4);
+}
+
+.focus\:border-opaque-lighter:focus {
+  border-color: rgba(255, 255, 255, .25);
+}
+
+.focus\:border-opaque-lightest:focus {
+  border-color: rgba(255, 255, 255, .1);
 }
 
 .focus\:border-smoke-darkest:focus {
@@ -5627,6 +5806,34 @@ Stroke effects - Nucleo outline icons
   color: transparent;
 }
 
+.text-opaque-darkest {
+  color: rgba(255, 255, 255, .9);
+}
+
+.text-opaque-darker {
+  color: rgba(255, 255, 255, .75);
+}
+
+.text-opaque-dark {
+  color: rgba(255, 255, 255, .6);
+}
+
+.text-opaque {
+  color: rgba(255, 255, 255, .5);
+}
+
+.text-opaque-light {
+  color: rgba(255, 255, 255, .4);
+}
+
+.text-opaque-lighter {
+  color: rgba(255, 255, 255, .25);
+}
+
+.text-opaque-lightest {
+  color: rgba(255, 255, 255, .1);
+}
+
 .text-smoke-darkest {
   color: rgba(0, 0, 0, .9);
 }
@@ -5959,6 +6166,34 @@ Stroke effects - Nucleo outline icons
   color: transparent;
 }
 
+.hover\:text-opaque-darkest:hover {
+  color: rgba(255, 255, 255, .9);
+}
+
+.hover\:text-opaque-darker:hover {
+  color: rgba(255, 255, 255, .75);
+}
+
+.hover\:text-opaque-dark:hover {
+  color: rgba(255, 255, 255, .6);
+}
+
+.hover\:text-opaque:hover {
+  color: rgba(255, 255, 255, .5);
+}
+
+.hover\:text-opaque-light:hover {
+  color: rgba(255, 255, 255, .4);
+}
+
+.hover\:text-opaque-lighter:hover {
+  color: rgba(255, 255, 255, .25);
+}
+
+.hover\:text-opaque-lightest:hover {
+  color: rgba(255, 255, 255, .1);
+}
+
 .hover\:text-smoke-darkest:hover {
   color: rgba(0, 0, 0, .9);
 }
@@ -6289,6 +6524,34 @@ Stroke effects - Nucleo outline icons
 
 .focus\:text-transparent:focus {
   color: transparent;
+}
+
+.focus\:text-opaque-darkest:focus {
+  color: rgba(255, 255, 255, .9);
+}
+
+.focus\:text-opaque-darker:focus {
+  color: rgba(255, 255, 255, .75);
+}
+
+.focus\:text-opaque-dark:focus {
+  color: rgba(255, 255, 255, .6);
+}
+
+.focus\:text-opaque:focus {
+  color: rgba(255, 255, 255, .5);
+}
+
+.focus\:text-opaque-light:focus {
+  color: rgba(255, 255, 255, .4);
+}
+
+.focus\:text-opaque-lighter:focus {
+  color: rgba(255, 255, 255, .25);
+}
+
+.focus\:text-opaque-lightest:focus {
+  color: rgba(255, 255, 255, .1);
 }
 
 .focus\:text-smoke-darkest:focus {
@@ -7080,6 +7343,34 @@ Stroke effects - Nucleo outline icons
     background-color: transparent;
   }
 
+  .sm\:bg-opaque-darkest {
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  .sm\:bg-opaque-darker {
+    background-color: rgba(255, 255, 255, .75);
+  }
+
+  .sm\:bg-opaque-dark {
+    background-color: rgba(255, 255, 255, .6);
+  }
+
+  .sm\:bg-opaque {
+    background-color: rgba(255, 255, 255, .5);
+  }
+
+  .sm\:bg-opaque-light {
+    background-color: rgba(255, 255, 255, .4);
+  }
+
+  .sm\:bg-opaque-lighter {
+    background-color: rgba(255, 255, 255, .25);
+  }
+
+  .sm\:bg-opaque-lightest {
+    background-color: rgba(255, 255, 255, .1);
+  }
+
   .sm\:bg-smoke-darkest {
     background-color: rgba(0, 0, 0, .9);
   }
@@ -7412,6 +7703,34 @@ Stroke effects - Nucleo outline icons
     background-color: transparent;
   }
 
+  .sm\:hover\:bg-opaque-darkest:hover {
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  .sm\:hover\:bg-opaque-darker:hover {
+    background-color: rgba(255, 255, 255, .75);
+  }
+
+  .sm\:hover\:bg-opaque-dark:hover {
+    background-color: rgba(255, 255, 255, .6);
+  }
+
+  .sm\:hover\:bg-opaque:hover {
+    background-color: rgba(255, 255, 255, .5);
+  }
+
+  .sm\:hover\:bg-opaque-light:hover {
+    background-color: rgba(255, 255, 255, .4);
+  }
+
+  .sm\:hover\:bg-opaque-lighter:hover {
+    background-color: rgba(255, 255, 255, .25);
+  }
+
+  .sm\:hover\:bg-opaque-lightest:hover {
+    background-color: rgba(255, 255, 255, .1);
+  }
+
   .sm\:hover\:bg-smoke-darkest:hover {
     background-color: rgba(0, 0, 0, .9);
   }
@@ -7742,6 +8061,34 @@ Stroke effects - Nucleo outline icons
 
   .sm\:focus\:bg-transparent:focus {
     background-color: transparent;
+  }
+
+  .sm\:focus\:bg-opaque-darkest:focus {
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  .sm\:focus\:bg-opaque-darker:focus {
+    background-color: rgba(255, 255, 255, .75);
+  }
+
+  .sm\:focus\:bg-opaque-dark:focus {
+    background-color: rgba(255, 255, 255, .6);
+  }
+
+  .sm\:focus\:bg-opaque:focus {
+    background-color: rgba(255, 255, 255, .5);
+  }
+
+  .sm\:focus\:bg-opaque-light:focus {
+    background-color: rgba(255, 255, 255, .4);
+  }
+
+  .sm\:focus\:bg-opaque-lighter:focus {
+    background-color: rgba(255, 255, 255, .25);
+  }
+
+  .sm\:focus\:bg-opaque-lightest:focus {
+    background-color: rgba(255, 255, 255, .1);
   }
 
   .sm\:focus\:bg-smoke-darkest:focus {
@@ -8140,6 +8487,34 @@ Stroke effects - Nucleo outline icons
     border-color: transparent;
   }
 
+  .sm\:border-opaque-darkest {
+    border-color: rgba(255, 255, 255, .9);
+  }
+
+  .sm\:border-opaque-darker {
+    border-color: rgba(255, 255, 255, .75);
+  }
+
+  .sm\:border-opaque-dark {
+    border-color: rgba(255, 255, 255, .6);
+  }
+
+  .sm\:border-opaque {
+    border-color: rgba(255, 255, 255, .5);
+  }
+
+  .sm\:border-opaque-light {
+    border-color: rgba(255, 255, 255, .4);
+  }
+
+  .sm\:border-opaque-lighter {
+    border-color: rgba(255, 255, 255, .25);
+  }
+
+  .sm\:border-opaque-lightest {
+    border-color: rgba(255, 255, 255, .1);
+  }
+
   .sm\:border-smoke-darkest {
     border-color: rgba(0, 0, 0, .9);
   }
@@ -8472,6 +8847,34 @@ Stroke effects - Nucleo outline icons
     border-color: transparent;
   }
 
+  .sm\:hover\:border-opaque-darkest:hover {
+    border-color: rgba(255, 255, 255, .9);
+  }
+
+  .sm\:hover\:border-opaque-darker:hover {
+    border-color: rgba(255, 255, 255, .75);
+  }
+
+  .sm\:hover\:border-opaque-dark:hover {
+    border-color: rgba(255, 255, 255, .6);
+  }
+
+  .sm\:hover\:border-opaque:hover {
+    border-color: rgba(255, 255, 255, .5);
+  }
+
+  .sm\:hover\:border-opaque-light:hover {
+    border-color: rgba(255, 255, 255, .4);
+  }
+
+  .sm\:hover\:border-opaque-lighter:hover {
+    border-color: rgba(255, 255, 255, .25);
+  }
+
+  .sm\:hover\:border-opaque-lightest:hover {
+    border-color: rgba(255, 255, 255, .1);
+  }
+
   .sm\:hover\:border-smoke-darkest:hover {
     border-color: rgba(0, 0, 0, .9);
   }
@@ -8802,6 +9205,34 @@ Stroke effects - Nucleo outline icons
 
   .sm\:focus\:border-transparent:focus {
     border-color: transparent;
+  }
+
+  .sm\:focus\:border-opaque-darkest:focus {
+    border-color: rgba(255, 255, 255, .9);
+  }
+
+  .sm\:focus\:border-opaque-darker:focus {
+    border-color: rgba(255, 255, 255, .75);
+  }
+
+  .sm\:focus\:border-opaque-dark:focus {
+    border-color: rgba(255, 255, 255, .6);
+  }
+
+  .sm\:focus\:border-opaque:focus {
+    border-color: rgba(255, 255, 255, .5);
+  }
+
+  .sm\:focus\:border-opaque-light:focus {
+    border-color: rgba(255, 255, 255, .4);
+  }
+
+  .sm\:focus\:border-opaque-lighter:focus {
+    border-color: rgba(255, 255, 255, .25);
+  }
+
+  .sm\:focus\:border-opaque-lightest:focus {
+    border-color: rgba(255, 255, 255, .1);
   }
 
   .sm\:focus\:border-smoke-darkest:focus {
@@ -11667,6 +12098,34 @@ Stroke effects - Nucleo outline icons
     color: transparent;
   }
 
+  .sm\:text-opaque-darkest {
+    color: rgba(255, 255, 255, .9);
+  }
+
+  .sm\:text-opaque-darker {
+    color: rgba(255, 255, 255, .75);
+  }
+
+  .sm\:text-opaque-dark {
+    color: rgba(255, 255, 255, .6);
+  }
+
+  .sm\:text-opaque {
+    color: rgba(255, 255, 255, .5);
+  }
+
+  .sm\:text-opaque-light {
+    color: rgba(255, 255, 255, .4);
+  }
+
+  .sm\:text-opaque-lighter {
+    color: rgba(255, 255, 255, .25);
+  }
+
+  .sm\:text-opaque-lightest {
+    color: rgba(255, 255, 255, .1);
+  }
+
   .sm\:text-smoke-darkest {
     color: rgba(0, 0, 0, .9);
   }
@@ -11999,6 +12458,34 @@ Stroke effects - Nucleo outline icons
     color: transparent;
   }
 
+  .sm\:hover\:text-opaque-darkest:hover {
+    color: rgba(255, 255, 255, .9);
+  }
+
+  .sm\:hover\:text-opaque-darker:hover {
+    color: rgba(255, 255, 255, .75);
+  }
+
+  .sm\:hover\:text-opaque-dark:hover {
+    color: rgba(255, 255, 255, .6);
+  }
+
+  .sm\:hover\:text-opaque:hover {
+    color: rgba(255, 255, 255, .5);
+  }
+
+  .sm\:hover\:text-opaque-light:hover {
+    color: rgba(255, 255, 255, .4);
+  }
+
+  .sm\:hover\:text-opaque-lighter:hover {
+    color: rgba(255, 255, 255, .25);
+  }
+
+  .sm\:hover\:text-opaque-lightest:hover {
+    color: rgba(255, 255, 255, .1);
+  }
+
   .sm\:hover\:text-smoke-darkest:hover {
     color: rgba(0, 0, 0, .9);
   }
@@ -12329,6 +12816,34 @@ Stroke effects - Nucleo outline icons
 
   .sm\:focus\:text-transparent:focus {
     color: transparent;
+  }
+
+  .sm\:focus\:text-opaque-darkest:focus {
+    color: rgba(255, 255, 255, .9);
+  }
+
+  .sm\:focus\:text-opaque-darker:focus {
+    color: rgba(255, 255, 255, .75);
+  }
+
+  .sm\:focus\:text-opaque-dark:focus {
+    color: rgba(255, 255, 255, .6);
+  }
+
+  .sm\:focus\:text-opaque:focus {
+    color: rgba(255, 255, 255, .5);
+  }
+
+  .sm\:focus\:text-opaque-light:focus {
+    color: rgba(255, 255, 255, .4);
+  }
+
+  .sm\:focus\:text-opaque-lighter:focus {
+    color: rgba(255, 255, 255, .25);
+  }
+
+  .sm\:focus\:text-opaque-lightest:focus {
+    color: rgba(255, 255, 255, .1);
   }
 
   .sm\:focus\:text-smoke-darkest:focus {
@@ -13106,6 +13621,34 @@ Stroke effects - Nucleo outline icons
     background-color: transparent;
   }
 
+  .md\:bg-opaque-darkest {
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  .md\:bg-opaque-darker {
+    background-color: rgba(255, 255, 255, .75);
+  }
+
+  .md\:bg-opaque-dark {
+    background-color: rgba(255, 255, 255, .6);
+  }
+
+  .md\:bg-opaque {
+    background-color: rgba(255, 255, 255, .5);
+  }
+
+  .md\:bg-opaque-light {
+    background-color: rgba(255, 255, 255, .4);
+  }
+
+  .md\:bg-opaque-lighter {
+    background-color: rgba(255, 255, 255, .25);
+  }
+
+  .md\:bg-opaque-lightest {
+    background-color: rgba(255, 255, 255, .1);
+  }
+
   .md\:bg-smoke-darkest {
     background-color: rgba(0, 0, 0, .9);
   }
@@ -13438,6 +13981,34 @@ Stroke effects - Nucleo outline icons
     background-color: transparent;
   }
 
+  .md\:hover\:bg-opaque-darkest:hover {
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  .md\:hover\:bg-opaque-darker:hover {
+    background-color: rgba(255, 255, 255, .75);
+  }
+
+  .md\:hover\:bg-opaque-dark:hover {
+    background-color: rgba(255, 255, 255, .6);
+  }
+
+  .md\:hover\:bg-opaque:hover {
+    background-color: rgba(255, 255, 255, .5);
+  }
+
+  .md\:hover\:bg-opaque-light:hover {
+    background-color: rgba(255, 255, 255, .4);
+  }
+
+  .md\:hover\:bg-opaque-lighter:hover {
+    background-color: rgba(255, 255, 255, .25);
+  }
+
+  .md\:hover\:bg-opaque-lightest:hover {
+    background-color: rgba(255, 255, 255, .1);
+  }
+
   .md\:hover\:bg-smoke-darkest:hover {
     background-color: rgba(0, 0, 0, .9);
   }
@@ -13768,6 +14339,34 @@ Stroke effects - Nucleo outline icons
 
   .md\:focus\:bg-transparent:focus {
     background-color: transparent;
+  }
+
+  .md\:focus\:bg-opaque-darkest:focus {
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  .md\:focus\:bg-opaque-darker:focus {
+    background-color: rgba(255, 255, 255, .75);
+  }
+
+  .md\:focus\:bg-opaque-dark:focus {
+    background-color: rgba(255, 255, 255, .6);
+  }
+
+  .md\:focus\:bg-opaque:focus {
+    background-color: rgba(255, 255, 255, .5);
+  }
+
+  .md\:focus\:bg-opaque-light:focus {
+    background-color: rgba(255, 255, 255, .4);
+  }
+
+  .md\:focus\:bg-opaque-lighter:focus {
+    background-color: rgba(255, 255, 255, .25);
+  }
+
+  .md\:focus\:bg-opaque-lightest:focus {
+    background-color: rgba(255, 255, 255, .1);
   }
 
   .md\:focus\:bg-smoke-darkest:focus {
@@ -14166,6 +14765,34 @@ Stroke effects - Nucleo outline icons
     border-color: transparent;
   }
 
+  .md\:border-opaque-darkest {
+    border-color: rgba(255, 255, 255, .9);
+  }
+
+  .md\:border-opaque-darker {
+    border-color: rgba(255, 255, 255, .75);
+  }
+
+  .md\:border-opaque-dark {
+    border-color: rgba(255, 255, 255, .6);
+  }
+
+  .md\:border-opaque {
+    border-color: rgba(255, 255, 255, .5);
+  }
+
+  .md\:border-opaque-light {
+    border-color: rgba(255, 255, 255, .4);
+  }
+
+  .md\:border-opaque-lighter {
+    border-color: rgba(255, 255, 255, .25);
+  }
+
+  .md\:border-opaque-lightest {
+    border-color: rgba(255, 255, 255, .1);
+  }
+
   .md\:border-smoke-darkest {
     border-color: rgba(0, 0, 0, .9);
   }
@@ -14498,6 +15125,34 @@ Stroke effects - Nucleo outline icons
     border-color: transparent;
   }
 
+  .md\:hover\:border-opaque-darkest:hover {
+    border-color: rgba(255, 255, 255, .9);
+  }
+
+  .md\:hover\:border-opaque-darker:hover {
+    border-color: rgba(255, 255, 255, .75);
+  }
+
+  .md\:hover\:border-opaque-dark:hover {
+    border-color: rgba(255, 255, 255, .6);
+  }
+
+  .md\:hover\:border-opaque:hover {
+    border-color: rgba(255, 255, 255, .5);
+  }
+
+  .md\:hover\:border-opaque-light:hover {
+    border-color: rgba(255, 255, 255, .4);
+  }
+
+  .md\:hover\:border-opaque-lighter:hover {
+    border-color: rgba(255, 255, 255, .25);
+  }
+
+  .md\:hover\:border-opaque-lightest:hover {
+    border-color: rgba(255, 255, 255, .1);
+  }
+
   .md\:hover\:border-smoke-darkest:hover {
     border-color: rgba(0, 0, 0, .9);
   }
@@ -14828,6 +15483,34 @@ Stroke effects - Nucleo outline icons
 
   .md\:focus\:border-transparent:focus {
     border-color: transparent;
+  }
+
+  .md\:focus\:border-opaque-darkest:focus {
+    border-color: rgba(255, 255, 255, .9);
+  }
+
+  .md\:focus\:border-opaque-darker:focus {
+    border-color: rgba(255, 255, 255, .75);
+  }
+
+  .md\:focus\:border-opaque-dark:focus {
+    border-color: rgba(255, 255, 255, .6);
+  }
+
+  .md\:focus\:border-opaque:focus {
+    border-color: rgba(255, 255, 255, .5);
+  }
+
+  .md\:focus\:border-opaque-light:focus {
+    border-color: rgba(255, 255, 255, .4);
+  }
+
+  .md\:focus\:border-opaque-lighter:focus {
+    border-color: rgba(255, 255, 255, .25);
+  }
+
+  .md\:focus\:border-opaque-lightest:focus {
+    border-color: rgba(255, 255, 255, .1);
   }
 
   .md\:focus\:border-smoke-darkest:focus {
@@ -17693,6 +18376,34 @@ Stroke effects - Nucleo outline icons
     color: transparent;
   }
 
+  .md\:text-opaque-darkest {
+    color: rgba(255, 255, 255, .9);
+  }
+
+  .md\:text-opaque-darker {
+    color: rgba(255, 255, 255, .75);
+  }
+
+  .md\:text-opaque-dark {
+    color: rgba(255, 255, 255, .6);
+  }
+
+  .md\:text-opaque {
+    color: rgba(255, 255, 255, .5);
+  }
+
+  .md\:text-opaque-light {
+    color: rgba(255, 255, 255, .4);
+  }
+
+  .md\:text-opaque-lighter {
+    color: rgba(255, 255, 255, .25);
+  }
+
+  .md\:text-opaque-lightest {
+    color: rgba(255, 255, 255, .1);
+  }
+
   .md\:text-smoke-darkest {
     color: rgba(0, 0, 0, .9);
   }
@@ -18025,6 +18736,34 @@ Stroke effects - Nucleo outline icons
     color: transparent;
   }
 
+  .md\:hover\:text-opaque-darkest:hover {
+    color: rgba(255, 255, 255, .9);
+  }
+
+  .md\:hover\:text-opaque-darker:hover {
+    color: rgba(255, 255, 255, .75);
+  }
+
+  .md\:hover\:text-opaque-dark:hover {
+    color: rgba(255, 255, 255, .6);
+  }
+
+  .md\:hover\:text-opaque:hover {
+    color: rgba(255, 255, 255, .5);
+  }
+
+  .md\:hover\:text-opaque-light:hover {
+    color: rgba(255, 255, 255, .4);
+  }
+
+  .md\:hover\:text-opaque-lighter:hover {
+    color: rgba(255, 255, 255, .25);
+  }
+
+  .md\:hover\:text-opaque-lightest:hover {
+    color: rgba(255, 255, 255, .1);
+  }
+
   .md\:hover\:text-smoke-darkest:hover {
     color: rgba(0, 0, 0, .9);
   }
@@ -18355,6 +19094,34 @@ Stroke effects - Nucleo outline icons
 
   .md\:focus\:text-transparent:focus {
     color: transparent;
+  }
+
+  .md\:focus\:text-opaque-darkest:focus {
+    color: rgba(255, 255, 255, .9);
+  }
+
+  .md\:focus\:text-opaque-darker:focus {
+    color: rgba(255, 255, 255, .75);
+  }
+
+  .md\:focus\:text-opaque-dark:focus {
+    color: rgba(255, 255, 255, .6);
+  }
+
+  .md\:focus\:text-opaque:focus {
+    color: rgba(255, 255, 255, .5);
+  }
+
+  .md\:focus\:text-opaque-light:focus {
+    color: rgba(255, 255, 255, .4);
+  }
+
+  .md\:focus\:text-opaque-lighter:focus {
+    color: rgba(255, 255, 255, .25);
+  }
+
+  .md\:focus\:text-opaque-lightest:focus {
+    color: rgba(255, 255, 255, .1);
   }
 
   .md\:focus\:text-smoke-darkest:focus {
@@ -19132,6 +19899,34 @@ Stroke effects - Nucleo outline icons
     background-color: transparent;
   }
 
+  .lg\:bg-opaque-darkest {
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  .lg\:bg-opaque-darker {
+    background-color: rgba(255, 255, 255, .75);
+  }
+
+  .lg\:bg-opaque-dark {
+    background-color: rgba(255, 255, 255, .6);
+  }
+
+  .lg\:bg-opaque {
+    background-color: rgba(255, 255, 255, .5);
+  }
+
+  .lg\:bg-opaque-light {
+    background-color: rgba(255, 255, 255, .4);
+  }
+
+  .lg\:bg-opaque-lighter {
+    background-color: rgba(255, 255, 255, .25);
+  }
+
+  .lg\:bg-opaque-lightest {
+    background-color: rgba(255, 255, 255, .1);
+  }
+
   .lg\:bg-smoke-darkest {
     background-color: rgba(0, 0, 0, .9);
   }
@@ -19464,6 +20259,34 @@ Stroke effects - Nucleo outline icons
     background-color: transparent;
   }
 
+  .lg\:hover\:bg-opaque-darkest:hover {
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  .lg\:hover\:bg-opaque-darker:hover {
+    background-color: rgba(255, 255, 255, .75);
+  }
+
+  .lg\:hover\:bg-opaque-dark:hover {
+    background-color: rgba(255, 255, 255, .6);
+  }
+
+  .lg\:hover\:bg-opaque:hover {
+    background-color: rgba(255, 255, 255, .5);
+  }
+
+  .lg\:hover\:bg-opaque-light:hover {
+    background-color: rgba(255, 255, 255, .4);
+  }
+
+  .lg\:hover\:bg-opaque-lighter:hover {
+    background-color: rgba(255, 255, 255, .25);
+  }
+
+  .lg\:hover\:bg-opaque-lightest:hover {
+    background-color: rgba(255, 255, 255, .1);
+  }
+
   .lg\:hover\:bg-smoke-darkest:hover {
     background-color: rgba(0, 0, 0, .9);
   }
@@ -19794,6 +20617,34 @@ Stroke effects - Nucleo outline icons
 
   .lg\:focus\:bg-transparent:focus {
     background-color: transparent;
+  }
+
+  .lg\:focus\:bg-opaque-darkest:focus {
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  .lg\:focus\:bg-opaque-darker:focus {
+    background-color: rgba(255, 255, 255, .75);
+  }
+
+  .lg\:focus\:bg-opaque-dark:focus {
+    background-color: rgba(255, 255, 255, .6);
+  }
+
+  .lg\:focus\:bg-opaque:focus {
+    background-color: rgba(255, 255, 255, .5);
+  }
+
+  .lg\:focus\:bg-opaque-light:focus {
+    background-color: rgba(255, 255, 255, .4);
+  }
+
+  .lg\:focus\:bg-opaque-lighter:focus {
+    background-color: rgba(255, 255, 255, .25);
+  }
+
+  .lg\:focus\:bg-opaque-lightest:focus {
+    background-color: rgba(255, 255, 255, .1);
   }
 
   .lg\:focus\:bg-smoke-darkest:focus {
@@ -20192,6 +21043,34 @@ Stroke effects - Nucleo outline icons
     border-color: transparent;
   }
 
+  .lg\:border-opaque-darkest {
+    border-color: rgba(255, 255, 255, .9);
+  }
+
+  .lg\:border-opaque-darker {
+    border-color: rgba(255, 255, 255, .75);
+  }
+
+  .lg\:border-opaque-dark {
+    border-color: rgba(255, 255, 255, .6);
+  }
+
+  .lg\:border-opaque {
+    border-color: rgba(255, 255, 255, .5);
+  }
+
+  .lg\:border-opaque-light {
+    border-color: rgba(255, 255, 255, .4);
+  }
+
+  .lg\:border-opaque-lighter {
+    border-color: rgba(255, 255, 255, .25);
+  }
+
+  .lg\:border-opaque-lightest {
+    border-color: rgba(255, 255, 255, .1);
+  }
+
   .lg\:border-smoke-darkest {
     border-color: rgba(0, 0, 0, .9);
   }
@@ -20524,6 +21403,34 @@ Stroke effects - Nucleo outline icons
     border-color: transparent;
   }
 
+  .lg\:hover\:border-opaque-darkest:hover {
+    border-color: rgba(255, 255, 255, .9);
+  }
+
+  .lg\:hover\:border-opaque-darker:hover {
+    border-color: rgba(255, 255, 255, .75);
+  }
+
+  .lg\:hover\:border-opaque-dark:hover {
+    border-color: rgba(255, 255, 255, .6);
+  }
+
+  .lg\:hover\:border-opaque:hover {
+    border-color: rgba(255, 255, 255, .5);
+  }
+
+  .lg\:hover\:border-opaque-light:hover {
+    border-color: rgba(255, 255, 255, .4);
+  }
+
+  .lg\:hover\:border-opaque-lighter:hover {
+    border-color: rgba(255, 255, 255, .25);
+  }
+
+  .lg\:hover\:border-opaque-lightest:hover {
+    border-color: rgba(255, 255, 255, .1);
+  }
+
   .lg\:hover\:border-smoke-darkest:hover {
     border-color: rgba(0, 0, 0, .9);
   }
@@ -20854,6 +21761,34 @@ Stroke effects - Nucleo outline icons
 
   .lg\:focus\:border-transparent:focus {
     border-color: transparent;
+  }
+
+  .lg\:focus\:border-opaque-darkest:focus {
+    border-color: rgba(255, 255, 255, .9);
+  }
+
+  .lg\:focus\:border-opaque-darker:focus {
+    border-color: rgba(255, 255, 255, .75);
+  }
+
+  .lg\:focus\:border-opaque-dark:focus {
+    border-color: rgba(255, 255, 255, .6);
+  }
+
+  .lg\:focus\:border-opaque:focus {
+    border-color: rgba(255, 255, 255, .5);
+  }
+
+  .lg\:focus\:border-opaque-light:focus {
+    border-color: rgba(255, 255, 255, .4);
+  }
+
+  .lg\:focus\:border-opaque-lighter:focus {
+    border-color: rgba(255, 255, 255, .25);
+  }
+
+  .lg\:focus\:border-opaque-lightest:focus {
+    border-color: rgba(255, 255, 255, .1);
   }
 
   .lg\:focus\:border-smoke-darkest:focus {
@@ -23719,6 +24654,34 @@ Stroke effects - Nucleo outline icons
     color: transparent;
   }
 
+  .lg\:text-opaque-darkest {
+    color: rgba(255, 255, 255, .9);
+  }
+
+  .lg\:text-opaque-darker {
+    color: rgba(255, 255, 255, .75);
+  }
+
+  .lg\:text-opaque-dark {
+    color: rgba(255, 255, 255, .6);
+  }
+
+  .lg\:text-opaque {
+    color: rgba(255, 255, 255, .5);
+  }
+
+  .lg\:text-opaque-light {
+    color: rgba(255, 255, 255, .4);
+  }
+
+  .lg\:text-opaque-lighter {
+    color: rgba(255, 255, 255, .25);
+  }
+
+  .lg\:text-opaque-lightest {
+    color: rgba(255, 255, 255, .1);
+  }
+
   .lg\:text-smoke-darkest {
     color: rgba(0, 0, 0, .9);
   }
@@ -24051,6 +25014,34 @@ Stroke effects - Nucleo outline icons
     color: transparent;
   }
 
+  .lg\:hover\:text-opaque-darkest:hover {
+    color: rgba(255, 255, 255, .9);
+  }
+
+  .lg\:hover\:text-opaque-darker:hover {
+    color: rgba(255, 255, 255, .75);
+  }
+
+  .lg\:hover\:text-opaque-dark:hover {
+    color: rgba(255, 255, 255, .6);
+  }
+
+  .lg\:hover\:text-opaque:hover {
+    color: rgba(255, 255, 255, .5);
+  }
+
+  .lg\:hover\:text-opaque-light:hover {
+    color: rgba(255, 255, 255, .4);
+  }
+
+  .lg\:hover\:text-opaque-lighter:hover {
+    color: rgba(255, 255, 255, .25);
+  }
+
+  .lg\:hover\:text-opaque-lightest:hover {
+    color: rgba(255, 255, 255, .1);
+  }
+
   .lg\:hover\:text-smoke-darkest:hover {
     color: rgba(0, 0, 0, .9);
   }
@@ -24381,6 +25372,34 @@ Stroke effects - Nucleo outline icons
 
   .lg\:focus\:text-transparent:focus {
     color: transparent;
+  }
+
+  .lg\:focus\:text-opaque-darkest:focus {
+    color: rgba(255, 255, 255, .9);
+  }
+
+  .lg\:focus\:text-opaque-darker:focus {
+    color: rgba(255, 255, 255, .75);
+  }
+
+  .lg\:focus\:text-opaque-dark:focus {
+    color: rgba(255, 255, 255, .6);
+  }
+
+  .lg\:focus\:text-opaque:focus {
+    color: rgba(255, 255, 255, .5);
+  }
+
+  .lg\:focus\:text-opaque-light:focus {
+    color: rgba(255, 255, 255, .4);
+  }
+
+  .lg\:focus\:text-opaque-lighter:focus {
+    color: rgba(255, 255, 255, .25);
+  }
+
+  .lg\:focus\:text-opaque-lightest:focus {
+    color: rgba(255, 255, 255, .1);
   }
 
   .lg\:focus\:text-smoke-darkest:focus {
@@ -25158,6 +26177,34 @@ Stroke effects - Nucleo outline icons
     background-color: transparent;
   }
 
+  .xl\:bg-opaque-darkest {
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  .xl\:bg-opaque-darker {
+    background-color: rgba(255, 255, 255, .75);
+  }
+
+  .xl\:bg-opaque-dark {
+    background-color: rgba(255, 255, 255, .6);
+  }
+
+  .xl\:bg-opaque {
+    background-color: rgba(255, 255, 255, .5);
+  }
+
+  .xl\:bg-opaque-light {
+    background-color: rgba(255, 255, 255, .4);
+  }
+
+  .xl\:bg-opaque-lighter {
+    background-color: rgba(255, 255, 255, .25);
+  }
+
+  .xl\:bg-opaque-lightest {
+    background-color: rgba(255, 255, 255, .1);
+  }
+
   .xl\:bg-smoke-darkest {
     background-color: rgba(0, 0, 0, .9);
   }
@@ -25490,6 +26537,34 @@ Stroke effects - Nucleo outline icons
     background-color: transparent;
   }
 
+  .xl\:hover\:bg-opaque-darkest:hover {
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  .xl\:hover\:bg-opaque-darker:hover {
+    background-color: rgba(255, 255, 255, .75);
+  }
+
+  .xl\:hover\:bg-opaque-dark:hover {
+    background-color: rgba(255, 255, 255, .6);
+  }
+
+  .xl\:hover\:bg-opaque:hover {
+    background-color: rgba(255, 255, 255, .5);
+  }
+
+  .xl\:hover\:bg-opaque-light:hover {
+    background-color: rgba(255, 255, 255, .4);
+  }
+
+  .xl\:hover\:bg-opaque-lighter:hover {
+    background-color: rgba(255, 255, 255, .25);
+  }
+
+  .xl\:hover\:bg-opaque-lightest:hover {
+    background-color: rgba(255, 255, 255, .1);
+  }
+
   .xl\:hover\:bg-smoke-darkest:hover {
     background-color: rgba(0, 0, 0, .9);
   }
@@ -25820,6 +26895,34 @@ Stroke effects - Nucleo outline icons
 
   .xl\:focus\:bg-transparent:focus {
     background-color: transparent;
+  }
+
+  .xl\:focus\:bg-opaque-darkest:focus {
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  .xl\:focus\:bg-opaque-darker:focus {
+    background-color: rgba(255, 255, 255, .75);
+  }
+
+  .xl\:focus\:bg-opaque-dark:focus {
+    background-color: rgba(255, 255, 255, .6);
+  }
+
+  .xl\:focus\:bg-opaque:focus {
+    background-color: rgba(255, 255, 255, .5);
+  }
+
+  .xl\:focus\:bg-opaque-light:focus {
+    background-color: rgba(255, 255, 255, .4);
+  }
+
+  .xl\:focus\:bg-opaque-lighter:focus {
+    background-color: rgba(255, 255, 255, .25);
+  }
+
+  .xl\:focus\:bg-opaque-lightest:focus {
+    background-color: rgba(255, 255, 255, .1);
   }
 
   .xl\:focus\:bg-smoke-darkest:focus {
@@ -26218,6 +27321,34 @@ Stroke effects - Nucleo outline icons
     border-color: transparent;
   }
 
+  .xl\:border-opaque-darkest {
+    border-color: rgba(255, 255, 255, .9);
+  }
+
+  .xl\:border-opaque-darker {
+    border-color: rgba(255, 255, 255, .75);
+  }
+
+  .xl\:border-opaque-dark {
+    border-color: rgba(255, 255, 255, .6);
+  }
+
+  .xl\:border-opaque {
+    border-color: rgba(255, 255, 255, .5);
+  }
+
+  .xl\:border-opaque-light {
+    border-color: rgba(255, 255, 255, .4);
+  }
+
+  .xl\:border-opaque-lighter {
+    border-color: rgba(255, 255, 255, .25);
+  }
+
+  .xl\:border-opaque-lightest {
+    border-color: rgba(255, 255, 255, .1);
+  }
+
   .xl\:border-smoke-darkest {
     border-color: rgba(0, 0, 0, .9);
   }
@@ -26550,6 +27681,34 @@ Stroke effects - Nucleo outline icons
     border-color: transparent;
   }
 
+  .xl\:hover\:border-opaque-darkest:hover {
+    border-color: rgba(255, 255, 255, .9);
+  }
+
+  .xl\:hover\:border-opaque-darker:hover {
+    border-color: rgba(255, 255, 255, .75);
+  }
+
+  .xl\:hover\:border-opaque-dark:hover {
+    border-color: rgba(255, 255, 255, .6);
+  }
+
+  .xl\:hover\:border-opaque:hover {
+    border-color: rgba(255, 255, 255, .5);
+  }
+
+  .xl\:hover\:border-opaque-light:hover {
+    border-color: rgba(255, 255, 255, .4);
+  }
+
+  .xl\:hover\:border-opaque-lighter:hover {
+    border-color: rgba(255, 255, 255, .25);
+  }
+
+  .xl\:hover\:border-opaque-lightest:hover {
+    border-color: rgba(255, 255, 255, .1);
+  }
+
   .xl\:hover\:border-smoke-darkest:hover {
     border-color: rgba(0, 0, 0, .9);
   }
@@ -26880,6 +28039,34 @@ Stroke effects - Nucleo outline icons
 
   .xl\:focus\:border-transparent:focus {
     border-color: transparent;
+  }
+
+  .xl\:focus\:border-opaque-darkest:focus {
+    border-color: rgba(255, 255, 255, .9);
+  }
+
+  .xl\:focus\:border-opaque-darker:focus {
+    border-color: rgba(255, 255, 255, .75);
+  }
+
+  .xl\:focus\:border-opaque-dark:focus {
+    border-color: rgba(255, 255, 255, .6);
+  }
+
+  .xl\:focus\:border-opaque:focus {
+    border-color: rgba(255, 255, 255, .5);
+  }
+
+  .xl\:focus\:border-opaque-light:focus {
+    border-color: rgba(255, 255, 255, .4);
+  }
+
+  .xl\:focus\:border-opaque-lighter:focus {
+    border-color: rgba(255, 255, 255, .25);
+  }
+
+  .xl\:focus\:border-opaque-lightest:focus {
+    border-color: rgba(255, 255, 255, .1);
   }
 
   .xl\:focus\:border-smoke-darkest:focus {
@@ -29745,6 +30932,34 @@ Stroke effects - Nucleo outline icons
     color: transparent;
   }
 
+  .xl\:text-opaque-darkest {
+    color: rgba(255, 255, 255, .9);
+  }
+
+  .xl\:text-opaque-darker {
+    color: rgba(255, 255, 255, .75);
+  }
+
+  .xl\:text-opaque-dark {
+    color: rgba(255, 255, 255, .6);
+  }
+
+  .xl\:text-opaque {
+    color: rgba(255, 255, 255, .5);
+  }
+
+  .xl\:text-opaque-light {
+    color: rgba(255, 255, 255, .4);
+  }
+
+  .xl\:text-opaque-lighter {
+    color: rgba(255, 255, 255, .25);
+  }
+
+  .xl\:text-opaque-lightest {
+    color: rgba(255, 255, 255, .1);
+  }
+
   .xl\:text-smoke-darkest {
     color: rgba(0, 0, 0, .9);
   }
@@ -30077,6 +31292,34 @@ Stroke effects - Nucleo outline icons
     color: transparent;
   }
 
+  .xl\:hover\:text-opaque-darkest:hover {
+    color: rgba(255, 255, 255, .9);
+  }
+
+  .xl\:hover\:text-opaque-darker:hover {
+    color: rgba(255, 255, 255, .75);
+  }
+
+  .xl\:hover\:text-opaque-dark:hover {
+    color: rgba(255, 255, 255, .6);
+  }
+
+  .xl\:hover\:text-opaque:hover {
+    color: rgba(255, 255, 255, .5);
+  }
+
+  .xl\:hover\:text-opaque-light:hover {
+    color: rgba(255, 255, 255, .4);
+  }
+
+  .xl\:hover\:text-opaque-lighter:hover {
+    color: rgba(255, 255, 255, .25);
+  }
+
+  .xl\:hover\:text-opaque-lightest:hover {
+    color: rgba(255, 255, 255, .1);
+  }
+
   .xl\:hover\:text-smoke-darkest:hover {
     color: rgba(0, 0, 0, .9);
   }
@@ -30407,6 +31650,34 @@ Stroke effects - Nucleo outline icons
 
   .xl\:focus\:text-transparent:focus {
     color: transparent;
+  }
+
+  .xl\:focus\:text-opaque-darkest:focus {
+    color: rgba(255, 255, 255, .9);
+  }
+
+  .xl\:focus\:text-opaque-darker:focus {
+    color: rgba(255, 255, 255, .75);
+  }
+
+  .xl\:focus\:text-opaque-dark:focus {
+    color: rgba(255, 255, 255, .6);
+  }
+
+  .xl\:focus\:text-opaque:focus {
+    color: rgba(255, 255, 255, .5);
+  }
+
+  .xl\:focus\:text-opaque-light:focus {
+    color: rgba(255, 255, 255, .4);
+  }
+
+  .xl\:focus\:text-opaque-lighter:focus {
+    color: rgba(255, 255, 255, .25);
+  }
+
+  .xl\:focus\:text-opaque-lightest:focus {
+    color: rgba(255, 255, 255, .1);
   }
 
   .xl\:focus\:text-smoke-darkest:focus {

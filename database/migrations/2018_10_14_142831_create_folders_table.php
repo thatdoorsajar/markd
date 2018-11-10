@@ -17,7 +17,7 @@ class CreateFoldersTable extends Migration
             $table->increments('id');
             $table->string('slug')->unique();
             $table->string('title');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->text('notes')->nullable();
             $table->boolean('is_archived')->default(false);
             $table->boolean('top_folder')->default(false);

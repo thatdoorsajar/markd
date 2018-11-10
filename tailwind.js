@@ -46,6 +46,14 @@ View the full documentation at https://tailwindcss.com.
 let colors = {
   'transparent': 'transparent',
 
+  'opaque-darkest': 'rgba(255, 255, 255, 0.9)',
+  'opaque-darker': 'rgba(255, 255, 255, 0.75)',
+  'opaque-dark': 'rgba(255, 255, 255, 0.6)',
+  'opaque': 'rgba(255, 255, 255, 0.5)',
+  'opaque-light': 'rgba(255, 255, 255, 0.4)',
+  'opaque-lighter': 'rgba(255, 255, 255, 0.25)',
+  'opaque-lightest': 'rgba(255, 255, 255, 0.1)',
+
   'smoke-darkest': 'rgba(0, 0, 0, 0.9)',
   'smoke-darker': 'rgba(0, 0, 0, 0.75)',
   'smoke-dark': 'rgba(0, 0, 0, 0.6)',

@@ -10,6 +10,7 @@
     import FolderTree from './FolderTree.vue';
     import NewFolderForm from './NewFolderForm.vue';
     import { mapGetters } from 'vuex';
+    import { Sortable } from '@shopify/draggable';
 
     export default {
         components: {
@@ -19,6 +20,12 @@
 
         computed: mapGetters([
             'getFoldersTree'
-        ])
+        ]),
+
+        mounted() {
+            new Sortable(document.querySelectorAll('ul'), {
+                draggable: 'li'
+            });
+        }
     }
 </script>

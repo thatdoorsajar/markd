@@ -16,13 +16,10 @@ class CreateDomainsTable extends Migration
         Schema::create('domains', function (Blueprint $table) {
             $table->increments('id');
             $table->string('url_resolved');
-            $table->string('mime_type');
-            $table->string('encoding');
             $table->string('response_code');
-            $table->string('meta_title');
-            $table->string('meta_description');
-            $table->string('meta_image_url');
-            $table->string('lang');
+            $table->string('title');
+            $table->string('description');
+            $table->string('image_url');
             $table->timestamps();
         });
     }
