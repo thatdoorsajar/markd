@@ -19,7 +19,7 @@
 
 <script>
     import MarkdNavbar from '../components/MarkdNavbar.vue';
-    import FolderIndex from '../folders/FolderIndex.vue';
+    import FolderIndex from '../folders/nav/FolderIndex.vue';
     import { mapGetters, mapMutations } from 'vuex';
 
     export default {

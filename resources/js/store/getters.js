@@ -11,6 +11,8 @@ export const getFoldersTree = (state) =>  state.foldersTree;
 
 export const getFolderTop = (state) =>  state.foldersTree.find(f => f.top_folder == true);
 
-export const getFolder = (state) => (slug) => state.foldersFlat.find(f => f.slug == slug);
+export const getFolderBySlug = (state) => (slug) => state.foldersFlat.find(f => f.slug == slug);
+
+export const getFolderById = (state) => (id) => state.foldersFlat.find(f => f.id == id);
 
 export const getActiveFolder = (state) => state.activeFolder;

@@ -70,7 +70,7 @@ class FolderController extends Controller
      * @param  \App\Folder  $folder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Folder $folder)
+    public function update(Folder $folder, Request $request)
     {
         $folder->update(['title' => $request->folder_title]);
 
