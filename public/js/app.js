@@ -12989,7 +12989,53 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 13 */,
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(53)
+/* template */
+var __vue_template__ = __webpack_require__(54)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/folders/nav/NewFolderForm.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c03d08a4", Component.options)
+  } else {
+    hotAPI.reload("data-v-c03d08a4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -34611,7 +34657,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_MarkdNavbar_vue__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_MarkdNavbar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_MarkdNavbar_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__folders_nav_FolderIndex_vue__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__folders_nav_FolderIndex_vue__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__folders_nav_FolderIndex_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__folders_nav_FolderIndex_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(1);
 //
@@ -35064,13 +35110,707 @@ if (false) {
 }
 
 /***/ }),
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */,
-/* 55 */,
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(50)
+/* template */
+var __vue_template__ = __webpack_require__(57)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/folders/nav/FolderIndex.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-25bf3ec0", Component.options)
+  } else {
+    hotAPI.reload("data-v-25bf3ec0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FolderTree_vue__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FolderTree_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FolderTree_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NewFolderForm_vue__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NewFolderForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__NewFolderForm_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shopify_draggable__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shopify_draggable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__shopify_draggable__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        FolderTree: __WEBPACK_IMPORTED_MODULE_0__FolderTree_vue___default.a,
+        NewFolderForm: __WEBPACK_IMPORTED_MODULE_1__NewFolderForm_vue___default.a
+    },
+
+    data: function data() {
+        return {
+            draggedFolderId: 0,
+            dragOverFolderId: 0,
+            loading: false
+        };
+    },
+
+
+    computed: Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['getFoldersTree', 'getFolderById']),
+
+    mounted: function mounted() {
+        this.setupDragEvents();
+    },
+
+
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapMutations */])(['setFoldersFlat', 'setFoldersTree']), {
+        setupDragEvents: function setupDragEvents() {
+            var _this = this;
+
+            this.draggable = new __WEBPACK_IMPORTED_MODULE_3__shopify_draggable__["Draggable"](this.$refs.foldersTree, {
+                draggable: '.folder-draggable',
+                delay: 300,
+                mirror: {
+                    constrainDimensions: true
+                }
+            });
+
+            this.draggable.on('drag:start', function (evt) {
+                _this.draggedFolderId = evt.originalSource.dataset.folderId;
+            });
+
+            this.draggable.on('drag:over', function (evt) {
+                _this.dragOverFolderId = evt.data.over.dataset.folderId;
+            });
+
+            // @TODO: drag leave = dragOverFolderId set to 0
+
+            this.draggable.on('drag:stop', this.postFolderUpdate);
+        },
+        postFolderUpdate: function postFolderUpdate() {
+            var _this2 = this;
+
+            this.loading = true;
+
+            if (!this.folderUpdateValid()) {
+                this.loading = false;
+
+                return;
+            }
+
+            var data = {
+                folder_id: this.draggedFolderId,
+                new_parent_id: this.dragOverFolderId
+            };
+
+            // @TODO: remove dragged el from folder tree?
+
+            axios.patch('/api/folder-order', data).then(function (_ref) {
+                var data = _ref.data;
+
+                _this2.setFoldersFlat(data.foldersFlat);
+                _this2.setFoldersTree(data.foldersTree);
+                _this2.loading = false;
+                _this2.$router.push('/f/' + data.updatedFolderSlug);
+            });
+        },
+        folderUpdateValid: function folderUpdateValid() {
+            var _this3 = this;
+
+            var folderToMove = this.getFolderById(this.draggedFolderId);
+
+            if (this.draggedFolderId === this.dragOverFolderId) {
+                console.log('Cannot add folder to itself!');
+                return false;
+            }
+
+            //  @TODO: Cannot add folder to nothing (drop outside any folder)
+            //  drag leave in setupDragEvents = dragOverFolderId set to 0
+            //  check if dragOverFolderId is 0
+
+            if (folderToMove.parent_id == this.dragOverFolderId) {
+                console.log('Cannot add child to its parent!');
+                return false;
+            }
+
+            var match = folderToMove.children.filter(function (child) {
+                return child.id == _this3.dragOverFolderId;
+            });
+
+            if (match.length > 0) {
+                console.log('Cannot add parent to its children!');
+                return false;
+            }
+
+            return true;
+        }
+    })
+});
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(52)
+/* template */
+var __vue_template__ = __webpack_require__(55)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/folders/nav/FolderTree.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-61416b80", Component.options)
+  } else {
+    hotAPI.reload("data-v-61416b80", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 52 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__NewFolderForm_vue__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__NewFolderForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__NewFolderForm_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'folder-tree',
+
+    components: {
+        NewFolderForm: __WEBPACK_IMPORTED_MODULE_0__NewFolderForm_vue___default.a
+    },
+
+    props: {
+        folder: Object
+    },
+
+    data: function data() {
+        return {
+            isActiveFolder: false,
+            showChildren: false
+        };
+    },
+
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['getActiveFolder']), {
+        hasChildren: function hasChildren() {
+            return this.folder.children.length > 0;
+        }
+    }),
+
+    watch: {
+        getActiveFolder: function getActiveFolder() {
+            if (this.folder.slug != this.$route.params.slug) {
+                this.isActiveFolder = false;
+            } else {
+                this.isActiveFolder = true;
+            }
+        },
+        closeChildrenId: function closeChildrenId(id) {
+            if (this.folder.id == id) {
+                this.showChildren = false;
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 53 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        parent_id: {
+            type: Number,
+            default: null
+        }
+    },
+
+    data: function data() {
+        return {
+            showForm: false,
+            newFolderTitle: '',
+            loading: false
+        };
+    },
+
+
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])(['setFoldersFlat', 'setFoldersTree']), {
+        openNewFolderForm: function openNewFolderForm(el) {
+            var _this = this;
+
+            this.showForm = true;
+
+            this.$nextTick(function () {
+                return _this.$refs.folderForm.focus();
+            });
+        },
+        closeNewFolderForm: function closeNewFolderForm(el) {
+            this.showForm = false;
+
+            this.newFolderTitle = '';
+        },
+        submitNewFolder: function submitNewFolder() {
+            var _this2 = this;
+
+            var route = '/api/folder';
+            var data = {
+                parent_id: this.parent_id,
+                folder_title: this.newFolderTitle
+            };
+
+            this.loading = true;
+
+            axios.post(route, data).then(function (_ref) {
+                var data = _ref.data;
+
+                _this2.setFoldersFlat(data.foldersFlat);
+                _this2.setFoldersTree(data.foldersTree);
+                _this2.closeNewFolderForm();
+                _this2.loading = false;
+                _this2.$router.push('/f/' + data.newFolderSlug);
+            });
+        }
+    })
+});
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "button",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.showForm,
+            expression: "!showForm"
+          }
+        ],
+        staticClass:
+          "flex border-l-4 border-transparent font-semibold text-grey hover:text-teal trans:color icon-text-aligner focus:outline-none p-2 mb-4",
+        on: { click: _vm.openNewFolderForm }
+      },
+      [
+        _c("svg", { staticClass: "icon" }, [
+          _c("use", {
+            attrs: {
+              href: "/svg/icons.svg#icon-c-add",
+              "xlink:href": "/svg/icons.svg#icon-c-add"
+            }
+          })
+        ]),
+        _vm._v("\n         add\n    ")
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "relative mb-4" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.newFolderTitle,
+            expression: "newFolderTitle"
+          },
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.showForm,
+            expression: "showForm"
+          }
+        ],
+        ref: "folderForm",
+        staticClass:
+          "w-full h-auto bg-grey-light appearance-none border-2 border-grey-light rounded-sm text-base text-grey-darker font-semibold focus:outline-none focus:bg-grey-lighter focus:border-teal pl-8 pr-3 py-2",
+        class: { "opacity-50 cursor-not-allowed": _vm.loading },
+        attrs: { type: "text" },
+        domProps: { value: _vm.newFolderTitle },
+        on: {
+          blur: _vm.closeNewFolderForm,
+          keydown: [
+            function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "esc", 27, $event.key, "Escape")
+              ) {
+                return null
+              }
+              return _vm.closeNewFolderForm($event)
+            },
+            function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.submitNewFolder($event)
+            }
+          ],
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.newFolderTitle = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.showForm,
+              expression: "showForm"
+            }
+          ],
+          staticClass: "absolute",
+          staticStyle: { top: "50%", "margin-top": "-9px", left: "12px" }
+        },
+        [
+          _c("svg", { staticClass: "icon text-grey-light" }, [
+            _c("use", {
+              attrs: {
+                href: "/svg/icons.svg#icon-folder-15-2",
+                "xlink:href": "/svg/icons.svg#icon-folder-15-2"
+              }
+            })
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.loading,
+              expression: "loading"
+            }
+          ],
+          staticClass: "absolute",
+          staticStyle: { top: "50%", "margin-top": "-8px", right: "12px" }
+        },
+        [
+          _c("svg", { staticClass: "icon text-grey spin-normal" }, [
+            _c("use", {
+              attrs: {
+                href: "/svg/icons.svg#icon-circle",
+                "xlink:href": "/svg/icons.svg#icon-circle"
+              }
+            })
+          ])
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c03d08a4", module.exports)
+  }
+}
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return !_vm.folder.top_folder
+    ? _c("div", [
+        _c(
+          "div",
+          {
+            staticClass:
+              "flex justify-between border-l-4 border-transparent rounded-sm leading-normal hover:bg-grey-light folder-draggable mb-2",
+            class: { "bg-grey-light border-teal": _vm.isActiveFolder },
+            attrs: { "data-folder-id": _vm.folder.id }
+          },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass:
+                  "w-full h-auto text-grey-darker font-semibold no-underline icon-text-aligner p-2 pr-3 ",
+                attrs: { to: "/f/" + _vm.folder.slug }
+              },
+              [
+                _vm.isActiveFolder
+                  ? _c("svg", { staticClass: "icon mr-2" }, [
+                      _c("use", {
+                        attrs: {
+                          href: "/svg/icons.svg#icon-folder-18-2",
+                          "xlink:href": "/svg/icons.svg#icon-folder-18-2"
+                        }
+                      })
+                    ])
+                  : _c("svg", { staticClass: "icon mr-2" }, [
+                      _c("use", {
+                        attrs: {
+                          href: "/svg/icons.svg#icon-folder-15-2",
+                          "xlink:href": "/svg/icons.svg#icon-folder-15-2"
+                        }
+                      })
+                    ]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.folder.title))])
+              ]
+            ),
+            _vm._v(" "),
+            _vm.hasChildren
+              ? _c(
+                  "button",
+                  {
+                    staticClass:
+                      "text-grey-darker font-semibold hover:bg-teal trans:bg rounded-r-sm icon-text-aligner p-2 px-3",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.showChildren = !_vm.showChildren
+                      }
+                    }
+                  },
+                  [
+                    _vm.hasChildren
+                      ? _c(
+                          "svg",
+                          {
+                            staticClass: "icon trans:rotate",
+                            class: { "rotate-180": _vm.showChildren }
+                          },
+                          [
+                            _c("use", {
+                              attrs: {
+                                href: "/svg/icons.svg#icon-stre-down-2",
+                                "xlink:href": "icons/icons.svg#icon-stre-down-2"
+                              }
+                            })
+                          ]
+                        )
+                      : _vm._e()
+                  ]
+                )
+              : _vm._e()
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.hasChildren && _vm.showChildren,
+                expression: "hasChildren && showChildren"
+              }
+            ],
+            staticClass: "ml-6"
+          },
+          _vm._l(_vm.folder.children, function(folder) {
+            return _c("folder-tree", {
+              key: folder.id,
+              attrs: { folder: folder }
+            })
+          })
+        )
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-61416b80", module.exports)
+  }
+}
+
+/***/ }),
 /* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -42095,7 +42835,72 @@ exports.Plugins = Plugins;
 });
 
 /***/ }),
-/* 57 */,
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "flex justify-between mb-4" }, [
+        _c("h3", { staticClass: "font-century text-lg text-grey" }, [
+          _vm._v("FOLDERS")
+        ]),
+        _vm._v(" "),
+        _c(
+          "svg",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.loading,
+                expression: "loading"
+              }
+            ],
+            staticClass: "icon text-grey spin-normal"
+          },
+          [
+            _c("use", {
+              attrs: {
+                href: "/svg/icons.svg#icon-circle",
+                "xlink:href": "/svg/icons.svg#icon-circle"
+              }
+            })
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { ref: "foldersTree" },
+        _vm._l(_vm.getFoldersTree, function(folder) {
+          return _c("folder-tree", {
+            key: folder.id,
+            attrs: { folder: folder }
+          })
+        })
+      ),
+      _vm._v(" "),
+      _c("new-folder-form")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-25bf3ec0", module.exports)
+  }
+}
+
+/***/ }),
 /* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -47521,824 +48326,6 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 96 */,
-/* 97 */,
-/* 98 */,
-/* 99 */,
-/* 100 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(105)
-/* template */
-var __vue_template__ = __webpack_require__(106)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/folders/nav/NewFolderForm.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c03d08a4", Component.options)
-  } else {
-    hotAPI.reload("data-v-c03d08a4", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 101 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(102)
-/* template */
-var __vue_template__ = __webpack_require__(108)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/folders/nav/FolderIndex.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-25bf3ec0", Component.options)
-  } else {
-    hotAPI.reload("data-v-25bf3ec0", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 102 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FolderTree_vue__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FolderTree_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FolderTree_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NewFolderForm_vue__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NewFolderForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__NewFolderForm_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shopify_draggable__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shopify_draggable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__shopify_draggable__);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        FolderTree: __WEBPACK_IMPORTED_MODULE_0__FolderTree_vue___default.a,
-        NewFolderForm: __WEBPACK_IMPORTED_MODULE_1__NewFolderForm_vue___default.a
-    },
-
-    data: function data() {
-        return {
-            draggedFolderId: 0,
-            dragOverFolderId: 0,
-            loading: false
-        };
-    },
-
-
-    computed: Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['getFoldersTree', 'getFolderById']),
-
-    mounted: function mounted() {
-        this.setupDragEvents();
-    },
-
-
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapMutations */])(['setFoldersFlat', 'setFoldersTree']), {
-        setupDragEvents: function setupDragEvents() {
-            var _this = this;
-
-            this.draggable = new __WEBPACK_IMPORTED_MODULE_3__shopify_draggable__["Draggable"](this.$refs.foldersTree, {
-                draggable: '.folder-draggable',
-                delay: 300,
-                mirror: {
-                    constrainDimensions: true
-                }
-            });
-
-            this.draggable.on('drag:start', function (evt) {
-                _this.draggedFolderId = evt.originalSource.dataset.folderId;
-            });
-
-            this.draggable.on('drag:over', function (evt) {
-                _this.dragOverFolderId = evt.data.over.dataset.folderId;
-            });
-
-            // @TODO: drag leave = dragOverFolderId set to 0
-
-            this.draggable.on('drag:stop', this.postFolderUpdate);
-        },
-        postFolderUpdate: function postFolderUpdate() {
-            var _this2 = this;
-
-            this.loading = true;
-
-            if (!this.folderUpdateValid()) {
-                this.loading = false;
-
-                return;
-            }
-
-            var data = {
-                folder_id: this.draggedFolderId,
-                new_parent_id: this.dragOverFolderId
-            };
-
-            // @TODO: remove dragged el from folder tree?
-
-            axios.patch('/api/folder-order', data).then(function (_ref) {
-                var data = _ref.data;
-
-                _this2.setFoldersFlat(data.foldersFlat);
-                _this2.setFoldersTree(data.foldersTree);
-                _this2.loading = false;
-                _this2.$router.push('/f/' + data.updatedFolderSlug);
-            });
-        },
-        folderUpdateValid: function folderUpdateValid() {
-            var _this3 = this;
-
-            var folderToMove = this.getFolderById(this.draggedFolderId);
-
-            if (this.draggedFolderId === this.dragOverFolderId) {
-                console.log('Cannot add folder to itself!');
-                return false;
-            }
-
-            //  @TODO: Cannot add folder to nothing (drop outside any folder)
-            //  drag leave in setupDragEvents = dragOverFolderId set to 0
-            //  check if dragOverFolderId is 0
-
-            if (folderToMove.parent_id == this.dragOverFolderId) {
-                console.log('Cannot add child to its parent!');
-                return false;
-            }
-
-            var match = folderToMove.children.filter(function (child) {
-                return child.id == _this3.dragOverFolderId;
-            });
-
-            if (match.length > 0) {
-                console.log('Cannot add parent to its children!');
-                return false;
-            }
-
-            return true;
-        }
-    })
-});
-
-/***/ }),
-/* 103 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(104)
-/* template */
-var __vue_template__ = __webpack_require__(107)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/folders/nav/FolderTree.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-61416b80", Component.options)
-  } else {
-    hotAPI.reload("data-v-61416b80", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 104 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__NewFolderForm_vue__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__NewFolderForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__NewFolderForm_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(1);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'folder-tree',
-
-    components: {
-        NewFolderForm: __WEBPACK_IMPORTED_MODULE_0__NewFolderForm_vue___default.a
-    },
-
-    props: {
-        folder: Object
-    },
-
-    data: function data() {
-        return {
-            isActiveFolder: false,
-            showChildren: false
-        };
-    },
-
-
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['getActiveFolder']), {
-        hasChildren: function hasChildren() {
-            return this.folder.children.length > 0;
-        }
-    }),
-
-    watch: {
-        getActiveFolder: function getActiveFolder() {
-            if (this.folder.slug != this.$route.params.slug) {
-                this.isActiveFolder = false;
-            } else {
-                this.isActiveFolder = true;
-            }
-        },
-        closeChildrenId: function closeChildrenId(id) {
-            if (this.folder.id == id) {
-                this.showChildren = false;
-            }
-        }
-    }
-});
-
-/***/ }),
-/* 105 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        parent_id: {
-            type: Number,
-            default: null
-        }
-    },
-
-    data: function data() {
-        return {
-            showForm: false,
-            newFolderTitle: '',
-            loading: false
-        };
-    },
-
-
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])(['setFoldersFlat', 'setFoldersTree']), {
-        openNewFolderForm: function openNewFolderForm(el) {
-            var _this = this;
-
-            this.showForm = true;
-
-            this.$nextTick(function () {
-                return _this.$refs.folderForm.focus();
-            });
-        },
-        closeNewFolderForm: function closeNewFolderForm(el) {
-            this.showForm = false;
-
-            this.newFolderTitle = '';
-        },
-        submitNewFolder: function submitNewFolder() {
-            var _this2 = this;
-
-            var route = '/api/folder';
-            var data = {
-                parent_id: this.parent_id,
-                folder_title: this.newFolderTitle
-            };
-
-            this.loading = true;
-
-            axios.post(route, data).then(function (_ref) {
-                var data = _ref.data;
-
-                _this2.setFoldersFlat(data.foldersFlat);
-                _this2.setFoldersTree(data.foldersTree);
-                _this2.closeNewFolderForm();
-                _this2.loading = false;
-                _this2.$router.push('/f/' + data.newFolderSlug);
-            });
-        }
-    })
-});
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "button",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: !_vm.showForm,
-            expression: "!showForm"
-          }
-        ],
-        staticClass:
-          "flex border-l-4 border-transparent font-semibold text-grey hover:text-teal trans:color icon-text-aligner focus:outline-none p-2 mb-4",
-        on: { click: _vm.openNewFolderForm }
-      },
-      [
-        _c("svg", { staticClass: "icon" }, [
-          _c("use", {
-            attrs: {
-              href: "/svg/icons.svg#icon-c-add",
-              "xlink:href": "/svg/icons.svg#icon-c-add"
-            }
-          })
-        ]),
-        _vm._v("\n         add\n    ")
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "relative mb-4" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newFolderTitle,
-            expression: "newFolderTitle"
-          },
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.showForm,
-            expression: "showForm"
-          }
-        ],
-        ref: "folderForm",
-        staticClass:
-          "w-full h-auto bg-grey-light appearance-none border-2 border-grey-light rounded-sm text-base text-grey-darker font-semibold focus:outline-none focus:bg-grey-lighter focus:border-teal pl-8 pr-3 py-2",
-        class: { "opacity-50 cursor-not-allowed": _vm.loading },
-        attrs: { type: "text" },
-        domProps: { value: _vm.newFolderTitle },
-        on: {
-          blur: _vm.closeNewFolderForm,
-          keydown: [
-            function($event) {
-              if (
-                !("button" in $event) &&
-                _vm._k($event.keyCode, "esc", 27, $event.key, "Escape")
-              ) {
-                return null
-              }
-              return _vm.closeNewFolderForm($event)
-            },
-            function($event) {
-              if (
-                !("button" in $event) &&
-                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-              ) {
-                return null
-              }
-              return _vm.submitNewFolder($event)
-            }
-          ],
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.newFolderTitle = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.showForm,
-              expression: "showForm"
-            }
-          ],
-          staticClass: "absolute",
-          staticStyle: { top: "50%", "margin-top": "-9px", left: "12px" }
-        },
-        [
-          _c("svg", { staticClass: "icon text-grey-light" }, [
-            _c("use", {
-              attrs: {
-                href: "/svg/icons.svg#icon-folder-15-2",
-                "xlink:href": "/svg/icons.svg#icon-folder-15-2"
-              }
-            })
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.loading,
-              expression: "loading"
-            }
-          ],
-          staticClass: "absolute",
-          staticStyle: { top: "50%", "margin-top": "-8px", right: "12px" }
-        },
-        [
-          _c("svg", { staticClass: "icon text-grey spin-normal" }, [
-            _c("use", {
-              attrs: {
-                href: "/svg/icons.svg#icon-circle",
-                "xlink:href": "/svg/icons.svg#icon-circle"
-              }
-            })
-          ])
-        ]
-      )
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-c03d08a4", module.exports)
-  }
-}
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return !_vm.folder.top_folder
-    ? _c("div", [
-        _c(
-          "div",
-          {
-            staticClass:
-              "flex justify-between border-l-4 border-transparent rounded-sm leading-normal hover:bg-grey-light folder-draggable mb-2",
-            class: { "bg-grey-light border-teal": _vm.isActiveFolder },
-            attrs: { "data-folder-id": _vm.folder.id }
-          },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass:
-                  "w-full h-auto text-grey-darker font-semibold no-underline icon-text-aligner p-2 pr-3 ",
-                attrs: { to: "/f/" + _vm.folder.slug }
-              },
-              [
-                _vm.isActiveFolder
-                  ? _c("svg", { staticClass: "icon mr-2" }, [
-                      _c("use", {
-                        attrs: {
-                          href: "/svg/icons.svg#icon-folder-18-2",
-                          "xlink:href": "/svg/icons.svg#icon-folder-18-2"
-                        }
-                      })
-                    ])
-                  : _c("svg", { staticClass: "icon mr-2" }, [
-                      _c("use", {
-                        attrs: {
-                          href: "/svg/icons.svg#icon-folder-15-2",
-                          "xlink:href": "/svg/icons.svg#icon-folder-15-2"
-                        }
-                      })
-                    ]),
-                _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(_vm.folder.title))])
-              ]
-            ),
-            _vm._v(" "),
-            _vm.hasChildren
-              ? _c(
-                  "button",
-                  {
-                    staticClass:
-                      "text-grey-darker font-semibold hover:bg-teal trans:bg rounded-r-sm icon-text-aligner p-2 px-3",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        _vm.showChildren = !_vm.showChildren
-                      }
-                    }
-                  },
-                  [
-                    _vm.hasChildren
-                      ? _c(
-                          "svg",
-                          {
-                            staticClass: "icon trans:rotate",
-                            class: { "rotate-180": _vm.showChildren }
-                          },
-                          [
-                            _c("use", {
-                              attrs: {
-                                href: "/svg/icons.svg#icon-stre-down-2",
-                                "xlink:href": "icons/icons.svg#icon-stre-down-2"
-                              }
-                            })
-                          ]
-                        )
-                      : _vm._e()
-                  ]
-                )
-              : _vm._e()
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.hasChildren && _vm.showChildren,
-                expression: "hasChildren && showChildren"
-              }
-            ],
-            staticClass: "ml-6"
-          },
-          _vm._l(_vm.folder.children, function(folder) {
-            return _c("folder-tree", {
-              key: folder.id,
-              attrs: { folder: folder }
-            })
-          })
-        )
-      ])
-    : _vm._e()
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-61416b80", module.exports)
-  }
-}
-
-/***/ }),
-/* 108 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "flex justify-between mb-4" }, [
-        _c("h3", { staticClass: "font-century text-lg text-grey" }, [
-          _vm._v("FOLDERS")
-        ]),
-        _vm._v(" "),
-        _c(
-          "svg",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.loading,
-                expression: "loading"
-              }
-            ],
-            staticClass: "icon text-grey spin-normal"
-          },
-          [
-            _c("use", {
-              attrs: {
-                href: "/svg/icons.svg#icon-circle",
-                "xlink:href": "/svg/icons.svg#icon-circle"
-              }
-            })
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { ref: "foldersTree" },
-        _vm._l(_vm.getFoldersTree, function(folder) {
-          return _c("folder-tree", {
-            key: folder.id,
-            attrs: { folder: folder }
-          })
-        })
-      ),
-      _vm._v(" "),
-      _c("new-folder-form")
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-25bf3ec0", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

@@ -10,6 +10,7 @@ $factory->define(App\Markd\Folder::class, function (Faker $faker) {
         'notes'       => $faker->paragraph(3),
         'is_archived' => $faker->boolean(10),
         'top_folder'  => false,
+        'order_index' => rand(0, 100),
         'user_id'     => function () {
             return factory(App\Accounts\User::class)->create()->id;
         }
