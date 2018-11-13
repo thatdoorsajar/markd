@@ -725,6 +725,16 @@ table {
           animation: spin 2s infinite linear;
 }
 
+.draggable-mirror {
+  background-color: #4dc0b5;
+  border-color: #4dc0b5;
+}
+
+.draggable--over {
+  background-color: #4dc0b5;
+  border-color: #4dc0b5;
+}
+
 /* Generated using nucleoapp.com */
 
 /* --------------------------------

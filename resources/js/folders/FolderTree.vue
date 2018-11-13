@@ -1,10 +1,10 @@
 <template>
     <div v-if="!folder.top_folder">
-
-        <div class="flex justify-between border-l-4 border-transparent rounded-sm leading-normal hover:bg-grey-light mb-2"
-            :class="{'bg-grey-light border-teal': isActiveFolder}">
+        <div class="flex justify-between border-l-4 border-transparent rounded-sm leading-normal hover:bg-grey-light folder-draggable mb-2"
+            :class="{'bg-grey-light border-teal': isActiveFolder}"
+            :data-folder="folder.id">
             <router-link :to="`/f/${folder.slug}`" 
-                class="w-full h-auto text-grey-darker font-semibold no-underline icon-text-aligner p-2 pr-3">
+                class="w-full h-auto text-grey-darker font-semibold no-underline icon-text-aligner p-2 pr-3 ">
                 <svg class="icon mr-2" v-if="isActiveFolder">
                     <use href="/svg/icons.svg#icon-folder-18-2" xlink:href="/svg/icons.svg#icon-folder-18-2"/>
                 </svg>
@@ -24,7 +24,6 @@
         </div>
         <div class="ml-6" v-show="hasChildren && showChildren">
             <folder-tree v-for="folder in folder.children" :key="folder.id" :folder="folder"/>
-            <!-- <new-folder-form :parent_id="folder.id"/> -->
         </div>
     </div>
 </template>
@@ -41,13 +40,13 @@
         },
 
         props: {
-            folder: Object
+            folder: Object,
         },
 
         data() {
             return {
                 isActiveFolder: false,
-                showChildren: false
+                showChildren: false,
             }
         },
 
@@ -68,6 +67,12 @@
                 } else {
                     this.isActiveFolder = true;
                 }
+            },
+
+            closeChildrenId(id) {
+                if (this.folder.id == id) {
+                    this.showChildren = false;
+                }                
             }
         }
     }

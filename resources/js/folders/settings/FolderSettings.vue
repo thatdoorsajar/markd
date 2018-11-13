@@ -11,16 +11,16 @@
             <div v-show="showDropDown" class="absolute pin-r border-2 shadow rounded bg-white mt-2">
                 <ul class="w-40 list-reset font-sans font-semibold text-grey-darker">
                     <li class="hover:bg-grey-light rounded-t-sm">
-                        <edit-title/>
+                        <edit-title @close-drop-down="showDropDown = false"/>
                     </li>
                     <li class="hover:bg-grey-light">
-                        <add-sub-folder/>
+                        <add-sub-folder @close-drop-down="showDropDown = false"/>
                     </li>
                     <li class="hover:bg-grey-light">
-                        <archive-folder/>
+                        <archive-folder @close-drop-down="showDropDown = false"/>
                     </li>
                     <li class="hover:bg-grey-light rounded-b-sm">
-                        <delete-folder/>
+                        <delete-folder @close-drop-down="showDropDown = false"/>
                     </li>
                 </ul>
             </div>

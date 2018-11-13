@@ -6,13 +6,13 @@
             </svg>
         </div>
         <div v-if="!loading && getActiveFolder.bookmarks.length > 0">
-            <div v-for="bookmark in getActiveFolder.bookmarks" :key="bookmark.id"
+            <div v-for="(bookmark, index) in getActiveFolder.bookmarks" :key="bookmark.id"
                 class="flex p-4 rounded hover:bg-teal-lighter"
                 @mouseenter="mouseover = bookmark.id"
                 @mouseleave="mouseover = null">
                 <div class="w-1/10 mr-4 mb-0">
                     <a :href="`#/f/${getActiveFolder.slug}/bm/${bookmark.id}`" class="no-underline">
-                        <img :src="bookmark.image_url" alt="Bookmark Image" class="rounded">
+                        <img :src="`/img/example-thumb${++index}.jpg`" alt="Bookmark Image" class="rounded">
                     </a>
                 </div>
                 <div class="flex-1">

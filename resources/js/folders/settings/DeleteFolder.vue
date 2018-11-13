@@ -2,7 +2,7 @@
     <div>
         <a href="#" 
             class="flex text-red no-underline px-4 py-3" 
-            @click.prevent="modalOpen = true">
+            @click.prevent="openModalCloseDropDown">
             <svg class="icon text-red mr-2"><use href="/svg/icons.svg#icon-trash-can" xlink:href="/svg/icons.svg#icon-trash-can"/></svg>
             <span>delete</span>
         </a>
@@ -48,7 +48,11 @@
         ]),
 
         methods: {
-            //
+            openModalCloseDropDown() {
+                this.modalOpen = true;
+
+                this.$emit('close-drop-down');
+            }
         }
     }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="flex justify-between mb-4">
-            <h3 class="font-century text-lg text-grey">{{ getActiveFolder.title }} marks</h3>
+            <h1 class="font-century text-xl2 text-grey-darkest leading-none mb-4">{{ getActiveFolder.title }}</h1>
             <!-- <div class="flex items-center"> -->
                 <!-- <button type="button" class="flex items-center focus:outline-none mr-3"
                     @click="viewFormat = 'card'">

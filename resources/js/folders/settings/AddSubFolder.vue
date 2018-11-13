@@ -2,7 +2,7 @@
     <div>
         <a href="#" 
             class="flex text-grey-darker no-underline px-4 py-3"
-            @click.prevent="modalOpen = true">
+            @click.prevent="openModalCloseDropDown">
             <svg class="icon text-grey-darker mr-2"><use href="/svg/icons.svg#icon-c-add" xlink:href="/svg/icons.svg#icon-c-add"/></svg>
             <span>sub folder</span>
         </a>
@@ -80,6 +80,12 @@
                 'setFoldersTree',
                 'setActiveFolder'
             ]),
+
+            openModalCloseDropDown() {
+                this.modalOpen = true;
+
+                this.$emit('close-drop-down');
+            },
 
             closeModal(el) {
                 this.loading = this.modalOpen = false;
