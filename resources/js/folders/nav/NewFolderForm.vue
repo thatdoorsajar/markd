@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="leading-normal">
         <button class="flex border-l-4 border-transparent font-semibold text-grey hover:text-teal trans:color icon-text-aligner focus:outline-none p-2 mb-4"
             v-show="!showForm"
             @click="openNewFolderForm">
@@ -18,12 +18,12 @@
                 @keydown.esc="closeNewFolderForm"
                 @keydown.enter="submitNewFolder"
                 :class="{'opacity-50 cursor-not-allowed': loading}">
-            <div class="absolute" v-show="showForm" style="top: 50%; margin-top: -9px; left: 12px">
+            <div class="absolute" v-show="showForm" style="top: 50%; margin-top: -10px; left: 12px">
                 <svg class="icon text-grey-light">
                     <use href="/svg/icons.svg#icon-folder-15-2" xlink:href="/svg/icons.svg#icon-folder-15-2"/>
                 </svg>
             </div>
-            <div class="absolute" v-show="loading" style="top: 50%; margin-top: -8px; right: 12px">
+            <div class="absolute" v-show="loading" style="top: 50%; margin-top: -10px; right: 12px">
                 <svg class="icon text-grey spin-normal">
                     <use href="/svg/icons.svg#icon-circle" xlink:href="/svg/icons.svg#icon-circle"/>
                 </svg>

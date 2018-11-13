@@ -7,24 +7,25 @@
             </svg>
         </div>
         <div ref="foldersTree">
-            <folder-tree 
+            <folder-node 
                 v-for="folder in getFoldersTree" 
                 :key="folder.id" 
-                :folder="folder"/>
+                :folder="folder"
+                :loading-folder-id="loadingFolderId"/>
         </div>
         <new-folder-form/>
     </div>
 </template>
 
 <script>
-    import FolderTree from './FolderTree.vue';
+    import FolderNode from './FolderNode.vue';
     import NewFolderForm from './NewFolderForm.vue';
     import { mapGetters, mapMutations } from 'vuex';
     import { Draggable } from '@shopify/draggable';
 
     export default {
         components: {
-            FolderTree,
+            FolderNode,
             NewFolderForm
         },
 
@@ -32,7 +33,8 @@
             return {
                 draggedFolderId: 0,
                 dragOverFolderId: 0,
-                loading: false
+                loading: false,
+                loadingFolderId: 0
             }
         },
 
@@ -74,10 +76,10 @@
             },
 
             postFolderUpdate() {
-                this.loading = true;
+                this.loadingFolderId = this.dragOverFolderId;
 
                 if (!this.folderUpdateValid()) {
-                    this.loading = false;
+                    this.loadingFolderId = 0;
 
                     return;
                 }
@@ -92,7 +94,7 @@
                 axios.patch('/api/folder-order', data).then(({ data }) => {
                     this.setFoldersFlat(data.foldersFlat);
                     this.setFoldersTree(data.foldersTree);
-                    this.loading = false;
+                    this.loadingFolderId = 0;
                     this.$router.push(`/f/${data.updatedFolderSlug}`);
                 });
             },
@@ -116,6 +118,8 @@
 
                 let match = folderToMove.children.filter((child) => {
                     return child.id == this.dragOverFolderId;
+
+                    // @TODO: this only gets children one level deep 
                 });
 
                 if (match.length > 0) {
