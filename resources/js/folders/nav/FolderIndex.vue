@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="flex justify-between mb-4">
+        <div class="flex justify-between mb-3">
             <h3 class="font-century text-lg text-grey">FOLDERS</h3>
             <svg class="icon text-grey spin-normal" v-show="loading">
                 <use href="/svg/icons.svg#icon-circle" xlink:href="/svg/icons.svg#icon-circle"/>

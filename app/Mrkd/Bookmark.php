@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Markd;
+namespace App\Mrkd;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,6 +29,6 @@ class Bookmark extends Model
      */
     public function folder()
     {
-        return $this->belongsTo('App\Markd\Folder');
+        return $this->belongsTo('App\Mrkd\Folder');
     }
 }

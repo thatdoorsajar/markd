@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Markd;
+namespace App\Mrkd;
 
 use Illuminate\Database\Eloquent\Model;
 

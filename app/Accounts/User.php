@@ -40,7 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function folders()
     {
-        return $this->hasMany('App\Markd\Folder');
+        return $this->hasMany('App\Mrkd\Folder');
     }
 
     /**
@@ -56,6 +56,6 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function bookmarks()
     {
-        return $this->hasMany('App\Markd\Bookmark');
+        return $this->hasMany('App\Mrkd\Bookmark');
     }
 }

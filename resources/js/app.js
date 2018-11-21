@@ -7,7 +7,7 @@ require('./bootstrap');
 /**
  * Vue top level component setup.
  */
-Vue.component('markd-app', require('./components/MarkdApp.vue'));
+Vue.component('mrkd-app', require('./components/MrkdApp.vue'));
 
 /**
  * Vue helper components import.

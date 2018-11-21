@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Markd\Bookmark;
+use App\Mrkd\Bookmark;
 use Illuminate\Http\Request;
 use App\Jobs\ProcessBookmarkUrl;
 use App\Http\Controllers\Controller;

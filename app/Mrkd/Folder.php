@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Markd;
+namespace App\Mrkd;
 
 use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -48,6 +48,6 @@ class Folder extends Model
      */
     public function bookmarks()
     {
-        return $this->hasMany('App\Markd\Bookmark');
+        return $this->hasMany('App\Mrkd\Bookmark');
     }
 }

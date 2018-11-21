@@ -7,7 +7,7 @@
         <title>{{ config('app.name') }}</title>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script>
-            window.Markd = {!! json_encode([
+            window.Mrkd = {!! json_encode([
                 'csrfToken' => csrf_token(),
                 'apiToken'  => $currentUser->api_token
             ]) !!};
@@ -16,7 +16,7 @@
     {{-- bg-indigo-grey1 --}}
     <body class="h-screen">
         <div id="app">
-            <markd-app 
+            <mrkd-app 
                 :init-user="{{ $currentUser }}"
                 :init-folders-flat="{{ $foldersFlat }}"
                 :init-folders-tree="{{ $foldersTree }}"/>

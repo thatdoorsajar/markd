@@ -11,9 +11,9 @@
         <div class="relative mb-4">
             <input class="w-full h-auto bg-grey-light appearance-none border-2 border-grey-light rounded-sm text-base text-grey-darker font-semibold focus:outline-none focus:bg-grey-lighter focus:border-teal pl-8 pr-3 py-2"
                 type="text" 
+                ref="newFolderInput"
                 v-model="newFolderTitle"
                 v-show="showForm" 
-                ref="folderForm"
                 @blur="closeNewFolderForm"
                 @keydown.esc="closeNewFolderForm"
                 @keydown.enter="submitNewFolder"
@@ -60,7 +60,7 @@
             openNewFolderForm(el) {
                 this.showForm = true;
 
-                this.$nextTick(() => this.$refs.folderForm.focus());
+                this.$nextTick(() => this.$refs.newFolderInput.focus());
             },
 
             closeNewFolderForm(el) {

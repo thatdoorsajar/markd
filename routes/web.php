@@ -15,7 +15,7 @@
 Route::get('/', 'PublicController@index');
 
 // App Routes
-Route::get('app', 'MarkdController@index')->name('app.home');
+Route::get('app', 'MrkdController@index')->name('app.home');
 Route::post('folder', 'FolderController@store');
 
 // Sign In Routes

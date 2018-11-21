@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Markd\Folder;
+use App\Mrkd\Folder;
 use App\Accounts\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;

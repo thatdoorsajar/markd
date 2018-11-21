@@ -8,14 +8,14 @@
                 <svg class="icon text-grey spin-normal mr-2" v-if="loading">
                     <use href="/svg/icons.svg#icon-circle" xlink:href="/svg/icons.svg#icon-circle"/>
                 </svg>
-                <div v-else>
+                <template v-else>
                     <svg class="icon mr-2" v-if="isActiveFolder">
                         <use href="/svg/icons.svg#icon-folder-18-2" xlink:href="/svg/icons.svg#icon-folder-18-2"/>
                     </svg>
                     <svg class="icon mr-2" v-else>
                         <use href="/svg/icons.svg#icon-folder-15-2" xlink:href="/svg/icons.svg#icon-folder-15-2"/>
                     </svg>
-                </div>
+                </template>
                 <p>{{ folder.title }}</p>
             </router-link>
             <button class="text-grey-darker font-semibold hover:bg-teal trans:bg rounded-r-sm icon-text-aligner p-2 px-3"

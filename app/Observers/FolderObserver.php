@@ -2,14 +2,14 @@
 
 namespace App\Observers;
 
-use App\Markd\Folder;
+use App\Mrkd\Folder;
 
 class FolderObserver
 {
     /**
      * Handle the folder "created" event.
      *
-     * @param  \App\Markd\Folder  $folder
+     * @param  \App\Mrkd\Folder  $folder
      * @return void
      */
     public function created(Folder $folder)
@@ -20,7 +20,7 @@ class FolderObserver
     /**
      * Handle the folder "updated" event.
      *
-     * @param  \App\Markd\Folder  $folder
+     * @param  \App\Mrkd\Folder  $folder
      * @return void
      */
     public function updated(Folder $folder)
@@ -31,7 +31,7 @@ class FolderObserver
     /**
      * Handle the folder "updating" event.
      *
-     * @param  \App\Markd\Folder  $folder
+     * @param  \App\Mrkd\Folder  $folder
      * @return void
      */
     public function updating(Folder $folder)

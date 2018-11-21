@@ -13,15 +13,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        \App\Markd\Folder::creating(function ($folder) {
+        \App\Mrkd\Folder::creating(function ($folder) {
             $folder->slug = str_slug($folder->title).str_random(6);
         });
 
-        \App\Markd\Folder::updating(function ($folder) {
+        \App\Mrkd\Folder::updating(function ($folder) {
             $folder->slug = str_slug($folder->title).str_random(6);
         });
         
-        // \App\Markd\Folder::observe(\App\Observers\FolderObserver::class);
+        // \App\Mrkd\Folder::observe(\App\Observers\FolderObserver::class);
 
         \App\Accounts\User::creating(function ($user) {
             $user->initials = strtoupper($user->first_name[0].$user->last_name[0]);

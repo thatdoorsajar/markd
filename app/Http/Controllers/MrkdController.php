@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Markd\Folder;
+use App\Mrkd\Folder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class MarkdController extends Controller
+class MrkdController extends Controller
 {
     /**
      * Create a new controller instance.

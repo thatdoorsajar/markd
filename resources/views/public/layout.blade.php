@@ -7,7 +7,7 @@
         <title>{{ config('app.name') }}</title>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script>
-            window.Markd = {!! json_encode([
+            window.Mrkd = {!! json_encode([
                 'csrfToken' => csrf_token()
             ]) !!};
         </script>
@@ -16,7 +16,7 @@
         <div id="app">
             <nav class="flex items-center justify-between py-5 px-8">
                 <div class="flex items-center flex-no-shrink mr-6">
-                    <a href="/" class="font-extrabold font-sans text-2xl text-grey-darkest border-b-4 hover:border-purple-light no-underline">Markd</a>
+                    <a href="/" class="font-extrabold font-sans text-2xl text-grey-darkest border-b-4 hover:border-purple-light no-underline">Mrkd</a>
                 </div>
                 <div class="block">
                     <a href="/sign-in" class="font-semibold font-sans text-lg no-underline text-grey-darkest hover:text-white mr-4">

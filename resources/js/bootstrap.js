@@ -24,14 +24,14 @@ window.events = new Vue();
 window.axios = require('axios');
 
 window.axios.defaults.headers.common = {
-    // 'Authorization': 'Bearer ' + window.Markd.jwtToken,
-    'X-CSRF-TOKEN': window.Markd.csrfToken,
+    // 'Authorization': 'Bearer ' + window.Mrkd.jwtToken,
+    'X-CSRF-TOKEN': window.Mrkd.csrfToken,
     'X-Requested-With': 'XMLHttpRequest',
     'CONTENT_TYPE': 'application/json'
 };
 
 window.axios.interceptors.request.use(function (config) {
-    config.url = config.url+'?api_token='+window.Markd.apiToken;
+    config.url = config.url+'?api_token='+window.Mrkd.apiToken;
     return config;
 });
 

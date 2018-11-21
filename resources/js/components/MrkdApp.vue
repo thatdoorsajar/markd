@@ -1,14 +1,14 @@
 <template>
     <div>
-        <markd-navbar/>
+        <mrkd-navbar/>
         <div class="flex" v-if="getFoldersFlat.length > 0">
             <div class="w-1/4">
-                <section class="font-sans p-8 pr-4">
+                <section class="font-sans pt-3 p-8 pr-4">
                     <folder-index/>
                 </section>
             </div>
             <div class="w-3/4">
-                <section class="font-sans p-8">
+                <section class="font-sans pt-2 p-8">
                     <router-view/>
                 </section>
             </div>
@@ -18,13 +18,13 @@
 </template>
 
 <script>
-    import MarkdNavbar from '../components/MarkdNavbar.vue';
+    import MrkdNavbar from '../components/MrkdNavbar.vue';
     import FolderIndex from '../folders/nav/FolderIndex.vue';
     import { mapGetters, mapMutations } from 'vuex';
 
     export default {
         components: {
-            MarkdNavbar,
+            MrkdNavbar,
             FolderIndex
         },
 

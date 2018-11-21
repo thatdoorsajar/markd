@@ -4,9 +4,9 @@ namespace App\Jobs;
 
 use DOMXPath;
 use DOMDocument;
-use App\Markd\Folder;
+use App\Mrkd\Folder;
 use GuzzleHttp\Client;
-use App\Markd\Bookmark;
+use App\Mrkd\Bookmark;
 use Illuminate\Foundation\Bus\Dispatchable;
 
 /**
