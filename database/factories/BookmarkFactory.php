@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Markd\Bookmark::class, function (Faker $faker) {
+$factory->define(App\Mrkd\Bookmark::class, function (Faker $faker) {
     return [
         'url_given'    => $faker->url,
         'url_resolved' => $faker->url,
@@ -12,10 +12,10 @@ $factory->define(App\Markd\Bookmark::class, function (Faker $faker) {
         'content'      => $faker->paragraphs(3, true),
         'notes'        => $faker->paragraph(3),
         'domain_id'    => function () {
-            return factory(App\Markd\Domain::class)->create()->id;
+            return factory(App\Mrkd\Domain::class)->create()->id;
         },
         'folder_id'    => function () {
-            return factory(App\Markd\Folder::class)->create()->id;
+            return factory(App\Mrkd\Folder::class)->create()->id;
         },
         'user_id'      => function () {
             return factory(App\Accounts\User::class)->create()->id;

@@ -1,22 +1,22 @@
 <template>
     <div>
-        <a href="#"
-            class="flex text-grey-darker no-underline px-4 py-3"
-            @click="openModalCloseDropDown">
-            <svg class="icon text-grey-darker mr-2"><use href="/svg/icons.svg#icon-folder-edit" xlink:href="/svg/icons.svg#icon-folder-edit"/></svg>
-            <span>edit title</span>
-        </a>
+        <button class="text-2xl pt-1 mr-4" @click="modalOpen = true">
+            <svg class="icon icon-outline icon-stroke-3 hover:text-teal text-grey pb-px">
+                <use href="/svg/icons.svg#icon-e-add" xlink:href="/svg/icons.svg#icon-e-add"/>
+            </svg>
+        </button>
         <abstract-modal 
             :show="modalOpen" 
-            @close="modalOpen = false">
-            <template slot="title">Folder Title</template>
+            @close="modalOpen = false"
+            width-type="large">
+            <template slot="title">New Bookmark URL</template>
             <template>
                 <div class="relative mb-4">
                     <input class="w-full h-auto font-century font-semibold text-base text-grey-darker bg-grey-light appearance-none border-2 border-grey-light rounded-sm focus:outline-none focus:bg-grey-lighter focus:border-teal pl-8 pr-3 py-2"
                         type="text" 
-                        v-model="newFolderTitle"
-                        ref="titleInput"
-                        @keydown.enter="submitNewTitle"
+                        v-model="newBookmarkUrl"
+                        ref="urlInput"
+                        @keydown.enter="submitBookmarkUrl"
                         :class="{'opacity-50 cursor-not-allowed': loading}">
                     <div class="absolute" style="top: 50%; margin-top: -9px; left: 12px">
                         <svg class="icon text-grey-darker">
@@ -38,7 +38,7 @@
                     <button class="font-century text-lg text-white rounded-sm  trans:bg focus:shadow-outline focus:outline-none py-2 px-4"
                         :class="loading ? 'cursor-not-allowed bg-grey-light' : 'bg-grey-darker hover:bg-grey-darkest'"
                         type="button"
-                        @click="submitNewTitle"
+                        @click="submitBookmarkUrl"
                         :disabled="loading">
                         Update
                     </button>
@@ -55,7 +55,7 @@
         data() {
             return {
                 modalOpen: false,
-                newFolderTitle: '',
+                newBookmarkUrl: '',
                 loading: false
             }
         },
@@ -68,53 +68,32 @@
             modalOpen(modalOpen) {
                 if (modalOpen) {
                     this.$nextTick(() => {
-                        setTimeout(() => {this.$refs.titleInput.focus()}, 200);
+                        setTimeout(() => {this.$refs.urlInput.focus()}, 100);
                     });
-                }
-            },
-
-            getActiveFolder: {
-                immediate: true,
-
-                handler({ title }) {
-                    this.newFolderTitle = title;
                 }
             }
         },
 
         methods: {
-            ...mapMutations([
-                'setFoldersFlat',
-                'setFoldersTree',
-                'setActiveFolder'
-            ]),
-
-            openModalCloseDropDown() {
-                this.modalOpen = true;
-
-                this.$emit('close-drop-down');
-            },
-
-            closeModal(el) {
+            closeModal() {
                 this.loading = this.modalOpen = false;
-
-                this.newFolderTitle = this.getActiveFolder.title;
             },
 
-            submitNewTitle() {
-                let route = `/api/folder/${this.getActiveFolder.slug}`;
+            submitBookmarkUrl() {
+                let route = `/api/folder/${this.getActiveFolder.id}/bookmark`
                 let data = {
-                    folder_title: this.newFolderTitle
+                    new_bookmark_url: this.newBookmarkUrl, 
                 };
 
                 this.loading = true;
 
-                axios.patch(route, data).then(({ data }) => {
+                axios.post(route, data).then(({ data }) => {
                     this.setFoldersFlat(data.foldersFlat);
                     this.setFoldersTree(data.foldersTree);
-                    this.setActiveFolder(data.updatedFolderSlug);
+                    this.setActiveFolder(this.getActiveFolder.slug);
+                    this.new_bookmark_url = '';
+                    this.loading = false;
                     this.closeModal();
-                    this.$router.push(`/f/${data.updatedFolderSlug}`);
                 });
             }
         }

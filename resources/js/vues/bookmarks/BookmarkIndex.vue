@@ -7,38 +7,44 @@
         </div>
         <div v-if="!loading && getActiveFolder.bookmarks.length > 0">
             <div v-for="(bookmark, index) in getActiveFolder.bookmarks" :key="bookmark.id"
-                class="flex p-4 rounded hover:bg-teal-lighter"
+                class="flex p-4 rounded hover:bg-grey-light"
                 @mouseenter="mouseover = bookmark.id"
                 @mouseleave="mouseover = null">
                 <div class="w-1/10 mr-4 mb-0">
                     <a :href="`#/f/${getActiveFolder.slug}/bm/${bookmark.id}`" class="no-underline">
-                        <img :src="`/img/example-thumb${++index}.jpg`" alt="Bookmark Image" class="rounded">
+                        <img :src="`/img/example-thumb${++index}.jpg`" 
+                            alt="Bookmark Image" 
+                            class="rounded w-24">
                     </a>
                 </div>
                 <div class="flex-1">
                     <p>
-                        <a :href="`#/f/${getActiveFolder.slug}/bm/${bookmark.id}`" class="font-century font-semibold no-underline text-xl text-grey-darkest">
+                        <a :href="`#/f/${getActiveFolder.slug}/bm/${bookmark.id}`" 
+                            class="font-century font-semibold no-underline text-2xl text-grey-darkest trans:color">
                             {{ bookmark.title }}
                         </a>
                     </p>
                     <p class="mb-2">
-                        <a :href="bookmark.url_resolved" class="no-underline text-grey hover:text-grey-darkest">
+                        <a :href="bookmark.url_resolved" 
+                            class="no-underline text-grey-dark hover:text-grey-darkest trans:color">
                             {{ bookmark.url_resolved }}
                         </a>
                     </p>
-                    <p class="leading-none text-grey-darker">
-                        {{ bookmark.meta_description }}
+                    <div v-if="mouseover == bookmark.id">
+                        <a :href="bookmark.url_resolved" target="_blank">
+                            <svg class="icon icon-lg text-grey-dark hover:text-grey-darkest trans:color">
+                                <use href="/svg/icons.svg#icon-square-corner-up-right" xlink:href="/svg/icons.svg#icon-square-corner-up-right"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="text-lg text-grey-darker" v-else>
+                        {{ bookmark.description }}
                     </p>
                 </div>
                 <div class="w-1/10 text-right" v-show="mouseover == bookmark.id">
                     <a :href="bookmark.url_resolved" target="_blank" class="mr-2">
-                        <svg class="icon icon-lg text-grey hover:text-grey-darkest">
+                        <svg class="icon icon-lg text-grey-dark hover:text-grey-darkest trans:color">
                             <use href="/svg/icons.svg#icon-menu-5" xlink:href="/svg/icons.svg#icon-menu-5"/>
-                        </svg>
-                    </a>
-                    <a :href="bookmark.url_resolved" target="_blank">
-                        <svg class="icon icon-lg text-grey hover:text-grey-darkest">
-                            <use href="/svg/icons.svg#icon-square-corner-up-right" xlink:href="/svg/icons.svg#icon-square-corner-up-right"/>
                         </svg>
                     </a>
                 </div>
@@ -46,27 +52,6 @@
         </div>
         <div v-else>
             Drag you bookmarks here...
-        </div>
-        <div class="flex mt-6">
-            <div class="relative w-full z-0">
-                <input class="w-full h-auto font-century font-semibold text-base text-grey-darker bg-grey-light appearance-none border-2 border-grey-light rounded-l-sm focus:outline-none focus:bg-grey-lighter focus:border-teal focus:border-r-grey-light px-3 py-2"
-                    type="text"
-                    v-model="new_bookmark_url"
-                    @keydown.enter="submitBookmarkUrl"
-                    :class="{'opacity-50 cursor-not-allowed': processingUrl}">
-                <div class="absolute" v-show="processingUrl" style="top: 50%; margin-top: -8px; right: 12px">
-                    <svg class="icon text-grey spin-normal">
-                        <use href="/svg/icons.svg#icon-circle" xlink:href="/svg/icons.svg#icon-circle"/>
-                    </svg>
-                </div>
-            </div>
-            <button class="font-century text-lg text-white rounded-r-sm focus:shadow-outline focus:outline-none py-2 px-4"
-                :class="processingUrl ? 'cursor-not-allowed bg-grey-light' : 'bg-grey-darker hover:bg-grey-darkest'"
-                type="button"
-                @click="submitBookmarkUrl"
-                :disabled="processingUrl">
-                add
-            </button>
         </div>
     </div>
 </template>

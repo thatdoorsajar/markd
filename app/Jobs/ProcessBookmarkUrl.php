@@ -42,8 +42,6 @@ class ProcessBookmarkUrl
     {        
         list($bmTags, $bmTitle) = $this->htmlTagsAndTitle();
 
-        // dd($bmTags);
-
         $bookmark = $this->firstOrCreateBm($bmTags, $bmTitle);
 
         return $this->putInFolder($bookmark);
@@ -64,11 +62,11 @@ class ProcessBookmarkUrl
         @$doc->loadHTML($bmHtml);
 
         $xpath = new DOMXPath($doc);
-        $metas = $xpath->query(self::META_QUERY);
+        $metaTags = $xpath->query(self::META_QUERY);
 
         $bmTags = [];
     
-        foreach ($metas as $meta) {
+        foreach ($metaTags as $meta) {
             $key = $meta->getAttribute('name');
             $value = $meta->getAttribute('value'); 
     

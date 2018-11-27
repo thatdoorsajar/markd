@@ -10,15 +10,26 @@ use App\Http\Controllers\Controller;
 class BookmarkController extends Controller
 {
     /**
-     * Show the form for creating a new resource.
+     * Create a new controller instance.
      *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function store(Folder $folder, Request $request)
     {
         ProcessBookmarkUrl::dispatch(
             $request->new_bookmark_url,
-            $request->parent_folder_id
+            $folder->id
         );
 
         return response()->json([
@@ -29,46 +40,13 @@ class BookmarkController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Bookmark  $bookmark
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Bookmark $bookmark)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Bookmark  $bookmark
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Bookmark $bookmark)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Bookmark  $bookmark
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bookmark $bookmark)
+    public function update(Bookmark $bookmark, Request $request)
     {
         //
     }

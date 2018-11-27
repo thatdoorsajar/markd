@@ -1,22 +1,22 @@
 <template>
     <div>
-        <a href="#" 
+        <a href="#"
             class="flex text-grey-darker no-underline px-4 py-3"
-            @click.prevent="openModalCloseDropDown">
-            <svg class="icon text-grey-darker mr-2"><use href="/svg/icons.svg#icon-c-add" xlink:href="/svg/icons.svg#icon-c-add"/></svg>
-            <span>sub folder</span>
+            @click="openModalCloseDropDown">
+            <svg class="icon text-grey-darker mr-2"><use href="/svg/icons.svg#icon-folder-edit" xlink:href="/svg/icons.svg#icon-folder-edit"/></svg>
+            <span>edit title</span>
         </a>
         <abstract-modal 
             :show="modalOpen" 
             @close="modalOpen = false">
-            <template slot="title">Add Sub Folder</template>
+            <template slot="title">Folder Title</template>
             <template>
                 <div class="relative mb-4">
                     <input class="w-full h-auto font-century font-semibold text-base text-grey-darker bg-grey-light appearance-none border-2 border-grey-light rounded-sm focus:outline-none focus:bg-grey-lighter focus:border-teal pl-8 pr-3 py-2"
                         type="text" 
                         v-model="newFolderTitle"
                         ref="titleInput"
-                        @keydown.enter="submitAddFolder"
+                        @keydown.enter="submitNewTitle"
                         :class="{'opacity-50 cursor-not-allowed': loading}">
                     <div class="absolute" style="top: 50%; margin-top: -9px; left: 12px">
                         <svg class="icon text-grey-darker">
@@ -35,12 +35,12 @@
                         @click="closeModal">
                         Cancel
                     </button>
-                    <button class="font-century text-lg text-white rounded-sm trans:bg focus:shadow-outline focus:outline-none py-2 px-4"
+                    <button class="font-century text-lg text-white rounded-sm  trans:bg focus:shadow-outline focus:outline-none py-2 px-4"
                         :class="loading ? 'cursor-not-allowed bg-grey-light' : 'bg-grey-darker hover:bg-grey-darkest'"
                         type="button"
-                        @click="submitAddFolder"
+                        @click="submitNewTitle"
                         :disabled="loading">
-                        Create
+                        Update
                     </button>
                 </div>
             </template>
@@ -68,8 +68,16 @@
             modalOpen(modalOpen) {
                 if (modalOpen) {
                     this.$nextTick(() => {
-                        setTimeout(() => {this.$refs.titleInput.focus()}, 200);
+                        setTimeout(() => {this.$refs.titleInput.focus()}, 100);
                     });
+                }
+            },
+
+            getActiveFolder: {
+                immediate: true,
+
+                handler({ title }) {
+                    this.newFolderTitle = title;
                 }
             }
         },
@@ -90,23 +98,23 @@
             closeModal(el) {
                 this.loading = this.modalOpen = false;
 
-                this.newFolderTitle = '';
+                this.newFolderTitle = this.getActiveFolder.title;
             },
 
-            submitAddFolder() {
-                let route = `/api/folder`;
+            submitNewTitle() {
+                let route = `/api/folder/${this.getActiveFolder.slug}`;
                 let data = {
-                    parent_id: this.getActiveFolder.id,
                     folder_title: this.newFolderTitle
                 };
 
                 this.loading = true;
 
-                axios.post(route, data).then(({ data }) => {
+                axios.patch(route, data).then(({ data }) => {
                     this.setFoldersFlat(data.foldersFlat);
                     this.setFoldersTree(data.foldersTree);
+                    this.setActiveFolder(data.updatedFolderSlug);
                     this.closeModal();
-                    this.$router.push(`/f/${data.newFolderSlug}`);
+                    this.$router.push(`/f/${data.updatedFolderSlug}`);
                 });
             }
         }

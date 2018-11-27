@@ -14,18 +14,20 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->group(function() {
+    // Authenticated User
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
 
-    // Folder API Routes
+    // Folders
     Route::get('/folder', 'FolderController@index');
     Route::post('/folder', 'FolderController@store');
     Route::patch('/folder/{folder}', 'FolderController@update');
 
-    // Folder Order API Routes
+    // Folder Order
     Route::patch('/folder-order', 'FolderOrderController@update');
     
-    // Bookmark API Routes
-    Route::post('bookmark', 'BookmarkController@create');
+    // Bookmarks
+    Route::post('/folder/{folder}/bookmark', 'BookmarkController@store');
+    Route::patch('/folder/{folder}/bookmark', 'BookmarkController@update');
 });

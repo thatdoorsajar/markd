@@ -18,8 +18,8 @@
 </template>
 
 <script>
-    import MrkdNavbar from '../components/MrkdNavbar.vue';
-    import FolderIndex from '../folders/nav/FolderIndex.vue';
+    import MrkdNavbar from './navbar/MrkdNavbar.vue';
+    import FolderIndex from './folders/nav/FolderIndex.vue';
     import { mapGetters, mapMutations } from 'vuex';
 
     export default {

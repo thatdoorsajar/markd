@@ -16,7 +16,6 @@ Route::get('/', 'PublicController@index');
 
 // App Routes
 Route::get('app', 'MrkdController@index')->name('app.home');
-Route::post('folder', 'FolderController@store');
 
 // Sign In Routes
 Route::get('sign-in', 'Auth\LoginController@showLoginForm')->name('login');
@@ -38,8 +37,3 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
 Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
-
-// Test routes
-Route::get('test', function () {
-    return \App\Accounts\User::first()->topLevelFolder();
-});

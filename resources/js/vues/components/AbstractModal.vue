@@ -1,7 +1,8 @@
 <template>
     <portal to="modals" v-if="show">
         <div class="fixed pin flex items-center overflow-auto bg-smoke z-50" v-show="show">
-            <div class="sm:w-1/2 lg:w-2/5 xl:w-1/4 leading-normal bg-white rounded-sm shadow-lg mx-auto p-6">
+            <div class="leading-normal bg-white rounded-sm shadow-lg mx-auto p-6"
+                :class="widthClassList">
                 <h1 class="font-century text-2xl mb-4" 
                     :class="danger ? 'text-red' : 'text-grey-darkest'">
                     <slot name="title">Modal Title</slot>
@@ -28,6 +29,23 @@
             danger: {
                 type: Boolean,
                 default: false
+            },
+
+            widthType: {
+                type: String,
+                default: null
+            }
+        },
+
+        computed: {
+            widthClassList() {
+                if (!this.widthType) {
+                    return 'sm:w-1/2 lg:w-2/5 xl:w-1/4';
+                }
+                
+                if (this.widthType == 'large') {
+                    return 'sm:w-4/5 lg:w-2/3 xl:w-1/2';
+                }
             }
         },
 

@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Markd\Folder::class, function (Faker $faker) {
+$factory->define(App\Mrkd\Folder::class, function (Faker $faker) {
     return [
         'slug'        => $faker->unique()->slug,
         'title'       => $faker->word,

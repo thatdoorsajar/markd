@@ -29,27 +29,27 @@ class DatabaseSeeder extends Seeder
     {
         $user = factory(App\Accounts\User::class)->create(['email' => $userEmail]);
 
-        $topFolder = factory(App\Markd\Folder::class)->create([
+        $topFolder = factory(App\Mrkd\Folder::class)->create([
             'user_id'   => $user->id,
             'top_folder' => true,
         ]);
 
         $user->bookmarks()->saveMany(
-            factory(App\Markd\Bookmark::class, 3)->create([
+            factory(App\Mrkd\Bookmark::class, 3)->create([
                 'folder_id' => $topFolder->id,
             ])
         );
 
         $user->folders()->saveMany(
-            factory(App\Markd\Folder::class, 3)
+            factory(App\Mrkd\Folder::class, 3)
                 ->create(['user_id' => $user->id])
                 ->each(function ($folder) use ($user) {
                     $folder->appendNode(
-                        factory(App\Markd\Folder::class)->create(['user_id' => $user->id])
+                        factory(App\Mrkd\Folder::class)->create(['user_id' => $user->id])
                     );
 
                     $folder->bookmarks()->saveMany(
-                        factory(App\Markd\Bookmark::class, 3)->create([
+                        factory(App\Mrkd\Bookmark::class, 3)->create([
                             'folder_id' => $folder->id,
                             'user_id'   => $user->id,
                         ])

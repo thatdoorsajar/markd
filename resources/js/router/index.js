@@ -7,8 +7,8 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-import FolderView from '../folders/FolderView.vue';
-import BookmarkView from '../bookmarks/BookmarkView.vue';
+import FolderView from '../vues/folders/FolderView.vue';
+import BookmarkView from '../vues/bookmarks/BookmarkView.vue';
 
 export default new VueRouter({
     routes: [

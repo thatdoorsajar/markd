@@ -7,13 +7,13 @@ require('./bootstrap');
 /**
  * Vue top level component setup.
  */
-Vue.component('mrkd-app', require('./components/MrkdApp.vue'));
+Vue.component('mrkd-app', require('./vues/MrkdApp.vue'));
 
 /**
  * Vue helper components import.
  */
-Vue.component('abstract-modal', require('./components/AbstractModal.vue'));
-Vue.component('on-click-outside', require('./components/OnClickOutside.vue'));
+Vue.component('abstract-modal', require('./vues/components/AbstractModal.vue'));
+Vue.component('on-click-outside', require('./vues/components/OnClickOutside.vue'));
 
 /**
  * Vuex state management setup.
