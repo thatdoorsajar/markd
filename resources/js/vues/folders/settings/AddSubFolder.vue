@@ -1,11 +1,15 @@
 <template>
-    <div>
-        <a href="#" 
+    <div class="inline">
+        <!-- <a href="#" 
             class="flex text-grey-darker no-underline px-4 py-3"
             @click.prevent="openModalCloseDropDown">
             <svg class="icon text-grey-darker mr-2"><use href="/svg/icons.svg#icon-c-add" xlink:href="/svg/icons.svg#icon-c-add"/></svg>
             <span>sub folder</span>
-        </a>
+        </a> -->
+        <button class="font-semibold text-grey hover:text-teal trans:color focus:outline-none"
+            @click="openModalCloseDropDown">
+            sub folder
+        </button>
         <abstract-modal 
             :show="modalOpen" 
             @close="modalOpen = false">
@@ -84,7 +88,7 @@
             openModalCloseDropDown() {
                 this.modalOpen = true;
 
-                this.$emit('close-drop-down');
+                this.$emit('close-menu');
             },
 
             closeModal(el) {

@@ -1,11 +1,15 @@
 <template>
-    <div>
-        <a href="#" 
+    <div class="inline">
+        <!-- <a href="#" 
             class="flex text-grey-darker no-underline px-4 py-3"
             @click.prevent="openModalCloseDropDown">
             <svg class="icon text-grey-darker mr-2"><use href="/svg/icons.svg#icon-box" xlink:href="/svg/icons.svg#icon-box"/></svg>
             <span>archive</span>
-        </a>
+        </a> -->
+        <button class="font-semibold text-grey hover:text-teal trans:color focus:outline-none"
+            @click="openModalCloseDropDown">
+            archive
+        </button>
         <abstract-modal 
             :show="modalOpen" 
             @close="modalOpen = false">
@@ -50,7 +54,7 @@
             openModalCloseDropDown() {
                 this.modalOpen = true;
 
-                this.$emit('close-drop-down');
+                this.$emit('close-menu');
             }
         }
     }

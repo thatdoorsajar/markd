@@ -9,8 +9,8 @@
                 </router-link>
             </div>
             <div class="w-3/4 flex justify-end">
-                <search-bookmarks :search-active="searchActive"/>
-                <new-bookmark-form v-show="!searchActive"/>
+                <search-bookmarks/>
+                <new-bookmark-form/>
                 <user-menu :user="'user'"/>
             </div>
         </nav>
@@ -31,16 +31,12 @@
 
         data() {
             return {
-                searchActive: false
+                data: ''
             }
         },
 
         mounted() {
             events.$on('search:bookmarks', bool => this.searchActive = bool);
-        },
-
-        methods: {
-            
         }
     }
 </script>

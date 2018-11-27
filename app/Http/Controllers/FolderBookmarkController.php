@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mrkd\Folder;
 use App\Mrkd\Bookmark;
 use Illuminate\Http\Request;
 use App\Jobs\ProcessBookmarkUrl;
 use App\Http\Controllers\Controller;
 
-class BookmarkController extends Controller
+class FolderBookmarkController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -46,7 +47,7 @@ class BookmarkController extends Controller
      * @param  \App\Bookmark  $bookmark
      * @return \Illuminate\Http\Response
      */
-    public function update(Bookmark $bookmark, Request $request)
+    public function update(Folder $folder, Bookmark $bookmark, Request $request)
     {
         //
     }
@@ -57,7 +58,7 @@ class BookmarkController extends Controller
      * @param  \App\Bookmark  $bookmark
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bookmark $bookmark)
+    public function destroy(Folder $folder, Bookmark $bookmark)
     {
         //
     }

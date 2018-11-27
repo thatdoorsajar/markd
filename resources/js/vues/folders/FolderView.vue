@@ -4,50 +4,7 @@
             <h1 class="font-century text-xl2 text-grey-darkest leading-none mr-3">
                 {{ getActiveFolder.title }}
             </h1>
-            <button class="font-semibold text-grey hover:text-teal trans:color focus:outline-none"
-                v-if="!editMenuOpen"
-                @click="editMenuOpen = true">
-                edit
-            </button>
-            <template v-else>
-                <button class="font-semibold text-grey hover:text-teal trans:color focus:outline-none"
-                    @click="editMenuOpen = false">
-                    title
-                </button>
-                &nbsp;·&nbsp;
-                <button class="font-semibold text-grey hover:text-teal trans:color focus:outline-none"
-                    @click="editMenuOpen = false">
-                    sub folder
-                </button>
-                &nbsp;·&nbsp;
-                <button class="font-semibold text-grey hover:text-teal trans:color focus:outline-none"
-                    @click="editMenuOpen = false">
-                    archive
-                </button>
-                &nbsp;·&nbsp;
-                <button class="font-semibold text-grey hover:text-red trans:color focus:outline-none"
-                    @click="editMenuOpen = false">
-                    delete
-                </button>
-            </template>
-            <!-- <div class="flex items-center"> -->
-                <!-- <button type="button" class="flex items-center focus:outline-none mr-3"
-                    @click="viewFormat = 'card'">
-                    <svg class="icon hover:text-teal trans:color" 
-                        :class="viewFormat == 'card' ? 'text-grey-dark' : 'text-grey'">
-                        <use href="/svg/icons.svg#icon-grid-interface" xlink:href="/svg/icons.svg#icon-grid-interface"/>
-                    </svg>
-                </button>
-                <button type="button" class="flex items-center focus:outline-none mr-3"
-                    @click="viewFormat = 'list'">
-                    <svg class="icon hover:text-teal trans:color" 
-                        :class="viewFormat == 'list' ? 'text-grey-dark' : 'text-grey'">
-                        <use href="/svg/icons.svg#icon-bullet-list-70" 
-                            xlink:href="/svg/icons.svg#icon-bullet-list-70"/>
-                    </svg>
-                </button> -->
-                <!-- <folder-settings/> -->
-            <!-- </div> -->
+            <folder-settings/>
         </div>
         <div v-if="!loading">
             <bookmark-index/>
@@ -73,9 +30,7 @@
 
         data() {
             return {
-                editMenuOpen: false,
-                loading: false,
-                viewFormat: 'list'
+                loading: false
             }
         },
 

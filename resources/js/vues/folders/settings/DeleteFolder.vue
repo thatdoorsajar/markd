@@ -1,11 +1,15 @@
 <template>
-    <div>
-        <a href="#" 
+    <div class="inline">
+        <!-- <a href="#" 
             class="flex text-red no-underline px-4 py-3" 
             @click.prevent="openModalCloseDropDown">
             <svg class="icon text-red mr-2"><use href="/svg/icons.svg#icon-trash-can" xlink:href="/svg/icons.svg#icon-trash-can"/></svg>
             <span>delete</span>
-        </a>
+        </a> -->
+        <button class="font-semibold text-grey hover:text-red trans:color focus:outline-none"
+            @click="openModalCloseDropDown">
+            delete
+        </button>
         <abstract-modal 
             :show="modalOpen" 
             :danger="true"
@@ -51,7 +55,7 @@
             openModalCloseDropDown() {
                 this.modalOpen = true;
 
-                this.$emit('close-drop-down');
+                this.$emit('close-menu');
             }
         }
     }

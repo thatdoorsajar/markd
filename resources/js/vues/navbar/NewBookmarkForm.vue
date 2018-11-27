@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <button class="text-2xl pt-1 mr-4" @click="modalOpen = true">
-            <svg class="icon icon-outline icon-stroke-3 hover:text-teal text-grey pb-px">
+    <div class="flex">
+        <button class="text-2xl pt-1 px-2 mr-3 focus:outline-none" @click="modalOpen = true">
+            <svg class="icon icon-outline icon-stroke-3 hover:text-teal text-grey-dark">
                 <use href="/svg/icons.svg#icon-e-add" xlink:href="/svg/icons.svg#icon-e-add"/>
             </svg>
         </button>
@@ -75,12 +75,18 @@
         },
 
         methods: {
+            ...mapMutations([
+                'setFoldersFlat',
+                'setFoldersTree',
+                'setActiveFolder'
+            ]),
+
             closeModal() {
                 this.loading = this.modalOpen = false;
             },
 
             submitBookmarkUrl() {
-                let route = `/api/folder/${this.getActiveFolder.id}/bookmark`
+                let route = `/api/folder/${this.getActiveFolder.slug}/bookmark`
                 let data = {
                     new_bookmark_url: this.newBookmarkUrl, 
                 };

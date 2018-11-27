@@ -36,6 +36,15 @@ window.axios.interceptors.request.use(function (config) {
 });
 
 /**
+ * Native string extension function to truncate and add ellipsis.
+ * @param  {integer} charLimit
+ * @return {string}
+ */
+String.prototype.trunc = function (charLimit) {
+    return (this.length > charLimit) ? this.substr(0, charLimit - 1) + '...' : this;
+};
+
+/**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.

@@ -21,7 +21,7 @@
                     <p>
                         <a :href="`#/f/${getActiveFolder.slug}/bm/${bookmark.id}`" 
                             class="font-century font-semibold no-underline text-2xl text-grey-darkest trans:color">
-                            {{ bookmark.title }}
+                            {{ bookmark.title && bookmark.title.trunc(40) }}
                         </a>
                     </p>
                     <p class="mb-2">
@@ -38,16 +38,16 @@
                         </a>
                     </div>
                     <p class="text-lg text-grey-darker" v-else>
-                        {{ bookmark.description }}
+                        {{ bookmark.description && bookmark.description.trunc(80) }}
                     </p>
                 </div>
-                <div class="w-1/10 text-right" v-show="mouseover == bookmark.id">
+                <!-- <div class="w-1/10 text-right" v-show="mouseover == bookmark.id">
                     <a :href="bookmark.url_resolved" target="_blank" class="mr-2">
                         <svg class="icon icon-lg text-grey-dark hover:text-grey-darkest trans:color">
                             <use href="/svg/icons.svg#icon-menu-5" xlink:href="/svg/icons.svg#icon-menu-5"/>
                         </svg>
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
         <div v-else>

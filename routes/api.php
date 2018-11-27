@@ -28,6 +28,6 @@ Route::middleware('auth:api')->group(function() {
     Route::patch('/folder-order', 'FolderOrderController@update');
     
     // Bookmarks
-    Route::post('/folder/{folder}/bookmark', 'BookmarkController@store');
-    Route::patch('/folder/{folder}/bookmark', 'BookmarkController@update');
+    Route::post('/folder/{folder}/bookmark', 'FolderBookmarkController@store');
+    Route::patch('/folder/{folder}/bookmark', 'FolderBookmarkController@update');
 });
