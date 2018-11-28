@@ -75,8 +75,14 @@
                     this.setFoldersFlat(data.foldersFlat);
                     this.setFoldersTree(data.foldersTree);
                     this.setActiveFolder(data.parentFolderSlug);
+                    this.loading = false;
                     this.closeModal();
-                    this.$router.push(`/f/${data.parentFolderSlug}`);
+
+                    if (this.getActiveFolder.top_folder) {
+                        this.$router.push(`/`);
+                    } else {
+                        this.$router.push(`/f/${data.parentFolderSlug}`);
+                    }
                 });
             }
         }

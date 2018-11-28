@@ -47762,8 +47762,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 _this.setFoldersFlat(data.foldersFlat);
                 _this.setFoldersTree(data.foldersTree);
                 _this.setActiveFolder(data.parentFolderSlug);
+                _this.loading = false;
                 _this.closeModal();
-                _this.$router.push('/f/' + data.parentFolderSlug);
+
+                if (_this.getActiveFolder.top_folder) {
+                    _this.$router.push('/');
+                } else {
+                    _this.$router.push('/f/' + data.parentFolderSlug);
+                }
             });
         }
     })
