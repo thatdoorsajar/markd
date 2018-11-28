@@ -83,13 +83,37 @@ class FolderController extends Controller
     }
 
     /**
+     * Archive the specified resource.
+     *
+     * @param  \App\Folder  $folder
+     * @return \Illuminate\Http\Response
+     */
+    public function archive(Folder $folder, Request $request)
+    {
+        $folder->bookmarks()->delete();
+
+        $folder->children()->delete();
+
+        return response()->json([
+            'success'          => $folder->delete(),
+            'parentFolderSlug' => $folder->parent->slug,
+            'foldersFlat'      => $request->user()->folders,
+            'foldersTree'      => $request->user()->folders->toTree()
+        ]);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Folder  $folder
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Folder $folder)
+    public function delete(Folder $folder)
     {
-        //
+        $folder->bookmarks()->forceDelete();
+
+        return response()->json([
+            'success' => $folder->forceDelete()
+        ]);
     }
 }

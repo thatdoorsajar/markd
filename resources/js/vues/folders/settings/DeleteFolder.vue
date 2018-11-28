@@ -2,12 +2,12 @@
     <div class="inline">
         <!-- <a href="#" 
             class="flex text-red no-underline px-4 py-3" 
-            @click.prevent="openModalCloseDropDown">
+            @click.prevent="openModalCloseMenu">
             <svg class="icon text-red mr-2"><use href="/svg/icons.svg#icon-trash-can" xlink:href="/svg/icons.svg#icon-trash-can"/></svg>
             <span>delete</span>
         </a> -->
         <button class="font-semibold text-grey hover:text-red trans:color focus:outline-none"
-            @click="openModalCloseDropDown">
+            @click="openModalCloseMenu">
             delete
         </button>
         <abstract-modal 
@@ -52,7 +52,7 @@
         ]),
 
         methods: {
-            openModalCloseDropDown() {
+            openModalCloseMenu() {
                 this.modalOpen = true;
 
                 this.$emit('close-menu');

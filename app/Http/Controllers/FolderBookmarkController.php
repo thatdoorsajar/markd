@@ -51,15 +51,4 @@ class FolderBookmarkController extends Controller
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Bookmark  $bookmark
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Folder $folder, Bookmark $bookmark)
-    {
-        //
-    }
 }

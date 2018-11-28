@@ -8,7 +8,7 @@
         </div>
         <div ref="foldersTree">
             <folder-node 
-                v-for="folder in getFoldersTree" 
+                v-for="folder in getFoldersTree[0].children" 
                 :key="folder.id" 
                 :folder="folder"
                 :loading-folder-id="loadingFolderId"/>

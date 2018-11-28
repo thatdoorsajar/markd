@@ -42,7 +42,10 @@ class DatabaseSeeder extends Seeder
 
         $user->folders()->saveMany(
             factory(App\Mrkd\Folder::class, 3)
-                ->create(['user_id' => $user->id])
+                ->create([
+                    'user_id'   => $user->id,
+                    'parent_id' => $topFolder->id
+                ])
                 ->each(function ($folder) use ($user) {
                     $folder->appendNode(
                         factory(App\Mrkd\Folder::class)->create(['user_id' => $user->id])

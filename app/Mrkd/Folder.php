@@ -4,25 +4,18 @@ namespace App\Mrkd;
 
 use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Folder extends Model
 {
-    use NodeTrait;
+    use NodeTrait, SoftDeletes;
 
     /**
-     * The attributes that are mass assignable.
+     * Mass assignment guards.
      *
      * @var array
      */
-    protected $fillable = [
-        'slug',
-        'title',
-        'description',
-        'notes',
-        'is_archived',
-        'top_folder',
-        'user_id',
-    ];
+    protected $guarded = [];
 
     /**
      * Load these relationships by default.

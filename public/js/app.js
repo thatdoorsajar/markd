@@ -43510,7 +43510,7 @@ var render = function() {
       _c(
         "div",
         { ref: "foldersTree" },
-        _vm._l(_vm.getFoldersTree, function(folder) {
+        _vm._l(_vm.getFoldersTree[0].children, function(folder) {
           return _c("folder-node", {
             key: folder.id,
             attrs: { folder: folder, "loading-folder-id": _vm.loadingFolderId }
@@ -47084,7 +47084,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])(['setFoldersFlat', 'setFoldersTree', 'setActiveFolder']), {
-        openModalCloseDropDown: function openModalCloseDropDown() {
+        openModalCloseMenu: function openModalCloseMenu() {
             this.modalOpen = true;
 
             this.$emit('close-menu');
@@ -47134,7 +47134,7 @@ var render = function() {
         {
           staticClass:
             "font-semibold text-grey hover:text-teal trans:color focus:outline-none",
-          on: { click: _vm.openModalCloseDropDown }
+          on: { click: _vm.openModalCloseMenu }
         },
         [_vm._v("\n        title\n    ")]
       ),
@@ -47261,7 +47261,7 @@ var render = function() {
                 "button",
                 {
                   staticClass:
-                    "font-century text-lg text-white rounded-sm  trans:bg focus:shadow-outline focus:outline-none py-2 px-4",
+                    "font-century text-lg text-white rounded-sm trans:bg focus:shadow-outline focus:outline-none py-2 px-4",
                   class: _vm.loading
                     ? "cursor-not-allowed bg-grey-light"
                     : "bg-grey-darker hover:bg-grey-darkest",
@@ -47429,7 +47429,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])(['setFoldersFlat', 'setFoldersTree', 'setActiveFolder']), {
-        openModalCloseDropDown: function openModalCloseDropDown() {
+        openModalCloseMenu: function openModalCloseMenu() {
             this.modalOpen = true;
 
             this.$emit('close-menu');
@@ -47479,7 +47479,7 @@ var render = function() {
         {
           staticClass:
             "font-semibold text-grey hover:text-teal trans:color focus:outline-none",
-          on: { click: _vm.openModalCloseDropDown }
+          on: { click: _vm.openModalCloseMenu }
         },
         [_vm._v("\n        sub folder\n    ")]
       ),
@@ -47688,7 +47688,8 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
-//
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -47739,13 +47740,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['getActiveFolder']),
 
-    methods: {
-        openModalCloseDropDown: function openModalCloseDropDown() {
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])(['setFoldersFlat', 'setFoldersTree', 'setActiveFolder']), {
+        openModalCloseMenu: function openModalCloseMenu() {
             this.modalOpen = true;
 
             this.$emit('close-menu');
+        },
+        closeModal: function closeModal(el) {
+            this.loading = this.modalOpen = false;
+
+            this.newFolderTitle = this.getActiveFolder.title;
+        },
+        submitArchiveFolder: function submitArchiveFolder() {
+            var _this = this;
+
+            this.loading = true;
+
+            axios.delete('/api/folder/' + this.getActiveFolder.slug + '/archive').then(function (_ref) {
+                var data = _ref.data;
+
+                _this.setFoldersFlat(data.foldersFlat);
+                _this.setFoldersTree(data.foldersTree);
+                _this.setActiveFolder(data.parentFolderSlug);
+                _this.closeModal();
+                _this.$router.push('/f/' + data.parentFolderSlug);
+            });
         }
-    }
+    })
 });
 
 /***/ }),
@@ -47765,7 +47786,7 @@ var render = function() {
         {
           staticClass:
             "font-semibold text-grey hover:text-teal trans:color focus:outline-none",
-          on: { click: _vm.openModalCloseDropDown }
+          on: { click: _vm.openModalCloseMenu }
         },
         [_vm._v("\n        archive\n    ")]
       ),
@@ -47781,15 +47802,11 @@ var render = function() {
           }
         },
         [
-          _c("template", { slot: "title" }, [_vm._v("Archive Folder?")]),
+          _c("template", { slot: "title" }, [
+            _vm._v("Archive " + _vm._s(_vm.getActiveFolder.title) + "?")
+          ]),
           _vm._v(" "),
           [
-            _c(
-              "p",
-              { staticClass: "font-sans text-lg text-grey-darkest mb-6" },
-              [_vm._v("\n                // input\n            ")]
-            ),
-            _vm._v(" "),
             _c("div", { staticClass: "flex justify-between" }, [
               _c(
                 "button",
@@ -47797,11 +47814,7 @@ var render = function() {
                   staticClass:
                     "font-century text-lg text-grey-dark hover:text-grey-darkest trans:bg focus:shadow-outline focus:outline-none py-2 px-4 mr-2",
                   attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      _vm.modalOpen = false
-                    }
-                  }
+                  on: { click: _vm.closeModal }
                 },
                 [_vm._v("\n                    Cancel\n                ")]
               ),
@@ -47810,13 +47823,12 @@ var render = function() {
                 "button",
                 {
                   staticClass:
-                    "font-century text-lg text-white rounded-sm bg-grey-darker hover:bg-grey-darkest trans:bg focus:shadow-outline focus:outline-none py-2 px-4",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      _vm.modalOpen = false
-                    }
-                  }
+                    "font-century text-lg text-white rounded-sm trans:bg focus:shadow-outline focus:outline-none py-2 px-4",
+                  class: _vm.loading
+                    ? "cursor-not-allowed bg-grey-light"
+                    : "bg-grey-darker hover:bg-grey-darkest",
+                  attrs: { type: "button", disabled: _vm.loading },
+                  on: { click: _vm.submitArchiveFolder }
                 },
                 [_vm._v("\n                    Archive\n                ")]
               )
@@ -47946,7 +47958,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['getActiveFolder']),
 
     methods: {
-        openModalCloseDropDown: function openModalCloseDropDown() {
+        openModalCloseMenu: function openModalCloseMenu() {
             this.modalOpen = true;
 
             this.$emit('close-menu');
@@ -47971,7 +47983,7 @@ var render = function() {
         {
           staticClass:
             "font-semibold text-grey hover:text-red trans:color focus:outline-none",
-          on: { click: _vm.openModalCloseDropDown }
+          on: { click: _vm.openModalCloseMenu }
         },
         [_vm._v("\n        delete\n    ")]
       ),

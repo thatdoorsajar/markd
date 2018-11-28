@@ -2,12 +2,12 @@
     <div class="inline">
         <!-- <a href="#"
             class="flex text-grey-darker no-underline px-4 py-3"
-            @click="openModalCloseDropDown">
+            @click="openModalCloseMenu">
             <svg class="icon text-grey-darker mr-2"><use href="/svg/icons.svg#icon-folder-edit" xlink:href="/svg/icons.svg#icon-folder-edit"/></svg>
             <span>edit title</span>
         </a> -->
         <button class="font-semibold text-grey hover:text-teal trans:color focus:outline-none"
-            @click="openModalCloseDropDown">
+            @click="openModalCloseMenu">
             title
         </button>
         <abstract-modal 
@@ -39,7 +39,7 @@
                         @click="closeModal">
                         Cancel
                     </button>
-                    <button class="font-century text-lg text-white rounded-sm  trans:bg focus:shadow-outline focus:outline-none py-2 px-4"
+                    <button class="font-century text-lg text-white rounded-sm trans:bg focus:shadow-outline focus:outline-none py-2 px-4"
                         :class="loading ? 'cursor-not-allowed bg-grey-light' : 'bg-grey-darker hover:bg-grey-darkest'"
                         type="button"
                         @click="submitNewTitle"
@@ -93,7 +93,7 @@
                 'setActiveFolder'
             ]),
 
-            openModalCloseDropDown() {
+            openModalCloseMenu() {
                 this.modalOpen = true;
 
                 this.$emit('close-menu');

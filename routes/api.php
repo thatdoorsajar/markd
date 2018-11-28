@@ -23,11 +23,17 @@ Route::middleware('auth:api')->group(function() {
     Route::get('/folder', 'FolderController@index');
     Route::post('/folder', 'FolderController@store');
     Route::patch('/folder/{folder}', 'FolderController@update');
+    Route::delete('/folder/{folder}/archive', 'FolderController@archive');
+    Route::delete('/folder/{folder}/delete', 'FolderController@delete');
 
     // Folder Order
     Route::patch('/folder-order', 'FolderOrderController@update');
     
-    // Bookmarks
+    // Folder Bookmarks Relations
     Route::post('/folder/{folder}/bookmark', 'FolderBookmarkController@store');
     Route::patch('/folder/{folder}/bookmark', 'FolderBookmarkController@update');
+
+    // Bookmarks
+    Route::delete('/bookmark/{bookmark}/archive', 'BookmarkController@archive');
+    Route::delete('/bookmark/{bookmark}/delete', 'BookmarkController@delete');
 });

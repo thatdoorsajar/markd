@@ -3,26 +3,18 @@
 namespace App\Mrkd;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Bookmark extends Model
 {
+    use SoftDeletes;
+
     /**
-     * The attributes that are mass assignable.
+     * Mass assignment guards.
      *
      * @var array
      */
-    protected $fillable = [
-        'url_given',
-        'url_resolved',
-        'title',
-        'description',
-        'image_url',
-        'content',
-        'notes',
-        'domain_id',
-        'folder_id',
-        'user_id',
-    ];
+    protected $guarded = [];
 
     /**
      * Relation to bookmarks.
