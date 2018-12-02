@@ -9,7 +9,7 @@
                 </router-link>
             </div>
             <div class="w-3/4 flex justify-end">
-                <search-bookmarks/>
+                <!-- <search-bookmarks/> -->
                 <new-bookmark-form/>
                 <user-menu :user="'user'"/>
             </div>

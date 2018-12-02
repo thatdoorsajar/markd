@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="flex justify-between mb-3">
+        <div class="flex justify-between mb-2">
             <h3 class="font-century text-lg text-grey">FOLDERS</h3>
             <svg class="icon text-grey spin-normal" v-show="loading">
                 <use href="/svg/icons.svg#icon-circle" xlink:href="/svg/icons.svg#icon-circle"/>
@@ -72,7 +72,6 @@
                 });
 
                 this.draggable.on('drag:over', (evt) => {
-                    this.setIsDragging(false);
                     this.setDragOverFolderId(evt.data.over.dataset.folderId);
 
                     if (!this.folderUpdateValid()) {
@@ -92,6 +91,7 @@
                 // @TODO: drag leave = state.dragOverFolderId set to 0
 
                 this.draggable.on('drag:stop', (evt) => {
+                    this.setIsDragging(false);
                     this.postFolderUpdate();
                     this.folderOverDom.classList.remove('draggable--invalid');
                     // Remove on state the ID of the invalid folder

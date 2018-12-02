@@ -2,8 +2,8 @@
     <div v-if="!folder.top_folder">
         <div class="flex justify-between border-l-4 border-transparent rounded-sm leading-normal folder-draggable mb-2"
             :class="{
-                'bg-grey-light border-teal': (isActiveFolder && !getIsDragging),
-                'hover:bg-grey-light': getIsDragging
+                'bg-grey-light border-teal': isActiveFolder && !getIsDragging,
+                'hover:bg-grey-light': !getIsDragging
             }"
             :data-folder-id="folder.id">
             <router-link :to="`/f/${folder.slug}`" 
