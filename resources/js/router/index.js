@@ -14,14 +14,27 @@ export default new VueRouter({
     routes: [
         {
             path: '/',
+            name: 'home',
+            component: FolderView
+        },
+        {
+            path: '/archived',
+            name: 'archived',
+            component: FolderView
+        },
+        {
+            path: '/marked',
+            name: 'marked',
             component: FolderView
         },
         {
             path: '/f/:slug?',
+            name: 'folder',
             component: FolderView
         },
         {
             path: '/f/:slug/bm/:id',
+            name: 'bookmark',
             component: BookmarkView
         }
     ]

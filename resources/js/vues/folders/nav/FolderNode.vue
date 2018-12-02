@@ -1,6 +1,6 @@
 <template>
     <div v-if="!folder.top_folder">
-        <div class="flex justify-between border-l-4 border-transparent rounded-sm leading-normal folder-draggable mb-2"
+        <div class="flex justify-between border-l-4 border-transparent rounded-sm leading-none folder-draggable mb-2"
             :class="{
                 'bg-grey-light border-teal': isActiveFolder && !getIsDragging,
                 'hover:bg-grey-light': !getIsDragging
@@ -19,7 +19,7 @@
                         <use href="/svg/icons.svg#icon-folder-15-2" xlink:href="/svg/icons.svg#icon-folder-15-2"/>
                     </svg>
                 </template>
-                <p>{{ folder.title }}</p>
+                <p class="pt-1">{{ folder.title }}</p>
             </router-link>
             <button class="text-grey-darker font-semibold hover:bg-teal trans:bg rounded-r-sm icon-text-aligner p-2 px-3"
                 type="button"

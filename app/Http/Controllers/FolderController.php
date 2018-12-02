@@ -43,17 +43,12 @@ class FolderController extends Controller
     {
         $user = $request->user();
 
-        $folder = new Folder;
-        $folder->title = $request->folder_title;
-        $folder->description = '';
-        $folder->user_id = $user->id;
-        $folder->save();
+        $folder = Folder::create([
+            'title'   => $request->folder_title,
+            'user_id' => $user->id
+        ]);
 
-        if (!empty($request->parent_id)) {
-            $parent = Folder::find($request->parent_id);
-
-            $parent->appendNode($folder);
-        }
+        Folder::find($request->parent_id)->appendNode($folder);
 
         return response()->json([
             'success'       => true,

@@ -33,16 +33,9 @@
 </template>
 
 <script>
-    import { mapMutations } from 'vuex';
+    import { mapGetters, mapMutations } from 'vuex';
 
     export default {
-        props: {
-            parent_id: {
-                type: Number,
-                default: null
-            }
-        },
-
         data() {
             return {
                 showForm: false,
@@ -50,6 +43,10 @@
                 loading: false
             }
         },
+
+        computed: mapGetters([
+            'getFolderTop'
+        ]),
 
         methods: {
             ...mapMutations([
@@ -72,7 +69,7 @@
             submitNewFolder() {
                 let route = '/api/folder';
                 let data = {
-                    parent_id: this.parent_id,
+                    parent_id: this.getFolderTop.id,
                     folder_title: this.newFolderTitle
                 };
 

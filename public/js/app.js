@@ -35704,6 +35704,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
 //
 //
 //
@@ -35727,6 +35728,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -35734,12 +35745,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             loading: false
         };
     },
-    mounted: function mounted() {},
 
 
-    methods: {
-        methodOne: function methodOne() {}
-    }
+    computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['getActiveFolder', 'getIsDragging'])
 });
 
 /***/ }),
@@ -35755,7 +35763,11 @@ var render = function() {
       "div",
       {
         staticClass:
-          "flex justify-between border-l-4 border-transparent rounded-sm leading-normal hover:bg-grey-light mb-2"
+          "flex justify-between border-l-4 border-transparent rounded-sm leading-none mb-2",
+        class: {
+          "bg-grey-light border-teal": _vm.$route.name == "home",
+          "hover:bg-grey-light": !_vm.getIsDragging
+        }
       },
       [
         _c(
@@ -35775,7 +35787,7 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _c("p", [_vm._v("Home")])
+            _c("p", { staticClass: "pt-1" }, [_vm._v("Home")])
           ]
         )
       ],
@@ -35786,7 +35798,11 @@ var render = function() {
       "div",
       {
         staticClass:
-          "flex justify-between border-l-4 border-transparent rounded-sm leading-normal hover:bg-grey-light mb-2"
+          "flex justify-between border-l-4 border-transparent rounded-sm leading-none mb-2",
+        class: {
+          "bg-grey-light border-teal": _vm.$route.name == "archived",
+          "hover:bg-grey-light": !_vm.getIsDragging
+        }
       },
       [
         _c(
@@ -35806,7 +35822,7 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _c("p", [_vm._v("Archived")])
+            _c("p", { staticClass: "pt-1" }, [_vm._v("Archived")])
           ]
         )
       ],
@@ -36212,7 +36228,7 @@ var render = function() {
           "div",
           {
             staticClass:
-              "flex justify-between border-l-4 border-transparent rounded-sm leading-normal folder-draggable mb-2",
+              "flex justify-between border-l-4 border-transparent rounded-sm leading-none folder-draggable mb-2",
             class: {
               "bg-grey-light border-teal":
                 _vm.isActiveFolder && !_vm.getIsDragging,
@@ -36262,7 +36278,9 @@ var render = function() {
                           ])
                     ],
                 _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(_vm.folder.title))])
+                _c("p", { staticClass: "pt-1" }, [
+                  _vm._v(_vm._s(_vm.folder.title))
+                ])
               ],
               2
             ),
@@ -36435,13 +36453,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        parent_id: {
-            type: Number,
-            default: null
-        }
-    },
-
     data: function data() {
         return {
             showForm: false,
@@ -36450,6 +36461,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
     },
 
+
+    computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['getFolderTop']),
 
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapMutations */])(['setFoldersFlat', 'setFoldersTree']), {
         openNewFolderForm: function openNewFolderForm(el) {
@@ -36471,7 +36484,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
             var route = '/api/folder';
             var data = {
-                parent_id: this.parent_id,
+                parent_id: this.getFolderTop.id,
                 folder_title: this.newFolderTitle
             };
 
@@ -44310,12 +44323,23 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     routes: [{
         path: '/',
+        name: 'home',
+        component: __WEBPACK_IMPORTED_MODULE_2__vues_folders_FolderView_vue___default.a
+    }, {
+        path: '/archived',
+        name: 'archived',
+        component: __WEBPACK_IMPORTED_MODULE_2__vues_folders_FolderView_vue___default.a
+    }, {
+        path: '/marked',
+        name: 'marked',
         component: __WEBPACK_IMPORTED_MODULE_2__vues_folders_FolderView_vue___default.a
     }, {
         path: '/f/:slug?',
+        name: 'folder',
         component: __WEBPACK_IMPORTED_MODULE_2__vues_folders_FolderView_vue___default.a
     }, {
         path: '/f/:slug/bm/:id',
+        name: 'bookmark',
         component: __WEBPACK_IMPORTED_MODULE_3__vues_bookmarks_BookmarkView_vue___default.a
     }]
 }));
