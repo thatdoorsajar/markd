@@ -35743,22 +35743,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     data: function data() {
         return {
-            draggedFolderId: 0,
-            dragOverFolderId: 0,
             loading: false,
             loadingFolderId: 0
         };
     },
 
 
-    computed: Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['getFoldersTree', 'getFolderById']),
+    computed: Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['getFoldersTree', 'getFolderById', 'getIsDragging', 'getDraggedFolderId', 'getDragOverFolderId']),
 
     mounted: function mounted() {
         this.setupDragEvents();
     },
 
 
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapMutations */])(['setFoldersFlat', 'setFoldersTree']), {
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapMutations */])(['setFoldersFlat', 'setFoldersTree', 'setIsDragging', 'setDraggedFolderId', 'setDragOverFolderId']), {
         setupDragEvents: function setupDragEvents() {
             var _this = this;
 
@@ -35771,21 +35769,41 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             });
 
             this.draggable.on('drag:start', function (evt) {
-                _this.draggedFolderId = evt.originalSource.dataset.folderId;
+                _this.setIsDragging(true);
+                _this.setDraggedFolderId(evt.originalSource.dataset.folderId);
             });
 
             this.draggable.on('drag:over', function (evt) {
-                _this.dragOverFolderId = evt.data.over.dataset.folderId;
+                _this.setIsDragging(false);
+                _this.setDragOverFolderId(evt.data.over.dataset.folderId);
+
+                if (!_this.folderUpdateValid()) {
+                    // console.log('Invalid: ', evt);
+                    // Set on state the ID of the invalid folder
+                    _this.folderOverDom = evt.over;
+                    evt.over.classList.remove('draggable--over');
+                    evt.over.classList.add('draggable--invalid');
+                }
             });
 
-            // @TODO: drag leave = dragOverFolderId set to 0
+            this.draggable.on('drag:out', function (evt) {
+                // Remove on state the ID of the invalid folder
+                evt.over.classList.remove('draggable--invalid');
+            });
 
-            this.draggable.on('drag:stop', this.postFolderUpdate);
+            // @TODO: drag leave = state.dragOverFolderId set to 0
+
+            this.draggable.on('drag:stop', function (evt) {
+                _this.postFolderUpdate();
+                _this.folderOverDom.classList.remove('draggable--invalid');
+                // Remove on state the ID of the invalid folder
+                console.log('Stop: ', evt);
+            });
         },
         postFolderUpdate: function postFolderUpdate() {
             var _this2 = this;
 
-            this.loadingFolderId = this.dragOverFolderId;
+            this.loadingFolderId = this.getDragOverFolderId;
 
             if (!this.folderUpdateValid()) {
                 this.loadingFolderId = 0;
@@ -35794,8 +35812,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             }
 
             var data = {
-                folder_id: this.draggedFolderId,
-                new_parent_id: this.dragOverFolderId
+                folder_id: this.getDraggedFolderId,
+                new_parent_id: this.getDragOverFolderId
             };
 
             // @TODO: remove dragged el from folder tree?
@@ -35812,24 +35830,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         folderUpdateValid: function folderUpdateValid() {
             var _this3 = this;
 
-            var folderToMove = this.getFolderById(this.draggedFolderId);
+            var folderToMove = this.getFolderById(this.getDraggedFolderId);
 
-            if (this.draggedFolderId === this.dragOverFolderId) {
+            if (this.getDraggedFolderId === this.getDragOverFolderId) {
                 console.log('Cannot add folder to itself!');
                 return false;
             }
 
             //  @TODO: Cannot add folder to nothing (drop outside any folder)
-            //  drag leave in setupDragEvents = dragOverFolderId set to 0
-            //  check if dragOverFolderId is 0
+            //  drag leave in setupDragEvents = state.dragOverFolderId set to 0
+            //  check if state.dragOverFolderId is 0
 
-            if (folderToMove.parent_id == this.dragOverFolderId) {
+            if (folderToMove.parent_id == this.getDragOverFolderId) {
                 console.log('Cannot add child to its parent!');
                 return false;
             }
 
             var match = folderToMove.children.filter(function (child) {
-                return child.id == _this3.dragOverFolderId;
+                return child.id == _this3.getDragOverFolderId;
 
                 // @TODO: this only gets children one level deep 
             });
@@ -35939,6 +35957,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -35956,7 +35977,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['getActiveFolder']), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['getActiveFolder', 'getIsDragging']), {
         hasChildren: function hasChildren() {
             return this.folder.children.length > 0;
         }
@@ -36015,8 +36036,12 @@ var render = function() {
           "div",
           {
             staticClass:
-              "flex justify-between border-l-4 border-transparent rounded-sm leading-normal hover:bg-grey-light folder-draggable mb-2",
-            class: { "bg-grey-light border-teal": _vm.isActiveFolder },
+              "flex justify-between border-l-4 border-transparent rounded-sm leading-normal folder-draggable mb-2",
+            class: {
+              "bg-grey-light border-teal":
+                _vm.isActiveFolder && !_vm.getIsDragging,
+              "hover:bg-grey-light": _vm.getIsDragging
+            },
             attrs: { "data-folder-id": _vm.folder.id }
           },
           [
@@ -43914,9 +43939,19 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
  */
 /* harmony default export */ __webpack_exports__["a"] = ({
     user: {},
-    activeFolder: [],
+    activeFolder: {},
     foldersFlat: [],
-    foldersTree: []
+    foldersTree: [],
+    folders: {
+        active: {},
+        flat: [],
+        tree: []
+    },
+    dragDrop: {
+        isDragging: false,
+        draggedFolderId: 0,
+        dragOverFolderId: 0
+    }
 });
 
 /***/ }),
@@ -43932,29 +43967,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFolderBySlug", function() { return getFolderBySlug; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFolderById", function() { return getFolderById; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getActiveFolder", function() { return getActiveFolder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getIsDragging", function() { return getIsDragging; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDraggedFolderId", function() { return getDraggedFolderId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDragOverFolderId", function() { return getDragOverFolderId; });
 
 /**
  * Vuex getters should be used to retrieve items from the store,
  * rather than directly referencing the store state.
  */
+
+// For User Object
 var getUser = function getUser(state) {
   return state.user;
 };
 
+// For Folders
 var getFoldersFlat = function getFoldersFlat(state) {
   return state.foldersFlat;
 };
-
 var getFoldersTree = function getFoldersTree(state) {
   return state.foldersTree;
 };
-
 var getFolderTop = function getFolderTop(state) {
   return state.foldersTree.find(function (f) {
     return f.top_folder == true;
   });
 };
-
 var getFolderBySlug = function getFolderBySlug(state) {
   return function (slug) {
     return state.foldersFlat.find(function (f) {
@@ -43962,7 +44000,6 @@ var getFolderBySlug = function getFolderBySlug(state) {
     });
   };
 };
-
 var getFolderById = function getFolderById(state) {
   return function (id) {
     return state.foldersFlat.find(function (f) {
@@ -43970,9 +44007,19 @@ var getFolderById = function getFolderById(state) {
     });
   };
 };
-
 var getActiveFolder = function getActiveFolder(state) {
   return state.activeFolder;
+};
+
+// For DragDrop Objects
+var getIsDragging = function getIsDragging(state) {
+  return state.dragDrop.isDragging;
+};
+var getDraggedFolderId = function getDraggedFolderId(state) {
+  return state.dragDrop.draggedFolderId;
+};
+var getDragOverFolderId = function getDragOverFolderId(state) {
+  return state.dragDrop.dragOverFolderId;
 };
 
 /***/ }),
@@ -43985,20 +44032,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setFoldersFlat", function() { return setFoldersFlat; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setFoldersTree", function() { return setFoldersTree; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setActiveFolder", function() { return setActiveFolder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setIsDragging", function() { return setIsDragging; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setDraggedFolderId", function() { return setDraggedFolderId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setDragOverFolderId", function() { return setDragOverFolderId; });
 
 /**
  * Vuex mutations should be used to update items in the store,
  * rather than directly manipulating the store state.
  */
 
+// For User Object
 var setUser = function setUser(state, user) {
     return state.user = user;
 };
 
+// For Folders
 var setFoldersFlat = function setFoldersFlat(state, folders) {
     return state.foldersFlat = folders;
 };
-
 var setFoldersTree = function setFoldersTree(state, folders) {
     return state.foldersTree = folders;
 };
@@ -44015,6 +44066,17 @@ var setActiveFolder = function setActiveFolder(state) {
             return f.top_folder == true;
         });
     }
+};
+
+// For DragDrop Objects
+var setIsDragging = function setIsDragging(state, boolean) {
+    return state.dragDrop.isDragging = boolean;
+};
+var setDraggedFolderId = function setDraggedFolderId(state, folderId) {
+    return state.dragDrop.draggedFolderId = folderId;
+};
+var setDragOverFolderId = function setDragOverFolderId(state, folderId) {
+    return state.dragDrop.dragOverFolderId = folderId;
 };
 
 /***/ }),

@@ -1,7 +1,10 @@
 <template>
     <div v-if="!folder.top_folder">
-        <div class="flex justify-between border-l-4 border-transparent rounded-sm leading-normal hover:bg-grey-light folder-draggable mb-2"
-            :class="{'bg-grey-light border-teal': isActiveFolder}"
+        <div class="flex justify-between border-l-4 border-transparent rounded-sm leading-normal folder-draggable mb-2"
+            :class="{
+                'bg-grey-light border-teal': (isActiveFolder && !getIsDragging),
+                'hover:bg-grey-light': getIsDragging
+            }"
             :data-folder-id="folder.id">
             <router-link :to="`/f/${folder.slug}`" 
                 class="w-full h-auto text-grey-darker font-semibold no-underline icon-text-aligner p-2 pr-3">
@@ -58,7 +61,8 @@
 
         computed: {
             ...mapGetters([
-                'getActiveFolder'
+                'getActiveFolder',
+                'getIsDragging'
             ]),
 
             hasChildren() {

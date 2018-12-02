@@ -4,7 +4,17 @@
  */
 export default {
     user: {},
-    activeFolder: [],
+    activeFolder: {},
     foldersFlat: [],
-    foldersTree: []
+    foldersTree: [],
+    folders: {
+        active: {},
+        flat: [],
+        tree: []
+    },
+    dragDrop: {
+        isDragging: false,
+        draggedFolderId: 0,
+        dragOverFolderId: 0
+    }
 }

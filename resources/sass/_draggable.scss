@@ -1,7 +1,11 @@
 .draggable-mirror {
-    @apply bg-teal border-teal;
+    @apply bg-grey-light shadow-lg;
 }
 
 .draggable--over {
     @apply bg-teal border-teal;
+}
+
+.draggable--invalid {
+    @apply bg-red-lighter border-red;
 }

@@ -726,13 +726,19 @@ table {
 }
 
 .draggable-mirror {
-  background-color: #4dc0b5;
-  border-color: #4dc0b5;
+  background-color: #dae1e7;
+  -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .11), 0 5px 15px 0 rgba(0, 0, 0, .08);
+          box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .11), 0 5px 15px 0 rgba(0, 0, 0, .08);
 }
 
 .draggable--over {
   background-color: #4dc0b5;
   border-color: #4dc0b5;
+}
+
+.draggable--invalid {
+  background-color: #f9acaa;
+  border-color: #e3342f;
 }
 
 /* Generated using nucleoapp.com */

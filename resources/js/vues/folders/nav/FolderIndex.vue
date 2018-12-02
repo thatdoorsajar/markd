@@ -31,8 +31,6 @@
 
         data() {
             return {
-                draggedFolderId: 0,
-                dragOverFolderId: 0,
                 loading: false,
                 loadingFolderId: 0
             }
@@ -40,7 +38,10 @@
 
         computed: mapGetters([
             'getFoldersTree',
-            'getFolderById'
+            'getFolderById',
+            'getIsDragging',
+            'getDraggedFolderId',
+            'getDragOverFolderId'
         ]),
 
         mounted() {
@@ -50,7 +51,10 @@
         methods: {
             ...mapMutations([
                 'setFoldersFlat',
-                'setFoldersTree'
+                'setFoldersTree',
+                'setIsDragging',
+                'setDraggedFolderId',
+                'setDragOverFolderId'
             ]),
 
             setupDragEvents() {
@@ -63,20 +67,40 @@
                 });
 
                 this.draggable.on('drag:start', (evt) => {
-                    this.draggedFolderId = evt.originalSource.dataset.folderId;
+                    this.setIsDragging(true);
+                    this.setDraggedFolderId(evt.originalSource.dataset.folderId);
                 });
 
                 this.draggable.on('drag:over', (evt) => {
-                    this.dragOverFolderId = evt.data.over.dataset.folderId;
+                    this.setIsDragging(false);
+                    this.setDragOverFolderId(evt.data.over.dataset.folderId);
+
+                    if (!this.folderUpdateValid()) {
+                        // console.log('Invalid: ', evt);
+                        // Set on state the ID of the invalid folder
+                        this.folderOverDom = evt.over;
+                        evt.over.classList.remove('draggable--over');
+                        evt.over.classList.add('draggable--invalid');
+                    }
                 });
 
-                // @TODO: drag leave = dragOverFolderId set to 0
+                this.draggable.on('drag:out', (evt) => {
+                    // Remove on state the ID of the invalid folder
+                    evt.over.classList.remove('draggable--invalid');
+                });
 
-                this.draggable.on('drag:stop', this.postFolderUpdate);
+                // @TODO: drag leave = state.dragOverFolderId set to 0
+
+                this.draggable.on('drag:stop', (evt) => {
+                    this.postFolderUpdate();
+                    this.folderOverDom.classList.remove('draggable--invalid');
+                    // Remove on state the ID of the invalid folder
+                    console.log('Stop: ', evt);
+                });
             },
 
             postFolderUpdate() {
-                this.loadingFolderId = this.dragOverFolderId;
+                this.loadingFolderId = this.getDragOverFolderId;
 
                 if (!this.folderUpdateValid()) {
                     this.loadingFolderId = 0;
@@ -85,8 +109,8 @@
                 }
 
                 let data = {
-                    folder_id: this.draggedFolderId,
-                    new_parent_id: this.dragOverFolderId,
+                    folder_id: this.getDraggedFolderId,
+                    new_parent_id: this.getDragOverFolderId,
                 };
 
                 // @TODO: remove dragged el from folder tree?
@@ -100,24 +124,24 @@
             },
 
             folderUpdateValid() {
-                let folderToMove = this.getFolderById(this.draggedFolderId);
+                let folderToMove = this.getFolderById(this.getDraggedFolderId);
 
-                if (this.draggedFolderId === this.dragOverFolderId) {
+                if (this.getDraggedFolderId === this.getDragOverFolderId) {
                     console.log('Cannot add folder to itself!');
                     return false;
                 }
 
                 //  @TODO: Cannot add folder to nothing (drop outside any folder)
-                //  drag leave in setupDragEvents = dragOverFolderId set to 0
-                //  check if dragOverFolderId is 0
+                //  drag leave in setupDragEvents = state.dragOverFolderId set to 0
+                //  check if state.dragOverFolderId is 0
 
-                if (folderToMove.parent_id == this.dragOverFolderId) {
+                if (folderToMove.parent_id == this.getDragOverFolderId) {
                     console.log('Cannot add child to its parent!');
                     return false;
                 }
 
                 let match = folderToMove.children.filter((child) => {
-                    return child.id == this.dragOverFolderId;
+                    return child.id == this.getDragOverFolderId;
 
                     // @TODO: this only gets children one level deep 
                 });
