@@ -43865,10 +43865,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -43967,21 +43963,11 @@ var render = function() {
                     staticClass: "font-century text-2xl mb-4",
                     class: _vm.danger ? "text-red" : "text-grey-darkest"
                   },
-                  [_vm._t("title", [_vm._v("Modal Title")])],
+                  [_vm._t("title")],
                   2
                 ),
                 _vm._v(" "),
-                _vm._t("default", [
-                  _c(
-                    "p",
-                    { staticClass: "font-sans text-lg text-grey-darkest mb-6" },
-                    [
-                      _vm._v(
-                        "\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet non cupiditate unde vel animi, quae rerum minus obcaecati quis, possimus autem consequuntur velit laudantium corporis vero at aut omnis. Ipsum.\n                "
-                      )
-                    ]
-                  )
-                ])
+                _vm._t("default")
               ],
               2
             )
@@ -47167,6 +47153,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -48343,77 +48331,84 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "pl-1" }, [
-        _c(
-          "button",
-          {
-            directives: [
+      _c(
+        "div",
+        { staticClass: "pl-1" },
+        [
+          _c(
+            "button",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.editMenuOpen,
+                  expression: "!editMenuOpen"
+                }
+              ],
+              staticClass:
+                "font-semibold text-grey hover:text-teal trans:color focus:outline-none",
+              on: {
+                click: function($event) {
+                  _vm.editMenuOpen = true
+                }
+              }
+            },
+            [_vm._v("\n            edit\n        ")]
+          ),
+          _vm._v(" "),
+          _c("transition", { attrs: { name: "fade" } }, [
+            _c(
+              "div",
               {
-                name: "show",
-                rawName: "v-show",
-                value: !_vm.editMenuOpen,
-                expression: "!editMenuOpen"
-              }
-            ],
-            staticClass:
-              "font-semibold text-grey hover:text-teal trans:color focus:outline-none",
-            on: {
-              click: function($event) {
-                _vm.editMenuOpen = true
-              }
-            }
-          },
-          [_vm._v("\n            edit\n        ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.editMenuOpen,
-                expression: "editMenuOpen"
-              }
-            ]
-          },
-          [
-            _c("edit-title", {
-              on: {
-                "close-menu": function($event) {
-                  _vm.editMenuOpen = false
-                }
-              }
-            }),
-            _vm._v("\n             · \n            "),
-            _c("add-sub-folder", {
-              on: {
-                "close-menu": function($event) {
-                  _vm.editMenuOpen = false
-                }
-              }
-            }),
-            _vm._v("\n             · \n            "),
-            _c("archive-folder", {
-              on: {
-                "close-menu": function($event) {
-                  _vm.editMenuOpen = false
-                }
-              }
-            }),
-            _vm._v("\n             · \n            "),
-            _c("delete-folder", {
-              on: {
-                "close-menu": function($event) {
-                  _vm.editMenuOpen = false
-                }
-              }
-            })
-          ],
-          1
-        )
-      ])
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.editMenuOpen,
+                    expression: "editMenuOpen"
+                  }
+                ]
+              },
+              [
+                _c("edit-title", {
+                  on: {
+                    "close-menu": function($event) {
+                      _vm.editMenuOpen = false
+                    }
+                  }
+                }),
+                _vm._v("\n             · \n            "),
+                _c("add-sub-folder", {
+                  on: {
+                    "close-menu": function($event) {
+                      _vm.editMenuOpen = false
+                    }
+                  }
+                }),
+                _vm._v("\n             · \n            "),
+                _c("archive-folder", {
+                  on: {
+                    "close-menu": function($event) {
+                      _vm.editMenuOpen = false
+                    }
+                  }
+                }),
+                _vm._v("\n             · \n            "),
+                _c("delete-folder", {
+                  on: {
+                    "close-menu": function($event) {
+                      _vm.editMenuOpen = false
+                    }
+                  }
+                })
+              ],
+              1
+            )
+          ])
+        ],
+        1
+      )
     ]
   )
 }

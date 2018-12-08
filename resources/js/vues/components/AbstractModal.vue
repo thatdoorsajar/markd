@@ -5,13 +5,9 @@
                 :class="widthClassList">
                 <h1 class="font-century text-2xl mb-4" 
                     :class="danger ? 'text-red' : 'text-grey-darkest'">
-                    <slot name="title">Modal Title</slot>
+                    <slot name="title"/>
                 </h1>
-                <slot>
-                    <p class="font-sans text-lg text-grey-darkest mb-6">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet non cupiditate unde vel animi, quae rerum minus obcaecati quis, possimus autem consequuntur velit laudantium corporis vero at aut omnis. Ipsum.
-                    </p>
-                </slot>
+                <slot/>
             </div>
         </div>
     </portal>

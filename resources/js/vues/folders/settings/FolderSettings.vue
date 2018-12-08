@@ -6,6 +6,7 @@
                 @click="editMenuOpen = true">
                 edit
             </button>
+            <transition name="fade">
             <div v-show="editMenuOpen">
                 <edit-title @close-menu="editMenuOpen = false"/>
                 &nbsp;·&nbsp;
@@ -15,6 +16,7 @@
                 &nbsp;·&nbsp;
                 <delete-folder @close-menu="editMenuOpen = false"/>
             </div>
+        </transition>
         </div>
     </on-click-outside>
 </template>

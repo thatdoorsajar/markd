@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Mrkd\Folder;
 use App\Mrkd\Bookmark;
 use Illuminate\Http\Request;
-use App\Jobs\ProcessBookmarkUrl;
 use App\Http\Controllers\Controller;
 
 class FolderBookmarkController extends Controller
